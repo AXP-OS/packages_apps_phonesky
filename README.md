@@ -69,7 +69,23 @@ find /system/priv-app/Phonesky/ -type f 2>/dev/null | while read file; do
 	chcon 'u:object_r:system_file:s0' ${file} 2>/dev/null
 done
 ```
-done, reboot into your ROM, grant signature spoofing permission to the Play Store and reboot the ROM again. Setup your Google account and feel free to make purchases.
+
+Also grab the files from the `etc/` directory and push the in the same directories inside your `/system`, so you'll get the following files:
+
+  * /system/etc/permissions/com.android.vending.xml
+  * /system/etc/default-permissions/phonesky-permissions.xml
+
+adjust permissions for those files aswell:
+
+```
+for file in /system/etc/permissions/com.android.vending.xml /system/etc/default-permissions/phonesky-permissions.xml; do
+	chown 0:0 ${file}
+	chmod 0644 ${file}
+	chcon 'u:object_r:system_file:s0' ${file} 2>/dev/null
+done
+```
+
+done (finally), reboot into your ROM, grant signature spoofing permission to the Play Store and reboot the ROM again. Setup your Google account and feel free to make purchases.
 
 # Patch compatibility
 
