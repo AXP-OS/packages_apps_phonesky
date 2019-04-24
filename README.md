@@ -1,8 +1,8 @@
 # microG Phonesky (Google Play) patches
 
-While making (in-)app-purchases with microG works out-of-the-box with many Stock ROMs, on after-market ROMs like AOSP or LineageOS security restrictions prevent this (theese ROMs expect the signature of the Play Store to be equal to the signature of the Play Services, but since microG has a different signature as the Play Store they refuse to allow making purchases, more details at [microG #309](https://github.com/microg/android_packages_apps_GmsCore/issues/309)).
+While making (in-)app-purchases with microG works out-of-the-box with many Stock ROMs, on after-market ROMs like AOSP or LineageOS security restrictions prevent this (theese ROMs expect the signature of the Google Play to be equal to the signature of the Play Services, but since microG has a different signature as the Google Play they refuse to allow making purchases, more details at [microG #309](https://github.com/microg/android_packages_apps_GmsCore/issues/309)).
 
-This patches allow the user to create a patched Play Store on their own which resolves that issue, additionally most recent patches also eliminate most update-triggers of Play Store, prevent most of the caused battery and data drain.
+This patches allow the user to create a patched Google Play on their own which resolves that issue, additionally most recent patches also eliminate most update-triggers of Google Play, prevent most of the caused battery and data drain.
 
 Base patches are created by @Nanolx with help by @Vavun for update-blocking hunks.
 
@@ -85,7 +85,7 @@ for file in /system/etc/permissions/com.android.vending.xml /system/etc/default-
 done
 ```
 
-done (finally), reboot into your ROM, grant signature spoofing permission to the Play Store and reboot the ROM again. Setup your Google account and feel free to make purchases.
+done (finally), reboot into your ROM, grant signature spoofing permission to the Google Play and reboot the ROM again. Setup your Google account and feel free to make purchases.
 
 # Patch compatibility
 
