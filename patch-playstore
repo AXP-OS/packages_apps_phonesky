@@ -21,10 +21,10 @@ setup () {
 	[ -z "${gplay_version}" ] && error "Could not determine Play Store version code"
 	[[ ! "${gplay_version_p}" != ^[0-9][0-9].[0-9].[0-9][0-9]$ ]] && error "Version seems not like a Play Store version"
 
-	gplay_orig="${PWD}/play_${gplay_version_p}.orig"
-	gplay_work="${PWD}/play_${gplay_version_p}"
+	gplay_orig="play_${gplay_version_p}.orig"
+	gplay_work="play_${gplay_version_p}"
 	gplay_dist="${gplay_work}/dist/$(basename "${gplay}")"
-	gplay_out="${PWD}/Phonesky_${gplay_version_p}_patched.apk"
+	gplay_out="Phonesky_${gplay_version_p}_patched.apk"
 
 	echo "Detected Play Store:
 
@@ -35,7 +35,7 @@ setup () {
 
 unpack_gplay () {
 	echo "[1] Unpacking APK"
-	rm -rf "${gplay_work}" "${gplay_orig}" 
+	rm -rf "${gplay_work}" "${gplay_orig}"
 	apktool -q d "${gplay}" -o "${gplay_work}" || error "apktool failed to unpack ${gplay}"
 
 	grep -q FAKE_PACKAGE_SIGNATURE "${gplay_work}/AndroidManifest.xml" && error "APK already patched!"
@@ -88,7 +88,7 @@ patch_gplay () {
 	sed "/<\/resources>/i ${strings_insert}" -i "${gplay_work}/res/values/strings.xml"
 
 	# avoid some (not all) auto-updates
-	smali_file=$(find "${gplay_work}/smali" -type f -name '*.smali' | xargs grep "Skipping DFE self-update check" | cut -d: -f1)
+	smali_file=$(find "${gplay_work}" -type f -name '*.smali' | xargs grep "Skipping DFE self-update check" | cut -d: -f1)
 	sed -e 's/if-lt v0, p1, :cond_0/if-ne v0, v0, :cond_0/g' -i "${smali_file}"
 }
 
