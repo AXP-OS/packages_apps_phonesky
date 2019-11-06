@@ -92,10 +92,14 @@ patch_gplay () {
 	sed -e 's/if-lt v0, p1, :cond_0/if-ne v0, v0, :cond_0/g' -i "${smali_file}"
 }
 
-gplay="${1}"
-[ ! -f "${1}" ] && error "No Play Store apk given"
+for file in "${@}"; do
+	gplay="${file}"
+	[ ! -f "${file}" ] && error "No Play Store apk given"
 
-setup
-unpack_gplay
-patch_gplay || error "patching failed"
-repack_gplay
+	setup
+	unpack_gplay
+	patch_gplay || error "patching failed"
+	repack_gplay
+done
+
+
