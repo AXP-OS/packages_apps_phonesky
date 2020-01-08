@@ -10,6 +10,21 @@ Base patches are created by @Nanolx with help by @Vavun for update-blocking hunk
 
 First get [apktool](https://ibotpeaches.github.io/Apktool/) (using the latest version to-date is recommended), then head over to [apkmirror](https://www.apkmirror.com/apk/google-inc/google-play-store/) to download the desired Google Play apk (again, using the latest supported version is recommended). Also get [Apk Sign](https://github.com/appium/sign/raw/master/dist/signapk.jar), along the required [testkey](https://github.com/appium/sign/raw/master/testkey.pk8), [testcertificate](https://raw.githubusercontent.com/appium/sign/master/testkey.x509.pem) to sign your custom apk with a test key.
 
+
+## automatically
+
+Use the `patch-playstore` Script provided here.
+
+If you have your own java keystore you can change the
+
+  `keystore=""`
+
+value to the path of your java keystore. To sign with the test key sign the file manually using:
+
+  `java -jar signapk.jar testkey.x509.pem testkey.pk8 dist/Phonesky-14.6.56 dist/Phonesky-14.6.56-signed.apk`
+
+## manually
+
 For reference we assume you downloaded the Google Play apk for version 14.6.56 and named it Phonesky-14.6.56.apk, along the corresponding patch named Phonesky-14.6.56-microG.diff, commands provided are for unixoid operating systems, if you're using Windows or macOS you may need to adjust them.
 
 * unpack the apk using apktool:
