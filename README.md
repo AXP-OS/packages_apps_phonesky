@@ -105,3 +105,10 @@ done (finally), reboot into your ROM, grant signature spoofing permission to Goo
 # Patch compatibility
 
 Patches can be used on other Google Play versions if only the micro version changed, for example you can use the patch for version 14.4.20 on version 14.4.22 aswell, but you can't use the patch for version 14.4.20 for version 14.5.52.
+
+# Trouble Shooting
+
+* make sure you use Java/OpenJDK 8
+* some recent builds of Google Play need `--use-aapt2` flag to be passed to `apktool`
+  * when doing manually use: `apktool [bd] --use-aapt2 ...`
+  * when using `patch-playstore` script use: `APKTOOL_FLAGS=--use-aapt2 patch-playstore ...`
