@@ -36,7 +36,7 @@ setup () {
 unpack_gplay () {
 	echo "[1] Unpacking APK"
 	rm -rf "${gplay_work}" "${gplay_orig}"
-	apktool -q d  --use-aapt2 "${gplay}" -o "${gplay_work}" || error "apktool failed to unpack ${gplay}"
+	apktool -q d "${gplay}" -o "${gplay_work}" || error "apktool failed to unpack ${gplay}"
 
 	grep -q FAKE_PACKAGE_SIGNATURE "${gplay_work}/AndroidManifest.xml" && error "APK already patched!"
 
@@ -47,7 +47,7 @@ unpack_gplay () {
 repack_gplay () {
 	echo "[3] Repacking APK"
 	diff -Nupr "${gplay_orig}" "${gplay_work}" > "Phonesky-${gplay_version_p}.diff"
-	apktool -q b --use-aapt2 "${gplay_work}" || error "apktool failed to repack ${gplay}"
+	apktool -q b "${gplay_work}" || error "apktool failed to repack ${gplay}"
 
 	mv "${gplay_dist}" "${gplay_out}"
 	[ -f "${keystore}" ] && apksigner sign --ks "${keystore}" "${gplay_out}"
