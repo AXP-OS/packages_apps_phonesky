@@ -112,3 +112,4 @@ Patches can be used on other Google Play versions if only the micro version chan
 * some recent builds of Google Play need `--use-aapt2` flag to be passed to `apktool`
   * when doing manually use: `apktool [bd] --use-aapt2 ...`
   * when using `patch-playstore` script use: `APKTOOL_FLAGS=--use-aapt2 patch-playstore ...`
+* bootloop after installing patched Google Play: [see this post](https://gitlab.com/Nanolx/microg-phonesky-iap-support/issues/3#note_268785229)
