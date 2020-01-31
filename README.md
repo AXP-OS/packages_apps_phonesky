@@ -53,7 +53,7 @@ For reference we assume you downloaded the Google Play apk for version 14.6.56 a
 
   `java -jar apktool.jar b .`
 
-* sing the new apk using a test key:
+* sign the new apk using a test key:
 
   `java -jar signapk.jar testkey.x509.pem testkey.pk8 dist/Phonesky-14.6.56 dist/Phonesky-14.6.56-signed.apk`
 
