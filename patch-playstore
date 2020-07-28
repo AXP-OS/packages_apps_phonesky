@@ -14,7 +14,7 @@ setup () {
 	command -v aapt >/dev/null || error "aapt not found"
 
 	gplay_version=$(aapt dump badging "${gplay}" | gawk -F \' '/^package: name/{print $4}')
-	gplay_version_p=$(aapt dump badging "${gplay}" | gawk -F \' '/^package: name/{print $6}' | sed -e 's/-all.*//')
+	gplay_version_p=$(aapt dump badging "${gplay}" | gawk -F \' '/^package: name/{print $6}' | sed -e 's/\ .*//')
 	gplay_name=$(aapt dump badging "${gplay}" | gawk -F \' '/^package: name/{print $2}')
 
 	[[ "${gplay_name}" != com.android.vending ]] && error "Given file is not a Play Store apk"
