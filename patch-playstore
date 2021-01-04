@@ -83,13 +83,6 @@ patch_gplay () {
 	public_insert="    <public type=\"string\" name=\"fake_signature\" id=\"0x${public_id_insert}\" />"
 
 	sed "${public_pos_insert}i${public_insert}" -i "${gplay_work}/res/values/public.xml"
-
-	# add public string fake_signature
-	sed "/<\/resources>/i ${strings_insert}" -i "${gplay_work}/res/values/strings.xml"
-
-	# avoid some (not all) auto-updates
-	smali_file=$(find "${gplay_work}" -type f -name '*.smali' | xargs grep "Skipping DFE self-update check" | cut -d: -f1)
-	sed -e 's/if-lt v0, p1, :cond_0/if-ne v0, v0, :cond_0/g' -i "${smali_file}"
 }
 
 for file in "${@}"; do
