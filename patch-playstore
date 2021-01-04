@@ -75,6 +75,9 @@ patch_gplay () {
 	sed "${manifest_bootreceiver_start},${manifest_bootreceiver_end}d" -i "${gplay_work}/AndroidManifest.xml"
 	sed "${manifest_bootreceiver_pos}a<intent-filter/>" -i "${gplay_work}/AndroidManifest.xml"
 
+	# add public string fake_signature
+	sed "/<\/resources>/i ${strings_insert}" -i "${gplay_work}/res/values/strings.xml"
+
 	# add public string id fake_signature
 	public_pos=$(gawk '/type="string"/{a=FNR} END{print a}' "${gplay_work}/res/values/public.xml")
 	public_pos_insert=$((public_pos + 1))
