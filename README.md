@@ -84,11 +84,12 @@ find /system/priv-app/Phonesky/ -type f 2>/dev/null | while read file; do
 	chcon 'u:object_r:system_file:s0' ${file} 2>/dev/null
 done
 ```
+> BEFORE continuing, check your `/system/etc/permissions` folder on your device. If it contains a file named `com.android.vending.xml` then use the respective `com.android.vending.xml` file from `etc/` in this repository. If it instead contains a file named `privapps-permissions-com.android.vending.xml`, then use the respective file located in `etc/` in this repository.
 
-Also grab the files from the `etc/` directory and push the in the same directories inside your `/system`, so you'll get the following files:
+Also grab the files from the `etc/` folder **of this repository** and push them to their respective directories in `/system` so you'll get the following files:
 
-  * /system/etc/permissions/com.android.vending.xml
-  * /system/etc/default-permissions/phonesky-permissions.xml
+  * /system/etc/permissions/**com.android.vending.xml** or **privapps-permissions-com.android.vending.xml**
+  * /system/etc/default-permissions/**phonesky-permissions.xml**
 
 adjust permissions for those files aswell:
 
