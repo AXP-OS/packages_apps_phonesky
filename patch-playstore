@@ -8,6 +8,9 @@ error () {
 	exit 1
 }
 
+# ensure custom apktool is used from ${HOME}/bin
+PATH="${HOME}/bin:${PATH}"
+
 setup () {
 	command -v apktool >/dev/null || error "apktool not found"
 	command -v apksigner >/dev/null || error "apksigner not found"
@@ -40,7 +43,7 @@ unpack_gplay () {
 
 	grep -q FAKE_PACKAGE_SIGNATURE "${gplay_work}/AndroidManifest.xml" && error "APK already patched!"
 
-	find "${gplay_work}" -type f -name '*.xml' | xargs sed '/APKTOOL_DUMMY/d' -i
+	#find "${gplay_work}" -type f -name '*.xml' | xargs sed '/APKTOOL_DUMMY/d' -i
 	cp -r "${gplay_work}" "${gplay_orig}"
 }
 
@@ -62,10 +65,10 @@ patch_gplay () {
 	manifest_perm_insert="<uses-permission android:name=\"android.permission.FAKE_PACKAGE_SIGNATURE\"/>"
 	sed "${manifest_perm_pos}i${manifest_perm_insert}" -i "${gplay_work}/AndroidManifest.xml"
 
-	# add metadata to activity
-	manifest_activity_pos=$(gawk '/activity/{print FNR ; exit}' "${gplay_work}/AndroidManifest.xml")
-	manifest_activity_insert="<meta-data android:name=\"fake-signature\" android:value=\"@string/fake_signature\"/>"
-	sed "${manifest_activity_pos}a${manifest_activity_insert}" -i "${gplay_work}/AndroidManifest.xml"
+	# add metadata to application
+	manifest_application_pos=$(gawk '/<application/{print FNR ; exit}' "${gplay_work}/AndroidManifest.xml")
+	manifest_application_insert="<meta-data android:name=\"fake-signature\" android:value=\"@string/fake_signature\"/>"
+	sed "${manifest_application_pos}a${manifest_application_insert}" -i "${gplay_work}/AndroidManifest.xml"
 
 	# deactivate bootreceiver
 	manifest_bootreceiver_pos=$(gawk '/com.google.android.finsky.boothandler.BootCompletedReceiver/{print FNR ; exit}' "${gplay_work}/AndroidManifest.xml")
@@ -97,5 +100,3 @@ for file in "${@}"; do
 	patch_gplay || error "patching failed"
 	repack_gplay
 done
-
-
