@@ -1,0 +1,5 @@
+*.apk
+*.apk_zipaligned
+framework
+changed
+play_*

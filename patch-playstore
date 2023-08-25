@@ -11,6 +11,13 @@ error () {
 # ensure custom apktool is used from ${HOME}/bin
 PATH="${HOME}/bin:${PATH}"
 
+# debug on/off
+unset DEBUGOPT
+if [ "$DEBUG" != "yes" ];then
+    DEBUG=no
+    export DEBUGOPT="-q"
+fi
+
 setup () {
 	command -v apktool >/dev/null || error "apktool not found"
 	command -v apksigner >/dev/null || error "apksigner not found"
@@ -38,13 +45,14 @@ setup () {
 
 	APK:	$(basename "${gplay}")
 	VER:	${gplay_version} [${gplay_version_p}]
+        DEBUG:  $DEBUG
 	"
 }
 
 unpack_gplay () {
 	echo "[1] Unpacking APK"
 	rm -rf "${gplay_work}" "${gplay_orig}"
-	apktool -q d ${APKTOOL_FLAGS} -f framework "${gplay}" -o "${gplay_work}" || error "apktool failed to unpack ${gplay}"
+	apktool $DEBUGOPT d ${APKTOOL_FLAGS} "${gplay}" -o "${gplay_work}" || error "apktool failed to unpack ${gplay}"
 
 	grep -q FAKE_PACKAGE_SIGNATURE "${gplay_work}/AndroidManifest.xml" && error "APK already patched!"
 
@@ -55,12 +63,13 @@ unpack_gplay () {
 repack_gplay () {
 	echo "[3] Repacking APK"
 	diff -Nupr "${gplay_orig}" "${gplay_work}" > "Phonesky-${gplay_version_p}.diff"
-	apktool -q b ${APKTOOL_FLAGS} -f framework "${gplay_work}" || error "apktool failed to repack ${gplay}"
+	apktool $DEBUGOPT b ${APKTOOL_FLAGS} "${gplay_work}" || error "apktool failed to repack ${gplay}"
 
 	mv "${gplay_dist}" "${gplay_out}"
 	[ -f "${keystore}" ] && apksigner sign --ks "${keystore}" "${gplay_out}"
 
-	rm -rf "${gplay_work}" "${gplay_orig}"
+	[ "$DEBUG" != "yes" ] && rm -rf "${gplay_work}" "${gplay_orig}"
+
 }
 
 patch_gplay () {
