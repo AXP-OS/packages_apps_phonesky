@@ -11,6 +11,9 @@ error () {
 # ensure custom apktool is used from ${HOME}/bin
 PATH="${HOME}/bin:${PATH}"
 
+# default max SDK if not specified
+[ -z "$ANDROIDSDK" ] && export ANDROIDSDK=33
+
 # debug on/off
 unset DEBUGOPT
 if [ "$DEBUG" != "yes" ];then
@@ -22,11 +25,11 @@ setup () {
 	command -v apktool >/dev/null || error "apktool not found"
 	command -v apksigner >/dev/null || error "apksigner not found"
 	command -v aapt >/dev/null || error "aapt not found"
+	command -v zipalign >/dev/null || error "zipalign not found"
 
 	# prepare and use android framework to avoid issues with non-translatable resources
-	[ -z "$ANDROIDSDK" ] && ANDROIDSDK=33
 	[ ! -d framework ] && mkdir framework
-	[ ! -f framework/1.apk ] && wget https://github.com/Sable/android-platforms/raw/master/android-${ANDROIDSDK}/android.jar -O framework/1.apk
+	[ ! -f framework/1-${ANDROIDSDK}.apk ] && wget https://github.com/Sable/android-platforms/raw/master/android-${ANDROIDSDK}/android.jar -O framework/1-${ANDROIDSDK}.apk
 
 	gplay_version=$(aapt dump badging "${gplay}" | gawk -F \' '/^package: name/{print $4}')
 	gplay_version_p=$(aapt dump badging "${gplay}" | gawk -F \' '/^package: name/{print $6}' | sed -e 's/\ .*//')
@@ -46,13 +49,14 @@ setup () {
 	APK:	$(basename "${gplay}")
 	VER:	${gplay_version} [${gplay_version_p}]
         DEBUG:  $DEBUG
+        SDK:    $ANDROIDSDK
 	"
 }
 
 unpack_gplay () {
 	echo "[1] Unpacking APK"
 	rm -rf "${gplay_work}" "${gplay_orig}"
-	apktool $DEBUGOPT d ${APKTOOL_FLAGS} "${gplay}" -o "${gplay_work}" || error "apktool failed to unpack ${gplay}"
+	apktool $DEBUGOPT d ${APKTOOL_FLAGS} -p framework -t ${ANDROIDSDK} "${gplay}" -o "${gplay_work}" || error "apktool failed to unpack ${gplay}"
 
 	grep -q FAKE_PACKAGE_SIGNATURE "${gplay_work}/AndroidManifest.xml" && error "APK already patched!"
 
@@ -63,13 +67,15 @@ unpack_gplay () {
 repack_gplay () {
 	echo "[3] Repacking APK"
 	diff -Nupr "${gplay_orig}" "${gplay_work}" > "Phonesky-${gplay_version_p}.diff"
-	apktool $DEBUGOPT b ${APKTOOL_FLAGS} "${gplay_work}" || error "apktool failed to repack ${gplay}"
+	apktool $DEBUGOPT b ${APKTOOL_FLAGS} -p framework -t ${ANDROIDSDK} "${gplay_work}" || error "apktool failed to repack ${gplay}"
 
 	mv "${gplay_dist}" "${gplay_out}"
 	[ -f "${keystore}" ] && apksigner sign --ks "${keystore}" "${gplay_out}"
 
 	[ "$DEBUG" != "yes" ] && rm -rf "${gplay_work}" "${gplay_orig}"
 
+        # Since Android 10 we need to zipalign (https://developer.android.com/tools/zipalign)
+        [ "$ANDROIDSDK" -ge 29 ] && zipalign -f -p 4 "${gplay_out}" "${gplay_out}_zipaligned"
 }
 
 patch_gplay () {
