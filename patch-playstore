@@ -114,6 +114,22 @@ patch_gplay () {
         sed -i 's#@android:color/background_floating_device_default_dark#@*android:color/background_floating_device_default_dark#g' ${gplay_work}/res/color/*.xml
         sed -i 's#@android:color/GM2_grey_800#@*android:color/GM2_grey_800#g' ${gplay_work}/res/color/*.xml
         sed -i 's/@android:color/@*android:color/g' ${gplay_work}/res/values/styles.xml
+
+        # patch stub errors (all wrong app:/finsky: dummies):
+        for stub in $(find ${gplay_work} -type f -name '*.xml' -exec grep -Eq '(<com\.google\.android\.finsky\.uicomponentsmvc\..*Stub.*)(app:APKTOOL_DUMMYVAL_0x\w+=".*"|finsky:APKTOOL_DUMMYVAL_0x\w+=".*")' {} \; -print);do
+            S=1
+            while [ $S -eq 1 ]; do
+                [ -f changed ] && rm changed
+                sed -i -E 's/(<com\.google\.android\.finsky\.uicomponentsmvc\..*Stub\s+.*)(app:APKTOOL_DUMMYVAL_0x\w+=".*"|finsky:APKTOOL_DUMMYVAL_0x\w+=".*").(.*)/\1\3/g w changed' $stub
+                if [ -s changed ];then
+                    [ "$DEBUG" == "yes" ] && echo "cleaned a problematic app/finsky stub in $stub"
+                    S=1
+                else
+                    [ "$DEBUG" == "yes" ] && echo finished processing $stub
+                    S=0
+                fi
+            done
+        done
 }
 
 for file in "${@}"; do
