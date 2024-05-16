@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        submodules: true
+        path: repo
 
     - name: set up JDK
       uses: actions/setup-java@v3
@@ -21,17 +21,28 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: prep download
-      uses: actions/checkout@v4
-      with:
-        repository: AXP-OS/tools_apk_downloader
-        path: dl
+    #- name: prep download
+    #  uses: actions/checkout@v4
+    #  with:
+    #    repository: AXP-OS/tools_apk_downloader
+    #    path: dl
         
     - name: Download APK + tools
       run: |
-        DL=$(cd dl && php download.php -b -p com.android.vending)
-        APK="dl/${DL/;*}"
-        echo "$APK"
+        wget -q -O apkmd "https://github.com/tanishqmanuja/apkmirror-downloader/releases/download/v1.0.6/apkmd"
+        chmod +x apkmd
+        
+        # download play store
+        APK="downloads/gp.apk"
+        RETRY=5
+        while [ $RETRY -gt 0 ];do
+          ./apkmd repo/apkmirror.json
+          [ -f $APK" ] && break
+          RETRY=$(( RETRY - 1))
+        done
+        [ ! -f "$APK" ] && echo "ERROR: could not download apk" && exit 3
+
+        # download & prepare apk tools
         mkdir -p ~/.local/bin
         wget -q -O ~/.local/bin/apktool "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
         wget -q -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.9.3.jar"
@@ -40,49 +51,25 @@ jobs:
         apktool --version
         echo "local_apkname=$APK" >> $GITHUB_ENV
 
-    - name: Extract APK
+    - name: Patch APK
       run: |
-        BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
-        echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
-        export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
-        find /usr/local/lib/android/sdk/build-tools
-        DEBUG=yes APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
-        exit 2
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-
-        
-    # https://github.com/r0adkll/sign-android-release/issues/84#issuecomment-1885690080
-    - name: "Get & set app and build variables"
-      shell: bash
-      run: |
+        # https://github.com/r0adkll/sign-android-release/issues/84#issuecomment-1885690080
         BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
         echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
         echo Last build tool version is: $BUILD_TOOL_VERSION
-        # see: https://maven.google.com/web/index.html#com.android.tools.build:aapt2
-        #wget -q -O aapt.zip https://dl.google.com/android/maven2/com/android/tools/build/aapt2/8.3.2-10880808/aapt2-8.3.2-10880808-linux.jar
-        #unzip aapt.zip aapt2 && chmod +x aapt2
-        #OVER=$(./aapt2 dump badging apks/OpenEUICC.apk | grep "VersionName" | sed -e "s/.*versionName='//" -e "s/' .*//")
-        OVER=$(date +%F)
-        [ -z "$OVER" ] && echo "ERROR: empty version detected" && exit 3
-        echo "OPENEUICC_VERSION=$OVER" >> $GITHUB_ENV
-        git_sha_short=$(git rev-parse --short "$GITHUB_SHA")
-        echo "git_sha_short=$git_sha_short" >> $GITHUB_ENV
-        echo "OpenEUICC version is: $OVER ($git_sha_short)"
+        
+        export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
+        DEBUG=yes APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
+        
+        patched_apk=$(./patch-playstore printapk ${{ env.local_apkname }} | grep file: | cut -d ':' -f2)
+        apk_version=$(./patch-playstore printapk ${{ env.local_apkname }} | grep playversion: | cut -d ':' -f2-3)
+        echo "patched_apk=$patched_apk" >> $GITHUB_ENV
+        echo "apk_version_short='${apk_version/:*}'" >> $GITHUB_ENV
+        echo "apk_version_code='${apk_version/*:}'" >> $GITHUB_ENV
+        echo "apk_version_full='${apk_version_short} ($apk_version_code)'" >> $GITHUB_ENV
+        
+        mkdir apks
+        mv -v $patched_apk apks/Phonesky_AXP-OS.apk
 
     # https://github.com/r0adkll/sign-android-release
     - name: Sign apks
@@ -97,32 +84,53 @@ jobs:
       env:
         BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
 
-    - name: Hash release APKs (privileged + unprivileged)
+    - name: Hash release APKs (signed+unsigned)
       run: |
         cd apks
-        sha256sum OpenEUICC-signed.apk > OpenEUICC-signed.apk.sha256
-        sha256sum OpenEUICC_hidden-signed.apk > OpenEUICC_hidden-signed.apk.sha256
-        sha256sum EasyEUICC-signed.apk > EasyEUICC-signed.apk.sha256  
-        
-    - name: Upload signed APKs
+        sha256sum Phonesky_AXP-OS.apk > Phonesky_AXP-OS.apk.sha256
+        sha256sum Phonesky_AXP-OS-signed.apk > Phonesky_AXP-OS-signed.apk.sha256
+
+    - name: Scan APKs by VirusTotal
+      uses: crazy-max/ghaction-virustotal@v4.0.0
+      with:
+        # The GitHub token used to create an authenticated client for GitHub API
+        vt_api_key: "${{ secrets.AXP_VT_API_KEY }}"
+        # Newline-delimited list of path globs for asset files to upload for analysis
+        files: |
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
+        # If enabled, analysis link(s) will be appended to the release body
+        #update_release_body: true # default is false
+        # The GitHub token used to create an authenticated client for GitHub API
+        # github_token: # optional, default is ${{ github.token }}
+        # API request-rate in requests/minute
+        request_rate: 2
+
+    - name: Hash release APKs (signed+unsigned)
+      run: |
+        echo iwannafail
+        exit 3
+      
+    - name: Upload APKs
       uses: "marvinpinto/action-automatic-releases@latest"
       with:
         repo_token: "${{ secrets.AXP_GITHUB_TOKEN }}"
-        automatic_release_tag: "${{ env.OPENEUICC_VERSION }}"
-        prerelease: false
-        title: "${{ env.OPENEUICC_VERSION }} (${{ env.git_sha_short }})"
+        automatic_release_tag: "${{ env.apk_version_short }}_${{ env.apk_version_code }})"
+        prerelease: true
+        title: "${{ env.apk_version_full }}"
         files: |
-          ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk
-          ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk.sha256
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk.sha256
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk.sha256
 
-
-    - name: Upload signed APKs (latest)
-      uses: "marvinpinto/action-automatic-releases@latest"
-      with:
-        repo_token: "${{ secrets.AXP_GITHUB_TOKEN }}"
-        automatic_release_tag: "latest"
-        prerelease: false
-        title: "${{ env.OPENEUICC_VERSION }} (${{ env.git_sha_short }})"
-        files: |
-          ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk
-          ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk.sha256
+ #   - name: Upload signed APKs (latest)
+ #     uses: "marvinpinto/action-automatic-releases@latest"
+ #     with:
+ #       repo_token: "${{ secrets.AXP_GITHUB_TOKEN }}"
+ #       automatic_release_tag: "latest"
+ #       prerelease: true
+ #       title: "${{ env.OPENEUICC_VERSION }} (${{ env.git_sha_short }})"
+ #       files: |
+ #         ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk
+ #         ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk.sha256
