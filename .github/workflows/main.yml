@@ -90,6 +90,7 @@ jobs:
         sha256sum Phonesky_AXP-OS-signed.apk > Phonesky_AXP-OS-signed.apk.sha256
 
     - name: Scan APKs by VirusTotal
+      id: vt
       uses: crazy-max/ghaction-virustotal@v4.0.0
       with:
         # The GitHub token used to create an authenticated client for GitHub API
@@ -105,8 +106,12 @@ jobs:
         # API request-rate in requests/minute
         request_rate: 2
 
-    - name: Hash release APKs (signed+unsigned)
+    - name: failherepls
       run: |
+        echo ${{ steps.vt.outputs.analysis }}
+        # analysis=
+        #/home/runner/work/packages_apps_phonesky/packages_apps_phonesky/apks/Phonesky_AXP-OS.apk=https://www.virustotal.com/gui/file-analysis/YzY2N2YzYzBiYTRmMjA0N2Y4NmQ2MjFkZTRiMjZiOWY6MTcxNTg2MjUzMw==/detection,
+        #/home/runner/work/packages_apps_phonesky/packages_apps_phonesky/apks/Phonesky_AXP-OS-signed.apk=https://www.virustotal.com/gui/file-analysis/N2RhZTUxMDhlMTk5MzQ1Nzg1YjBkYWMzZjJmOGJmNTk6MTcxNTg2MjUzNQ==/detection
         echo iwannafail
         exit 3
       
