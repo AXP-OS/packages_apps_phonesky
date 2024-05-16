@@ -12,7 +12,7 @@ error () {
 PATH="${HOME}/bin:${PATH}"
 
 # default max SDK if not specified
-[ -z "$ANDROIDSDK" ] && export ANDROIDSDK=33
+[ -z "$ANDROIDSDK" ] && export ANDROIDSDK=34
 
 # debug on/off
 unset DEBUGOPT
@@ -114,7 +114,7 @@ patch_gplay () {
         sed -i 's#@android:color/background_floating_device_default_dark#@*android:color/background_floating_device_default_dark#g' ${gplay_work}/res/color/*.xml
         sed -i 's#@android:color/GM2_grey_800#@*android:color/GM2_grey_800#g' ${gplay_work}/res/color/*.xml
         sed -i 's/@android:color/@*android:color/g' ${gplay_work}/res/values/styles.xml
-        sed -i 's/@android:color/@*android:color/g' ${gplay_work}/res/values-v34/colors.xml
+        sed -i 's/@android:color/@*android:color/g' ${gplay_work}/res/values-v*/colors.xml
 
         # patch stub errors (all wrong app:/finsky: dummies):
         for stub in $(find ${gplay_work} -type f -name '*.xml' -exec grep -Eq '(<com\.google\.android\.finsky\.uicomponentsmvc\..*Stub.*)(app:APKTOOL_DUMMYVAL_0x\w+=".*"|finsky:APKTOOL_DUMMYVAL_0x\w+=".*")' {} \; -print);do
