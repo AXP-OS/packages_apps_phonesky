@@ -108,7 +108,7 @@ jobs:
 
     - name: failherepls
       run: |
-        VTRES="echo '${{ steps.vt.outputs.analysis }}' | grep -v 'apks/'"
+        VTRES=$(echo '${{ steps.vt.outputs.analysis }}' | grep -v 'apks/')
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           RES=${RES}${v}
           a="${v/=*}"
