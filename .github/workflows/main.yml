@@ -115,7 +115,7 @@ jobs:
           u="${v/*=http}"
           RES="$RES\n#$a\n- Virustotal [scan result](http${u})"
         done   
-        echo -e "vt_results=$RES" >> $GITHUB_ENV
+        echo "vt_results=$RES" >> $GITHUB_ENV
       
     - name: Create Release
       uses: "softprops/action-gh-release@v2"
