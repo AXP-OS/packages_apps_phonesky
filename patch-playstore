@@ -100,12 +100,16 @@ patch_gplay () {
 	sed "${manifest_application_pos}a${manifest_application_insert}" -i "${gplay_work}/AndroidManifest.xml"
 
 	# deactivate bootreceiver
-	manifest_bootreceiver_pos=$(gawk '/com.google.android.finsky.boothandler.BootCompletedReceiver/{print FNR ; exit}' "${gplay_work}/AndroidManifest.xml")
-	manifest_bootreceiver_start=$((manifest_bootreceiver_pos + 1))
-	manifest_bootreceiver_end=$((manifest_bootreceiver_start + 2))
-
-	sed "${manifest_bootreceiver_start},${manifest_bootreceiver_end}d" -i "${gplay_work}/AndroidManifest.xml"
-	sed "${manifest_bootreceiver_pos}a<intent-filter/>" -i "${gplay_work}/AndroidManifest.xml"
+        bootreceiver=$(grep -o 'com.google.android.finsky.receivers.BootCompletedReceiver' "${gplay_work}/AndroidManifest.xml" || grep -o 'com.google.android.finsky.boothandler.BootCompletedReceiver' "${gplay_work}/AndroidManifest.xml")
+        if [ $? -eq 0 ];then
+            manifest_bootreceiver_pos=$(gawk '/'$bootreceiver'/{print FNR ; exit}' "${gplay_work}/AndroidManifest.xml")
+            manifest_bootreceiver_start=$((manifest_bootreceiver_pos + 1))
+            manifest_bootreceiver_end=$((manifest_bootreceiver_start + 2))
+            sed "${manifest_bootreceiver_start},${manifest_bootreceiver_end}d" -i "${gplay_work}/AndroidManifest.xml"
+            sed "${manifest_bootreceiver_pos}a<intent-filter/>" -i "${gplay_work}/AndroidManifest.xml"
+        else
+            echo "WARNING: could not find bootreceiver definition, skipping.."
+        fi
 
 	# add public string fake_signature
 	sed "/<\/resources>/i ${strings_insert}" -i "${gplay_work}/res/values/strings.xml"
