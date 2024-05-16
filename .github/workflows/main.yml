@@ -134,7 +134,7 @@ jobs:
           
           ## Origin source
           - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ env.apk_version_uri }}-release/)
-        append_body: true
+        #append_body: true
         files: |
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
