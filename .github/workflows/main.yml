@@ -64,7 +64,7 @@ jobs:
         apk_version=$(./patch-playstore printapk ${{ env.local_apkname }} | grep playversion: | cut -d ':' -f2-3)
         echo "patched_apk=$patched_apk" >> $GITHUB_ENV
         echo "apk_version_short=${apk_version/:*}" >> $GITHUB_ENV
-        echo "apk_version_shorter=${apk_version/-*:*}" >> $GITHUB_ENV
+        echo "apk_version_uri=$(echo ${apk_version/-*:*} | tr '.' '-')" >> $GITHUB_ENV
         echo "apk_version_code=${apk_version/*:}" >> $GITHUB_ENV
         echo "apk_version_full=${apk_version/:*} (${apk_version/*:})" >> $GITHUB_ENV
 
@@ -86,10 +86,9 @@ jobs:
 
     - name: Hash release APKs (signed+unsigned)
       run: |
-        exit 3
         cd apks
-        sha256sum Phonesky_AXP-OS.apk > Phonesky_AXP-OS.apk.sha256
-        sha256sum Phonesky_AXP-OS-signed.apk > Phonesky_AXP-OS-signed.apk.sha256
+        echo "apk_sha_unsigned=$(sha256sum Phonesky_AXP-OS.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
+        echo "apk_sha_signed=$(sha256sum Phonesky_AXP-OS-signed.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
 
     - name: Scan APKs by VirusTotal
       id: vt
@@ -115,8 +114,7 @@ jobs:
           a="${v/apk=*}apk"
           u="${v/*=http}"
           RES="$RES\n#$a\n- Virustotal [scan result](http${u})"
-        done
-        
+        done   
         echo -e "vt_results=$RES" >> $GITHUB_ENV
       
     - name: Create Release
@@ -127,14 +125,14 @@ jobs:
         tag_name: "${{ env.apk_version_short }}_${{ env.apk_version_code }})"
         prerelease: true
         body: |
-          APKMirror [source](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-41-0-28-release/)
           ${{ env.vt_results }}
+          
+          ## Origin source
+          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ env.apk_version_uri }}-release/)
         append_body: true
         files: |
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
-          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk.sha256
-          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk.sha256
 
  #   - name: Upload signed APKs (latest)
  #     uses: "marvinpinto/action-automatic-releases@latest"
