@@ -97,8 +97,8 @@ jobs:
         vt_api_key: "${{ secrets.AXP_VT_API_KEY }}"
         # Newline-delimited list of path globs for asset files to upload for analysis
         files: |
-          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
-          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
+          apks/Phonesky_AXP-OS.apk
+          apks/Phonesky_AXP-OS-signed.apk
         # If enabled, analysis link(s) will be appended to the release body
         #update_release_body: true # default is false
         # The GitHub token used to create an authenticated client for GitHub API
@@ -108,20 +108,31 @@ jobs:
 
     - name: failherepls
       run: |
-        echo ${{ steps.vt.outputs.analysis }}
+        VTRES="echo '${{ steps.vt.outputs.analysis }}' | grep -v 'apks/'"
+        for v in $(echo "$VTRES" | tr ',' ' ' );do
+          RES=${RES}${v}
+          a="${v/=*}"
+          u="${v/*=}"
+          RES="$RES\n[$a]($u)"
+        done
+        echo "RES: $RES"
+        echo "vt_results='$RES'" >> $GITHUB_ENV
         # analysis=
-        #/home/runner/work/packages_apps_phonesky/packages_apps_phonesky/apks/Phonesky_AXP-OS.apk=https://www.virustotal.com/gui/file-analysis/YzY2N2YzYzBiYTRmMjA0N2Y4NmQ2MjFkZTRiMjZiOWY6MTcxNTg2MjUzMw==/detection,
-        #/home/runner/work/packages_apps_phonesky/packages_apps_phonesky/apks/Phonesky_AXP-OS-signed.apk=https://www.virustotal.com/gui/file-analysis/N2RhZTUxMDhlMTk5MzQ1Nzg1YjBkYWMzZjJmOGJmNTk6MTcxNTg2MjUzNQ==/detection
+        #Phonesky_AXP-OS.apk=https://www.virustotal.com/gui/file-analysis/YzY2N2YzYzBiYTRmMjA0N2Y4NmQ2MjFkZTRiMjZiOWY6MTcxNTg2MjUzMw==/detection
+        #Phonesky_AXP-OS-signed.apk=https://www.virustotal.com/gui/file-analysis/N2RhZTUxMDhlMTk5MzQ1Nzg1YjBkYWMzZjJmOGJmNTk6MTcxNTg2MjUzNQ==/detection
         echo iwannafail
         exit 3
       
-    - name: Upload APKs
-      uses: "marvinpinto/action-automatic-releases@latest"
+    - name: Create Release
+      uses: "softprops/action-gh-release@v2"
       with:
-        repo_token: "${{ secrets.AXP_GITHUB_TOKEN }}"
-        automatic_release_tag: "${{ env.apk_version_short }}_${{ env.apk_version_code }})"
+        token: "${{ secrets.AXP_GITHUB_TOKEN }}"
+        name: "UNTESTED: ${{ env.apk_version_full }}"
+        tag_name: "${{ env.apk_version_short }}_${{ env.apk_version_code }})"
         prerelease: true
-        title: "${{ env.apk_version_full }}"
+        body: |
+          ${{ env.vt_results }}
+        append_body: true
         files: |
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
