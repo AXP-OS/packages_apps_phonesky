@@ -27,35 +27,42 @@ jobs:
         repository: AXP-OS/tools_apk_downloader
         path: dl
         
-    - name: Build Release APK (privileged + unprivileged)
+    - name: Download APK + tools
       run: |
         DL=$(cd dl && php download.php -b -p com.android.vending)
         APK="dl/${DL/;*}"
+        echo "$APK"
         mkdir -p ~/.local/bin
         wget -O ~/.local/bin/apktool "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
         wget -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.9.3.jar"
         chmod +x ~/.local/bin/*
         export PATH=$(pwd)/.local/bin:$PATH
         apktool --version
-        exit 3        
+        echo "local_apkname=$APK" >> $GITHUB_ENV
+
+    - name: Extract APK
+      run: |
+        export PATH=$(pwd)/.local/bin:$PATH
+        DEBUG=yes APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
+        exit 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
-        mkdir apks
-        # hidden from app drawer version
-        ./gradlew --no-daemon --stacktrace :app:assembleRelease
-        mv -v app/build/outputs/apk/release/*.apk apks/OpenEUICC_hidden.apk
-        
-        # easyeuicc
-        ./gradlew --no-daemon --stacktrace :app-unpriv:assembleRelease
-        mv -v app-unpriv/build/outputs/apk/release/*.apk apks/EasyEUICC.apk
-        
-        # regular version (shown in app drawer)
-        rm -rf app/build/outputs/apk/
-        git fetch
-        git revert -n 84e35d192ec96591dae82c911fc22142f7be13db
-        ./gradlew --no-daemon --stacktrace :app:assembleRelease
-        mv -v app/build/outputs/apk/release/*.apk apks/OpenEUICC.apk
 
+        
     # https://github.com/r0adkll/sign-android-release/issues/84#issuecomment-1885690080
     - name: "Get & set app and build variables"
       shell: bash
