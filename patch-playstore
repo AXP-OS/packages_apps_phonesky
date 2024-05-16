@@ -20,7 +20,8 @@ error () {
 PATH="${HOME}/bin:${PATH}"
 
 # default max SDK if not specified
-[ -z "$ANDROIDSDK" ] && export ANDROIDSDK=34
+[ -z "$ANDROIDSDK" ] && export ANDROIDSDK=33
+# note: using the 34 framework causes issues atm
 
 # debug on/off
 unset DEBUGOPT
