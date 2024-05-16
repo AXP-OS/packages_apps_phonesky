@@ -65,7 +65,7 @@ jobs:
         echo "patched_apk=$patched_apk" >> $GITHUB_ENV
         echo "apk_version_short='${apk_version/:*}'" >> $GITHUB_ENV
         echo "apk_version_code='${apk_version/*:}'" >> $GITHUB_ENV
-        echo "apk_version_full='${apk_version_short} ($apk_version_code)'" >> $GITHUB_ENV
+        echo "apk_version_full='${apk_version/:*} (${apk_version/*:})'" >> $GITHUB_ENV
         
         mkdir apks
         mv -v ${patched_apk}_zipaligned apks/Phonesky_AXP-OS.apk || mv -v ${patched_apk} apks/Phonesky_AXP-OS.apk
@@ -108,7 +108,7 @@ jobs:
 
     - name: failherepls
       run: |
-        VTRES=$(echo '${{ steps.vt.outputs.analysis }}' | grep -v 'apks/')
+        VTRES=$(echo '${{ steps.vt.outputs.analysis }}' | sed 's#apks/##g')
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           RES=${RES}${v}
           a="${v/=*}"
@@ -117,9 +117,7 @@ jobs:
         done
         echo "RES: $RES"
         echo "vt_results='$RES'" >> $GITHUB_ENV
-        # analysis=
-        #Phonesky_AXP-OS.apk=https://www.virustotal.com/gui/file-analysis/YzY2N2YzYzBiYTRmMjA0N2Y4NmQ2MjFkZTRiMjZiOWY6MTcxNTg2MjUzMw==/detection
-        #Phonesky_AXP-OS-signed.apk=https://www.virustotal.com/gui/file-analysis/N2RhZTUxMDhlMTk5MzQ1Nzg1YjBkYWMzZjJmOGJmNTk6MTcxNTg2MjUzNQ==/detection
+        
         echo iwannafail
         exit 3
       
