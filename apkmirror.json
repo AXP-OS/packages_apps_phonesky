@@ -1,0 +1,12 @@
+{
+  "options": {
+    "arch": "arm64-v8a + armeabi-v7a + x86 + x86_64"
+  },
+  "apps": [
+    {
+      "name": "gp",
+      "org": "google-inc",
+      "repo": "google-play-store"
+    }
+  ]
+}
