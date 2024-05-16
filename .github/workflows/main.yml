@@ -37,7 +37,7 @@ jobs:
         RETRY=5
         while [ $RETRY -gt 0 ];do
           ./apkmd repo/apkmirror.json
-          [ -f $APK" ] && break
+          [ -f "$APK" ] && break
           RETRY=$(( RETRY - 1))
         done
         [ ! -f "$APK" ] && echo "ERROR: could not download apk" && exit 3
