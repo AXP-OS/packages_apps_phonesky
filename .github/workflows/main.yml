@@ -113,7 +113,9 @@ jobs:
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           a="${v/apk=*}apk"
           u="${v/*=http}"
-          RES="$RES\n#$a\n- Virustotal [scan result](http${u})"
+          RES="$RES\
+          **$a**\
+          - Virustotal [scan result](http${u})"
         done   
         echo "vt_results=$RES" >> $GITHUB_ENV
       
@@ -122,9 +124,11 @@ jobs:
       with:
         token: "${{ secrets.AXP_GITHUB_TOKEN }}"
         name: "UNTESTED: ${{ env.apk_version_full }}"
-        tag_name: "${{ env.apk_version_short }}_${{ env.apk_version_code }})"
+        tag_name: "${{ env.apk_version_short }}_${{ env.apk_version_code }}"
         prerelease: true
         body: |
+          ## Phonesky
+          
           ${{ env.vt_results }}
           
           ## Origin source
