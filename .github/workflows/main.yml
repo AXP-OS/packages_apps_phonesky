@@ -111,8 +111,8 @@ jobs:
         VTRES=$(echo '${{ steps.vt.outputs.analysis }}' | sed 's#apks/##g')
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           RES=${RES}${v}
-          a="${v/=*}"
-          u="${v/*=}"
+          a="${v/apk=*}apk"
+          u="${v/*=http}http"
           RES="$RES\n[$a]($u)"
         done
         echo "RES: $RES"
