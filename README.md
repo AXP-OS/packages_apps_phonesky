@@ -6,7 +6,16 @@ This patches allow the user to create a patched Google Play on their own which r
 
 Base patches are created by @Nanolx with help by @Vavun for update-blocking hunks.
 
-The patcher itself has been heavily re-worked by steadfasterX to fix several FC's, adding more features and staying compatbible with current play store releases.
+The patcher itself has been heavily re-worked by steadfasterX to fix several FC's, adding more features, staying compatbible with current play store releases and last but not least adding a ci/cd workflow to automate the whole process.
+
+# Releases
+
+The CI/CD automation process creates [releases](https://github.com/AXP-OS/packages_apps_phonesky/releases) which (when automated) are flagged as "pre-release".
+These builds are **untested!**
+
+After a manual test process pre-releases may become productive and so the pre-release flag will be removed then.
+
+Most issues which can be caused by the whole process are FC's (force closes) of the play store during usage. When this happens a [logcat](https://forum.xda-developers.com/t/guide-providing-a-good-logcat.3814517/) is needed at the time when the FC happens.
 
 # Patching official Google Play builds
 
