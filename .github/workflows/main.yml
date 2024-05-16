@@ -44,8 +44,8 @@ jobs:
       run: |
         BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
         echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
-        export PATH=$(pwd)/.local/bin:$BUILD_TOOL_VERSION:$PATH
-        find $BUILD_TOOL_VERSION
+        export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
+        find /usr/local/lib/android/sdk/build-tools
         DEBUG=yes APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
         exit 2
 
