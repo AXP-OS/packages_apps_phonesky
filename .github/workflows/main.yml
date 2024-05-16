@@ -47,3 +47,81 @@ jobs:
         export PATH=$(pwd)/.local/bin:$PATH
         apktool --version
         exit 3        
+
+        
+        mkdir apks
+        # hidden from app drawer version
+        ./gradlew --no-daemon --stacktrace :app:assembleRelease
+        mv -v app/build/outputs/apk/release/*.apk apks/OpenEUICC_hidden.apk
+        
+        # easyeuicc
+        ./gradlew --no-daemon --stacktrace :app-unpriv:assembleRelease
+        mv -v app-unpriv/build/outputs/apk/release/*.apk apks/EasyEUICC.apk
+        
+        # regular version (shown in app drawer)
+        rm -rf app/build/outputs/apk/
+        git fetch
+        git revert -n 84e35d192ec96591dae82c911fc22142f7be13db
+        ./gradlew --no-daemon --stacktrace :app:assembleRelease
+        mv -v app/build/outputs/apk/release/*.apk apks/OpenEUICC.apk
+
+    # https://github.com/r0adkll/sign-android-release/issues/84#issuecomment-1885690080
+    - name: "Get & set app and build variables"
+      shell: bash
+      run: |
+        BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
+        echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
+        echo Last build tool version is: $BUILD_TOOL_VERSION
+        # see: https://maven.google.com/web/index.html#com.android.tools.build:aapt2
+        #wget -q -O aapt.zip https://dl.google.com/android/maven2/com/android/tools/build/aapt2/8.3.2-10880808/aapt2-8.3.2-10880808-linux.jar
+        #unzip aapt.zip aapt2 && chmod +x aapt2
+        #OVER=$(./aapt2 dump badging apks/OpenEUICC.apk | grep "VersionName" | sed -e "s/.*versionName='//" -e "s/' .*//")
+        OVER=$(date +%F)
+        [ -z "$OVER" ] && echo "ERROR: empty version detected" && exit 3
+        echo "OPENEUICC_VERSION=$OVER" >> $GITHUB_ENV
+        git_sha_short=$(git rev-parse --short "$GITHUB_SHA")
+        echo "git_sha_short=$git_sha_short" >> $GITHUB_ENV
+        echo "OpenEUICC version is: $OVER ($git_sha_short)"
+
+    # https://github.com/r0adkll/sign-android-release
+    - name: Sign apks
+      id: signAPK
+      uses: r0adkll/sign-android-release@master
+      with:
+        releaseDirectory: apks
+        signingKeyBase64: ${{ secrets.APK_SIGNING_KEY_64 }}
+        alias: ${{ secrets.APK_ALIAS }}
+        keyStorePassword: ${{ secrets.APK_KEY_STORE_PASSWORD }}
+        keyPassword: ${{ secrets.APK_KEY_PASSWORD }}
+      env:
+        BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
+
+    - name: Hash release APKs (privileged + unprivileged)
+      run: |
+        cd apks
+        sha256sum OpenEUICC-signed.apk > OpenEUICC-signed.apk.sha256
+        sha256sum OpenEUICC_hidden-signed.apk > OpenEUICC_hidden-signed.apk.sha256
+        sha256sum EasyEUICC-signed.apk > EasyEUICC-signed.apk.sha256  
+        
+    - name: Upload signed APKs
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.AXP_GITHUB_TOKEN }}"
+        automatic_release_tag: "${{ env.OPENEUICC_VERSION }}"
+        prerelease: false
+        title: "${{ env.OPENEUICC_VERSION }} (${{ env.git_sha_short }})"
+        files: |
+          ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk
+          ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk.sha256
+
+
+    - name: Upload signed APKs (latest)
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.AXP_GITHUB_TOKEN }}"
+        automatic_release_tag: "latest"
+        prerelease: false
+        title: "${{ env.OPENEUICC_VERSION }} (${{ env.git_sha_short }})"
+        files: |
+          ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk
+          ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk.sha256
