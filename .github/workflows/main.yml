@@ -33,8 +33,8 @@ jobs:
         APK="dl/${DL/;*}"
         echo "$APK"
         mkdir -p ~/.local/bin
-        wget -O ~/.local/bin/apktool "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
-        wget -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.9.3.jar"
+        wget -q -O ~/.local/bin/apktool "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
+        wget -q -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.9.3.jar"
         chmod +x ~/.local/bin/*
         export PATH=$(pwd)/.local/bin:$PATH
         apktool --version
@@ -42,7 +42,10 @@ jobs:
 
     - name: Extract APK
       run: |
-        export PATH=$(pwd)/.local/bin:$PATH
+        BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
+        echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
+        export PATH=$(pwd)/.local/bin:$BUILD_TOOL_VERSION:$PATH
+        find $BUILD_TOOL_VERSION
         DEBUG=yes APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
         exit 2
 
