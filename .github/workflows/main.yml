@@ -57,7 +57,8 @@ jobs:
         echo Last build tool version is: $BUILD_TOOL_VERSION
         
         export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
-        DEBUG=yes APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
+        #DEBUG=yes
+        APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
         
         patched_apk=$(./patch-playstore printapk ${{ env.local_apkname }} | grep file: | cut -d ':' -f2)
         apk_version=$(./patch-playstore printapk ${{ env.local_apkname }} | grep playversion: | cut -d ':' -f2-3)
@@ -67,7 +68,7 @@ jobs:
         echo "apk_version_full='${apk_version_short} ($apk_version_code)'" >> $GITHUB_ENV
         
         mkdir apks
-        mv -v $patched_apk apks/Phonesky_AXP-OS.apk
+        mv -v ${patched_apk}_zipaligned apks/Phonesky_AXP-OS.apk || mv -v ${patched_apk} apks/Phonesky_AXP-OS.apk
 
     # https://github.com/r0adkll/sign-android-release
     - name: Sign apks
