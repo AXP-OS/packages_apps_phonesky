@@ -113,9 +113,10 @@ jobs:
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           a="${v/apk=*}apk"
           u="${v/*=http}"
+          s=$(sha256sum $a | cut -d ' ' -f1)
           RES="$RES\
-          **$a**\
-          - Virustotal [scan result](http${u})"
+          **$a** (hash: $s)\
+          \- Virustotal [scan result](http${u})"
         done   
         echo "vt_results=$RES" >> $GITHUB_ENV
       
@@ -128,7 +129,6 @@ jobs:
         prerelease: true
         body: |
           ## Phonesky
-          
           ${{ env.vt_results }}
           
           ## Origin source
