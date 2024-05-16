@@ -115,9 +115,7 @@ jobs:
           a="${v/apk=*}apk"
           u="${v/*=http}"
           s=$(sha256sum $a | cut -d ' ' -f1)
-          RES="$RES\
-          **$a** (hash: $s)\
-          \\- Virustotal [scan result](http${u})"
+          RES="$RES<br/>**$a**<br/>- hash: $s<br/>- Virustotal [scan result](http${u})"
         done   
         echo "vt_results=$RES" >> $GITHUB_ENV
       
