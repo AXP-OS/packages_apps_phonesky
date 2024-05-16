@@ -109,6 +109,7 @@ jobs:
 
     - name: Prep release body
       run: |
+        cd apks
         VTRES=$(echo '${{ steps.vt.outputs.analysis }}' | sed 's#apks/##g')
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           a="${v/apk=*}apk"
@@ -116,7 +117,7 @@ jobs:
           s=$(sha256sum $a | cut -d ' ' -f1)
           RES="$RES\
           **$a** (hash: $s)\
-          \- Virustotal [scan result](http${u})"
+          \\- Virustotal [scan result](http${u})"
         done   
         echo "vt_results=$RES" >> $GITHUB_ENV
       
