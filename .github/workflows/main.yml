@@ -114,12 +114,8 @@ jobs:
           u="${v/*=http}"
           RES="$RES\n[$a](http${u})"
         done
-        echo "RES: $RES"
+        #echo "RES: $RES"
         echo "vt_results='$RES'" >> $GITHUB_ENV
-
-        
-        echo iwannafail
-        exit 3
       
     - name: Create Release
       uses: "softprops/action-gh-release@v2"
