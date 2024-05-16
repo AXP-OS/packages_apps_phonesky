@@ -110,13 +110,13 @@ jobs:
       run: |
         VTRES=$(echo '${{ steps.vt.outputs.analysis }}' | sed 's#apks/##g')
         for v in $(echo "$VTRES" | tr ',' ' ' );do
-          RES=${RES}${v}
           a="${v/apk=*}apk"
-          u="${v/*=http}http"
-          RES="$RES\n[$a]($u)"
+          u="${v/*=http}"
+          RES="$RES\n[$a](http${u})"
         done
         echo "RES: $RES"
         echo "vt_results='$RES'" >> $GITHUB_ENV
+
         
         echo iwannafail
         exit 3
