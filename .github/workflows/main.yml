@@ -107,11 +107,12 @@ jobs:
     needs: build
     name: "Trigger VT scan"
     uses: AXP-OS/.github/.github/workflows/scan.yml@main
+    secrets: inherit
     with:
       wfid: ${{ github.run_id }}
       repo: ${{ github.repository_owner }}/${{ github.event.repository.name }}
       filepattern: '*.apk'
-      secrets: inherit
+      
 
   release:
     needs: [ build, scan ]
