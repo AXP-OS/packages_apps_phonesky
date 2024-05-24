@@ -58,7 +58,7 @@ jobs:
         echo Last build tool version is: $BUILD_TOOL_VERSION
 
         # mv prev diff to archive
-        mv -v *.diff old-patches/
+        git mv -v *.diff old-patches/
 
         # build
         export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
@@ -127,12 +127,10 @@ jobs:
 
     - name: Commit diff
       run: |
-        pwd
-        ls -la
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
         
-        git add Phonesky*.diff old-patches
+        git add Phonesky-${{ env.apk_version_short }}.diff
         git commit -m "add diff: ${{ env.apk_version_full }}"
         git status
       
@@ -164,7 +162,7 @@ jobs:
           - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ env.apk_version_uri }}-release/)
 
           ## Diff (unpacked APK vs Release)
-          - [Phonesky-${{ env.apk_version_short }}](https://github.com/AXP-OS/packages_apps_phonesky/blob/main/Phonesky-${{ env.apk_version_short }}.diff)
+          - [Phonesky-${{ env.apk_version_short }}.diff](https://github.com/AXP-OS/packages_apps_phonesky/blob/main/Phonesky-${{ env.apk_version_short }}.diff)
           
         #append_body: true  # appends to an existing release entry
         files: |
