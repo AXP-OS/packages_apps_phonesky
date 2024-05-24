@@ -75,11 +75,11 @@ jobs:
         # set result vars
         patched_apk=$(./patch-playstore printapk ${{ env.local_apkname }} | grep file: | cut -d ':' -f2)
         apk_version=$(./patch-playstore printapk ${{ env.local_apkname }} | grep playversion: | cut -d ':' -f2-3)
-        echo "patched_apk=$patched_apk" >> $GITHUB_ENV
-        echo "apk_version_short=${apk_version/:*}" >> $GITHUB_ENV
-        echo "apk_version_uri=$(echo ${apk_version/-*:*} | tr '.' '-')" >> $GITHUB_ENV
-        echo "apk_version_code=${apk_version/*:}" >> $GITHUB_ENV
-        echo "apk_version_full=${apk_version/:*} (${apk_version/*:})" >> $GITHUB_ENV
+        echo "patched_apk=$patched_apk" >> $GITHUB_OUTPUT
+        echo "apk_version_short=${apk_version/:*}" >> $GITHUB_OUTPUT
+        echo "apk_version_uri=$(echo ${apk_version/-*:*} | tr '.' '-')" >> $GITHUB_OUTPUT
+        echo "apk_version_code=${apk_version/*:}" >> $GITHUB_OUTPUT
+        echo "apk_version_full=${apk_version/:*} (${apk_version/*:})" >> $GITHUB_OUTPUT
 
         mkdir apks
         mv -v ${patched_apk}_zipaligned apks/Phonesky_AXP-OS.apk || mv -v ${patched_apk} apks/Phonesky_AXP-OS.apk
@@ -173,18 +173,18 @@ jobs:
       uses: "softprops/action-gh-release@v2"
       with:
         token: "${{ secrets.AXP_GITHUB_TOKEN }}"
-        name: "UNTESTED: ${{ steps.build.ver.apk_version_full }}"
-        tag_name: "${{ steps.build.ver.apk_version_short }}_${{ steps.build.ver.apk_version_code }}"
+        name: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
+        tag_name: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
         prerelease: true  # ci/cd should always marked as pre-release
         body: |
           ## Phonesky
           ${{ env.vt_results }}
           
           ## Origin source
-          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ steps.build.ver.apk_version_uri }}-release/)
+          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)
 
           ## Diff (unpacked APK vs Release)
-          - [Phonesky-${{ steps.build.ver.apk_version_short }}.diff](https://github.com/AXP-OS/packages_apps_phonesky/blob/main/Phonesky-${{ steps.build.ver.apk_version_short }}.diff)
+          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://github.com/AXP-OS/packages_apps_phonesky/blob/main/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
           
         #append_body: true  # appends to an existing release entry
         files: |
