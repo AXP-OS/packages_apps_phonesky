@@ -95,14 +95,18 @@ jobs:
         cd apks
         echo "apk_sha_unsigned=$(sha256sum Phonesky_AXP-OS.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
         echo "apk_sha_signed=$(sha256sum Phonesky_AXP-OS-signed.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
+  scan:
+    name: "Trigger VT scan"
+    uses: AXP-OS/.github/.github/workflows/scan.yml@main
+    with:
+      files: |
+        apks/Phonesky_AXP-OS.apk
+        apks/Phonesky_AXP-OS-signed.apk
 
-    - name: "Trigger VT scan"
-      uses: AXP-OS/.github/.github/workflows/scan.yml@main
-      with:
-        files: |
-          apks/Phonesky_AXP-OS.apk
-          apks/Phonesky_AXP-OS-signed.apk
-
+  next:
+    runs-on: ubuntu-latest
+    steps:
+    
     - name: FAIL
       run: |
         VTRES=$(echo '${{ steps.vt.outputs.analysis }}' | sed 's#apks/##g')
@@ -116,8 +120,6 @@ jobs:
         echo "$GITHUB_ENV"
         
         exit 3
-
-
     
     - name: Scan APKs by VirusTotal
       id: vt
