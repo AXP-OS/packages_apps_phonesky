@@ -96,6 +96,12 @@ jobs:
         echo "apk_sha_unsigned=$(sha256sum Phonesky_AXP-OS.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
         echo "apk_sha_signed=$(sha256sum Phonesky_AXP-OS-signed.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
 
+    - name: Upload as artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: vt-artifacts
+        path: apks
+
   scan:
     needs: build
     name: "Trigger VT scan"
@@ -103,7 +109,6 @@ jobs:
     with:
       wfid: ${{ github.run_id }}
       repo: ${{ github.repository_owner }}/${{ github.event.repository.name }}
-      filepattern: apks/Phonesky_AXP-OS*.apk
 
   release:
     needs: [ build, scan ]
