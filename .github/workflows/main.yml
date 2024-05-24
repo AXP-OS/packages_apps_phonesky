@@ -103,9 +103,7 @@ jobs:
     with:
       wfid: ${{ github.run_id }}
       repo: ${{ github.repository_owner }}/${{ github.event.repository.name }}
-      files: |
-        apks/Phonesky_AXP-OS.apk
-        apks/Phonesky_AXP-OS-signed.apk
+      filepattern: apks/Phonesky_AXP-OS*.apk
 
   release:
     needs: [ build, scan ]
