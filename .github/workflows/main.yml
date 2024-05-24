@@ -100,7 +100,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: vt-artifacts
-        path: apks
+        path: apks/*.apk
 
   scan:
     needs: build
@@ -109,6 +109,7 @@ jobs:
     with:
       wfid: ${{ github.run_id }}
       repo: ${{ github.repository_owner }}/${{ github.event.repository.name }}
+      filepattern: '*.apk'
 
   release:
     needs: [ build, scan ]
