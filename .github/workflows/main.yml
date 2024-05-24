@@ -151,7 +151,7 @@ jobs:
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           a="${v/apk=*}apk"
           u="${v/*=http}"
-          if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="${{ needs.build.outputs.apk_sha_unsigned }}";fi
+          if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="${{ jobs.build.outputs.apk_sha_unsigned }}";fi
           if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="${{ needs.build.outputs.apk_sha_signed }}";fi
           RES="$RES**$a**<br/>- sha256: $s<br/>- Virustotal [scan result](http${u})<br/><br/>"
         done
