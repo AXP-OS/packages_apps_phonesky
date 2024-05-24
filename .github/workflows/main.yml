@@ -146,9 +146,7 @@ jobs:
 
     - name: Prep release body
       run: |
-        #VTRES=$(echo '${{ steps.scan.outputs.results }}' | sed 's#apks/##g')
-        VTRES="${{ steps.scan.outputs.results }}"
-        echo "needs: ${{ needs.scan.outputs.results }}"
+        VTRES="${{ needs.scan.outputs.results }}"
         if [ -z "$VTRES" ];then echo "ERROR: missing scan results"; exit 3;fi
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           a="${v/apk=*}apk"
