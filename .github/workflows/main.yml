@@ -143,10 +143,6 @@ jobs:
         #directory: 
         force: true
 
-    - name: FAIL HERE
-      run: |
-        exit 3
-
     - name: Create Release
       uses: "softprops/action-gh-release@v2"
       with:
