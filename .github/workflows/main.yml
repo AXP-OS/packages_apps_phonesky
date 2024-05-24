@@ -188,7 +188,7 @@ jobs:
           - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)
 
           ## Diff (unpacked APK vs Release)
-          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://github.com/AXP-OS/packages_apps_phonesky/blob/main/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
+          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://github.com/AXP-OS/packages_apps_phonesky/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
           
         #append_body: true  # appends to an existing release entry
         files: |
