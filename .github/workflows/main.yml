@@ -51,6 +51,7 @@ jobs:
         echo "local_apkname=$APK" >> $GITHUB_ENV
 
     - name: Patch APK
+      id: ver
       run: |
         # https://github.com/r0adkll/sign-android-release/issues/84#issuecomment-1885690080
         BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
@@ -91,6 +92,7 @@ jobs:
         BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
 
     - name: Hash release APKs (signed+unsigned)
+      id: sha
       run: |
         cd apks
         rm Phonesky_AXP-OS-aligned.apk signingKey.jks *.idsig || true
@@ -129,8 +131,7 @@ jobs:
     with:
       wfid: ${{ github.run_id }}
       repo: ${{ github.repository_owner }}/${{ github.event.repository.name }}
-      filepattern: '*.apk'
-      
+      filepattern: '*.apk'      
 
   release:
     needs: [ build, scan ]
@@ -139,32 +140,46 @@ jobs:
 
     - name: Prep release body
       run: |
-        VTRES=$(echo '${{ needs.scan.outputs.vt-analysis }}' | sed 's#apks/##g')
+        #VTRES=$(echo '${{ needs.scan.outputs.results }}' | sed 's#apks/##g')
+        VTRES="${{ needs.scan.outputs.results }}"
+        if [ -z "$VTRES" ];then echo "ERROR: missing scan results"; exit 3;fi
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           a="${v/apk=*}apk"
           u="${v/*=http}"
-          if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="$apk_sha_unsigned";fi
-          if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="$apk_sha_signed";fi
-          RES="$RES**$a**<br/>- sha256: $apk_sha_unsigned<br/>- Virustotal [scan result](http${u})<br/><br/>"
+          if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="${{ steps.build.sha.apk_sha_unsigned }}";fi
+          if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="${{ steps.build.sha.apk_sha_signed }}";fi
+          RES="$RES**$a**<br/>- sha256: $s<br/>- Virustotal [scan result](http${u})<br/><br/>"
         done
+        echo "${{ steps.build.ver.apk_version_full }}, ${{ steps.build.ver.apk_version_short }}_${{ steps.build.ver.apk_version_code }}"
+        exit 4
         echo "vt_results=$RES" >> $GITHUB_ENV
+
+    - name: Get artifacts from build
+      uses: actions/download-artifact@v4
+      with:
+        name: vt-artifacts
+        merge-multiple: true
+        path: apks
+        #github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
+        #repository:  ${{ inputs.repo }}
+        #run-id: ${{ inputs.wfid }}
 
     - name: Create Release
       uses: "softprops/action-gh-release@v2"
       with:
         token: "${{ secrets.AXP_GITHUB_TOKEN }}"
-        name: "UNTESTED: ${{ env.apk_version_full }}"
-        tag_name: "${{ env.apk_version_short }}_${{ env.apk_version_code }}"
+        name: "UNTESTED: ${{ steps.build.ver.apk_version_full }}"
+        tag_name: "${{ steps.build.ver.apk_version_short }}_${{ steps.build.ver.apk_version_code }}"
         prerelease: true  # ci/cd should always marked as pre-release
         body: |
           ## Phonesky
           ${{ env.vt_results }}
           
           ## Origin source
-          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ env.apk_version_uri }}-release/)
+          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ steps.build.ver.apk_version_uri }}-release/)
 
           ## Diff (unpacked APK vs Release)
-          - [Phonesky-${{ env.apk_version_short }}.diff](https://github.com/AXP-OS/packages_apps_phonesky/blob/main/Phonesky-${{ env.apk_version_short }}.diff)
+          - [Phonesky-${{ steps.build.ver.apk_version_short }}.diff](https://github.com/AXP-OS/packages_apps_phonesky/blob/main/Phonesky-${{ steps.build.ver.apk_version_short }}.diff)
           
         #append_body: true  # appends to an existing release entry
         files: |
