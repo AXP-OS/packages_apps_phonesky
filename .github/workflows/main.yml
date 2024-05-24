@@ -96,6 +96,7 @@ jobs:
         echo "apk_sha_unsigned=$(sha256sum Phonesky_AXP-OS.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
         echo "apk_sha_signed=$(sha256sum Phonesky_AXP-OS-signed.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
   scan:
+    needs: build
     name: "Trigger VT scan"
     uses: AXP-OS/.github/.github/workflows/scan.yml@main
     with:
@@ -103,7 +104,8 @@ jobs:
         apks/Phonesky_AXP-OS.apk
         apks/Phonesky_AXP-OS-signed.apk
 
-  next:
+  release:
+    needs: [ build, scan ]
     runs-on: ubuntu-latest
     steps:
     
