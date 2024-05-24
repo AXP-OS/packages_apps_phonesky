@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - testci
+      #- main
+  schedule:
+    - cron:  '6 8 * * 2'  # run once per week
   workflow_dispatch:  # button shown only when in default branch
 
 jobs:
@@ -18,19 +21,13 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-
-    #- name: prep download
-    #  uses: actions/checkout@v4
-    #  with:
-    #    repository: AXP-OS/tools_apk_downloader
-    #    path: dl
         
     - name: Download APK + tools
       run: |
         wget -q -O apkmd "https://github.com/tanishqmanuja/apkmirror-downloader/releases/download/v1.0.6/apkmd"
         chmod +x apkmd
         
-        # download play store
+        # download play store (latest! see -> apkmirror.json)
         APK="downloads/gp.apk"
         RETRY=5
         while [ $RETRY -gt 0 ];do
@@ -55,11 +52,16 @@ jobs:
         BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
         echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
         echo Last build tool version is: $BUILD_TOOL_VERSION
-        
+
+        # mv prev diff to archive
+        mv *.diff old-patches/
+
+        # build
         export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
         #DEBUG=yes
         APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
-        
+
+        # set result vars
         patched_apk=$(./patch-playstore printapk ${{ env.local_apkname }} | grep file: | cut -d ':' -f2)
         apk_version=$(./patch-playstore printapk ${{ env.local_apkname }} | grep playversion: | cut -d ':' -f2-3)
         echo "patched_apk=$patched_apk" >> $GITHUB_ENV
@@ -118,32 +120,41 @@ jobs:
           RES="$RES**$a**<br/>- hash: $s<br/>- Virustotal [scan result](http${u})<br/>"
         done   
         echo "vt_results=$RES" >> $GITHUB_ENV
+
+    - name: Commit diff
+      run: |
+        git add  Phonesky-${{ env.apk_version_short }}.diff old-patches
+        git commit -m "add diff: ${{ env.apk_version_full }}"
       
+    - name: Push diff
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: testpush # axp
+        # Directory to change to before pushing.
+        #directory: 
+
+    - name: FAIL HERE
+      run: |
+        exit 3
+
     - name: Create Release
       uses: "softprops/action-gh-release@v2"
       with:
         token: "${{ secrets.AXP_GITHUB_TOKEN }}"
         name: "UNTESTED: ${{ env.apk_version_full }}"
         tag_name: "${{ env.apk_version_short }}_${{ env.apk_version_code }}"
-        prerelease: true
+        prerelease: true  # ci/cd should always marked as pre-release
         body: |
           ## Phonesky
           ${{ env.vt_results }}
           
           ## Origin source
           - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ env.apk_version_uri }}-release/)
-        #append_body: true
+
+          ## Diff patch
+          - 
+        #append_body: true  # appends to an existing release entry
         files: |
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
-
- #   - name: Upload signed APKs (latest)
- #     uses: "marvinpinto/action-automatic-releases@latest"
- #     with:
- #       repo_token: "${{ secrets.AXP_GITHUB_TOKEN }}"
- #       automatic_release_tag: "latest"
- #       prerelease: true
- #       title: "${{ env.OPENEUICC_VERSION }} (${{ env.git_sha_short }})"
- #       files: |
- #         ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk
- #         ${{ github.WORKSPACE }}/apks/OpenEUICC-signed.apk.sha256
