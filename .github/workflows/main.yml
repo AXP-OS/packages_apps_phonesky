@@ -153,11 +153,11 @@ jobs:
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           a="${v/apk=*}apk"
           u="${v/*=http}"
-          if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="${{ jobs.build.outputs.apk_sha_unsigned }}";fi
-          if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="${{ jobs.build.outputs.apk_sha_signed }}";fi
+          if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="${{ steps.build.outputs.apk_sha_unsigned }}";fi
+          if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="${{ steps.build.outputs.apk_sha_signed }}";fi
           RES="$RES**$a**<br/>- sha256: $s<br/>- Virustotal [scan result](http${u})<br/><br/>"
         done
-        echo "${{ jobs.build.outputs.apk_version_full }}, ${{ jobs.build.outputs.apk_version_short }}_${{ jobs.build.outputs.apk_version_code }}"
+        echo "${{ steps.build.outputs.apk_version_full }}, ${{ steps.build.outputs.apk_version_short }}_${{ steps.build.outputs.apk_version_code }}"
         exit 4
         echo "vt_results=$RES" >> $GITHUB_ENV
 
