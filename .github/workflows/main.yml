@@ -130,7 +130,7 @@ jobs:
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
         
-        git add  Phonesky-${{ env.apk_version_short }}.diff old-patches
+        git add Phonesky-*.diff old-patches
         git commit -m "add diff: ${{ env.apk_version_full }}"
       
     - name: Push diff
@@ -140,6 +140,7 @@ jobs:
         branch: testpush # axp
         # Directory to change to before pushing.
         #directory: 
+        force: true
 
     - name: FAIL HERE
       run: |
@@ -159,8 +160,9 @@ jobs:
           ## Origin source
           - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ env.apk_version_uri }}-release/)
 
-          ## Diff patch
-          - 
+          ## Diff (unpacked APK vs Release)
+          - [Phonesky-${{ env.apk_version_short }}](https://github.com/AXP-OS/packages_apps_phonesky/blob/main/Phonesky-${{ env.apk_version_short }}.diff)
+          
         #append_body: true  # appends to an existing release entry
         files: |
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
