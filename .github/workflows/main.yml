@@ -103,52 +103,6 @@ jobs:
         name: vt-artifacts
         path: apks/*.apk
 
-  scan:
-    needs: build
-    name: "Trigger VT scan"
-    uses: AXP-OS/.github/.github/workflows/scan.yml@main
-    secrets: inherit
-    with:
-      wfid: ${{ github.run_id }}
-      repo: ${{ github.repository_owner }}/${{ github.event.repository.name }}
-      filepattern: '*.apk'
-      
-
-  release:
-    needs: [ build, scan ]
-    runs-on: ubuntu-latest
-    steps:
-    
-    - name: Scan APKs by VirusTotal
-      if: 1 == 2
-      id: vt
-      uses: crazy-max/ghaction-virustotal@v4.0.0
-      with:
-        # The GitHub token used to create an authenticated client for GitHub API
-        vt_api_key: "${{ secrets.AXP_VT_API_KEY }}"
-        # Newline-delimited list of path globs for asset files to upload for analysis
-        files: |
-          apks/Phonesky_AXP-OS.apk
-          apks/Phonesky_AXP-OS-signed.apk
-        # If enabled, analysis link(s) will be appended to the release body
-        #update_release_body: true # default is false
-        # The GitHub token used to create an authenticated client for GitHub API
-        # github_token: # optional, default is ${{ github.token }}
-        # API request-rate in requests/minute
-        request_rate: 2
-
-    - name: Prep release body
-      run: |
-        cd apks
-        VTRES=$(echo '${{ needs.scan.outputs.vt-analysis }}' | sed 's#apks/##g')
-        for v in $(echo "$VTRES" | tr ',' ' ' );do
-          a="${v/apk=*}apk"
-          u="${v/*=http}"
-          s=$(sha256sum $a | cut -d ' ' -f1)
-          RES="$RES**$a**<br/>- sha256: $s<br/>- Virustotal [scan result](http${u})<br/><br/>"
-        done   
-        echo "vt_results=$RES" >> $GITHUB_ENV
-
     - name: Commit diff
       run: |
         git config user.name "${{ github.actor }}"
@@ -166,6 +120,34 @@ jobs:
         # Directory to change to before pushing.
         #directory: 
         force: true
+
+  scan:
+    needs: build
+    name: "Trigger VT scan"
+    uses: AXP-OS/.github/.github/workflows/scan.yml@main
+    secrets: inherit
+    with:
+      wfid: ${{ github.run_id }}
+      repo: ${{ github.repository_owner }}/${{ github.event.repository.name }}
+      filepattern: '*.apk'
+      
+
+  release:
+    needs: [ build, scan ]
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Prep release body
+      run: |
+        VTRES=$(echo '${{ needs.scan.outputs.vt-analysis }}' | sed 's#apks/##g')
+        for v in $(echo "$VTRES" | tr ',' ' ' );do
+          a="${v/apk=*}apk"
+          u="${v/*=http}"
+          if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="$apk_sha_unsigned";fi
+          if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="$apk_sha_signed";fi
+          RES="$RES**$a**<br/>- sha256: $apk_sha_unsigned<br/>- Virustotal [scan result](http${u})<br/><br/>"
+        done
+        echo "vt_results=$RES" >> $GITHUB_ENV
 
     - name: Create Release
       uses: "softprops/action-gh-release@v2"
