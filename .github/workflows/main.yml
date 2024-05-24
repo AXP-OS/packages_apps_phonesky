@@ -140,7 +140,7 @@ jobs:
     - name: Prep release body
       run: |
         cd apks
-        VTRES=$(echo '${{ jobs.vt.steps.outputs.analysis }}' | sed 's#apks/##g')
+        VTRES=$(echo '${{ needs.scan.outputs.vt-analysis }}' | sed 's#apks/##g')
         for v in $(echo "$VTRES" | tr ',' ' ' );do
           a="${v/apk=*}apk"
           u="${v/*=http}"
