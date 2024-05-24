@@ -93,6 +93,7 @@ jobs:
     - name: Hash release APKs (signed+unsigned)
       run: |
         cd apks
+        rm Phonesky_AXP-OS-aligned.apk signingKey.jks *.idsig || true
         echo "apk_sha_unsigned=$(sha256sum Phonesky_AXP-OS.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
         echo "apk_sha_signed=$(sha256sum Phonesky_AXP-OS-signed.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
 
@@ -101,6 +102,7 @@ jobs:
       with:
         name: vt-artifacts
         path: apks/*.apk
+        secrets: inherit
 
   scan:
     needs: build
