@@ -102,7 +102,6 @@ jobs:
       with:
         name: vt-artifacts
         path: apks/*.apk
-        secrets: inherit
 
   scan:
     needs: build
@@ -112,6 +111,7 @@ jobs:
       wfid: ${{ github.run_id }}
       repo: ${{ github.repository_owner }}/${{ github.event.repository.name }}
       filepattern: '*.apk'
+      secrets: inherit
 
   release:
     needs: [ build, scan ]
