@@ -180,6 +180,7 @@ jobs:
         name: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
         tag_name: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
         prerelease: true  # ci/cd should always marked as pre-release
+        target_commitish: axp
         body: |
           ## Phonesky
           ${{ env.vt_results }}
