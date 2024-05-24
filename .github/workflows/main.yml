@@ -4,46 +4,193 @@ on:
   push:
     branches:
       - testci
+      #- main
+  schedule:
+    - cron:  '6 8 * * 2'  # run once per week
   workflow_dispatch:  # button shown only when in default branch
+
+# Sets permissions of the GITHUB_TOKEN to allow pushing via github token
+permissions:
+  contents: write # allow git push
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    outputs:
+      apk_version_short: ${{ steps.ver.outputs.apk_version_short }}
+      apk_version_uri: ${{ steps.ver.outputs.apk_version_uri }}
+      apk_version_code: ${{ steps.ver.outputs.apk_version_code }}
+      apk_version_full:  ${{ steps.ver.outputs.apk_version_full }}
+      apk_sha_unsigned: ${{ steps.sha.outputs.apk_sha_unsigned }}
+      apk_sha_signed:  ${{ steps.sha.outputs.apk_sha_signed }}
     steps:
     - uses: actions/checkout@v4
-      with:
-        submodules: true
 
     - name: set up JDK
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
-
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-
-    - name: Setup Gradle Cache
-      uses: gradle/gradle-build-action@v2
-      with:
-        gradle-home-cache-cleanup: true
-
-    - name: prep download
-      uses: actions/checkout@v4
-      with:
-        repository: AXP-OS/tools_apk_downloader
-        path: dl
         
-    - name: Build Release APK (privileged + unprivileged)
+    - name: Download APK + tools
       run: |
-        DL=$(cd dl && php download.php -b -p com.android.vending)
-        APK="dl/${DL/;*}"
+        wget -q -O apkmd "https://github.com/tanishqmanuja/apkmirror-downloader/releases/download/v1.0.6/apkmd"
+        chmod +x apkmd
+        
+        # download play store (latest! see -> apkmirror.json)
+        APK="downloads/gp.apk"
+        RETRY=5
+        while [ $RETRY -gt 0 ];do
+          ./apkmd apkmirror.json
+          [ -f "$APK" ] && break
+          RETRY=$(( RETRY - 1))
+        done
+        [ ! -f "$APK" ] && echo "ERROR: could not download apk" && exit 3
+
+        # download & prepare apk tools
         mkdir -p ~/.local/bin
-        wget -O ~/.local/bin/apktool "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
-        wget -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.9.3.jar"
+        wget -q -O ~/.local/bin/apktool "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
+        wget -q -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.9.3.jar"
         chmod +x ~/.local/bin/*
         export PATH=$(pwd)/.local/bin:$PATH
         apktool --version
-        exit 3        
+        echo "local_apkname=$APK" >> $GITHUB_ENV
+
+    - name: Patch APK
+      id: ver
+      run: |
+        # https://github.com/r0adkll/sign-android-release/issues/84#issuecomment-1885690080
+        BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
+        echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
+        echo Last build tool version is: $BUILD_TOOL_VERSION
+
+        # mv prev diff to archive
+        git mv -v *.diff old-patches/
+
+        # build
+        export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
+        #DEBUG=yes
+        APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
+
+        # set result vars
+        patched_apk=$(./patch-playstore printapk ${{ env.local_apkname }} | grep file: | cut -d ':' -f2)
+        apk_version=$(./patch-playstore printapk ${{ env.local_apkname }} | grep playversion: | cut -d ':' -f2-3)
+        echo "patched_apk=$patched_apk" >> $GITHUB_OUTPUT
+        echo "apk_version_short=${apk_version/:*}" >> $GITHUB_OUTPUT
+        echo "apk_version_uri=$(echo ${apk_version/-*:*} | tr '.' '-')" >> $GITHUB_OUTPUT
+        echo "apk_version_code=${apk_version/*:}" >> $GITHUB_OUTPUT
+        echo "apk_version_full=${apk_version/:*} (${apk_version/*:})" >> $GITHUB_OUTPUT
+
+        echo "patched_apk=$patched_apk" >> $GITHUB_ENV
+        echo "apk_version_short=${apk_version/:*}" >> $GITHUB_ENV
+        echo "apk_version_uri=$(echo ${apk_version/-*:*} | tr '.' '-')" >> $GITHUB_ENV
+        echo "apk_version_code=${apk_version/*:}" >> $GITHUB_ENV
+        echo "apk_version_full=${apk_version/:*} (${apk_version/*:})" >> $GITHUB_ENV
+
+        mkdir apks
+        mv -v ${patched_apk}_zipaligned apks/Phonesky_AXP-OS.apk || mv -v ${patched_apk} apks/Phonesky_AXP-OS.apk
+
+    # https://github.com/r0adkll/sign-android-release
+    - name: Sign apks
+      id: signAPK
+      uses: r0adkll/sign-android-release@master
+      with:
+        releaseDirectory: apks
+        signingKeyBase64: ${{ secrets.APK_SIGNING_KEY_64 }}
+        alias: ${{ secrets.APK_ALIAS }}
+        keyStorePassword: ${{ secrets.APK_KEY_STORE_PASSWORD }}
+        keyPassword: ${{ secrets.APK_KEY_PASSWORD }}
+      env:
+        BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
+
+    - name: Hash release APKs (signed+unsigned)
+      id: sha
+      run: |
+        cd apks
+        rm Phonesky_AXP-OS-aligned.apk signingKey.jks *.idsig || true
+        echo "apk_sha_unsigned=$(sha256sum Phonesky_AXP-OS.apk|cut -d ' ' -f1)" >> $GITHUB_OUTPUT
+        echo "apk_sha_signed=$(sha256sum Phonesky_AXP-OS-signed.apk|cut -d ' ' -f1)" >> $GITHUB_OUTPUT
+
+    - name: Upload as artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: vt-artifacts
+        path: apks/*.apk
+
+    - name: Commit diff
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+        
+        git add Phonesky-${{ env.apk_version_short }}.diff
+        git commit -m "add diff: ${{ env.apk_version_full }}"
+        git status
+      
+    - name: Push diff
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: testpush # axp
+        # Directory to change to before pushing.
+        #directory: 
+        force: true
+
+  scan:
+    needs: build
+    name: "Trigger VT scan"
+    uses: AXP-OS/.github/.github/workflows/scan.yml@main
+    secrets: inherit
+    with:
+      wfid: ${{ github.run_id }}
+      repo: ${{ github.repository_owner }}/${{ github.event.repository.name }}
+      filepattern: '*.apk'
+
+  release:
+    needs: [ build, scan ]
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Prep release body
+      run: |
+        VTRES="${{ needs.scan.outputs.results }}"
+        if [ -z "$VTRES" ];then echo "ERROR: missing scan results"; exit 3;fi
+        for v in $(echo "$VTRES" | tr ',' ' ' );do
+          a="${v/apk=*}apk"
+          u="${v/*=http}"
+          if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="${{ needs.build.outputs.apk_sha_unsigned }}";fi
+          if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="${{ needs.build.outputs.apk_sha_signed }}";fi
+          RES="$RES**$a**<br/>- sha256: $s<br/>- Virustotal [scan result](http${u})<br/><br/>"
+        done
+        echo "vt_results=$RES" >> $GITHUB_ENV
+
+    - name: Get artifacts from build
+      uses: actions/download-artifact@v4
+      with:
+        name: vt-artifacts
+        merge-multiple: true
+        path: apks
+        #github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
+        #repository:  ${{ inputs.repo }}
+        #run-id: ${{ inputs.wfid }}
+
+    - name: Create Release
+      uses: "softprops/action-gh-release@v2"
+      with:
+        token: "${{ secrets.AXP_GITHUB_TOKEN }}"
+        name: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
+        tag_name: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
+        prerelease: true  # ci/cd should always marked as pre-release
+        body: |
+          ## Phonesky
+          ${{ env.vt_results }}
+          
+          ## Origin source
+          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)
+
+          ## Diff (unpacked APK vs Release)
+          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://github.com/AXP-OS/packages_apps_phonesky/blob/main/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
+          
+        #append_body: true  # appends to an existing release entry
+        files: |
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk

@@ -6,56 +6,52 @@ This patches allow the user to create a patched Google Play on their own which r
 
 Base patches are created by @Nanolx with help by @Vavun for update-blocking hunks.
 
+The patcher itself has been heavily re-worked by steadfasterX to fix several FC's, adding more features, staying compatbible with current play store releases and last but not least adding a ci/cd workflow to automate the whole process.
+
+# Releases
+
+The CI/CD automation process creates [releases](https://github.com/AXP-OS/packages_apps_phonesky/releases) which (when automated) are flagged as "pre-release".
+These builds are **untested!**
+
+After a manual test process pre-releases may become productive and so the pre-release flag will be removed then.
+
+Most issues which can be caused by the whole process are FC's (force closes) of the play store during usage. When this happens a [logcat](https://forum.xda-developers.com/t/guide-providing-a-good-logcat.3814517/) is needed at the time when the FC happens.
+
 # Patching official Google Play builds
 
-First get [apktool](https://ibotpeaches.github.io/Apktool/) (using the latest version to-date is recommended), then head over to [apkmirror](https://www.apkmirror.com/apk/google-inc/google-play-store/) to download the desired Google Play apk (again, using the latest supported version is recommended). Also get [Apk Sign](https://github.com/appium/sign/raw/master/dist/signapk.jar), along the required [testkey](https://github.com/appium/sign/raw/master/testkey.pk8), [testcertificate](https://raw.githubusercontent.com/appium/sign/master/testkey.x509.pem) to sign your custom apk with a test key.
+1. get [apktool](https://ibotpeaches.github.io/Apktool/) (using the latest version to-date is recommended)
+1. either use [apkmd](https://github.com/tanishqmanuja/apkmirror-downloader/) to download the latest play store or get it manually from [apkmirror](https://www.apkmirror.com/apk/google-inc/google-play-store/) (again, using the latest supported version is recommended)
+1. optional: get [Apk Sign](https://github.com/appium/sign/raw/master/dist/signapk.jar), if you want to sign the patched apk (recommended)
 
 
-## automatically
+## Usage
 
 Use the `patch-playstore` Script provided here.
 
-If you have your own java keystore you can change the
+If you want to sign you can change the
 
   `keystore=""`
 
-value to the path of your java keystore. To sign with the test key sign the file manually using:
+value to the path of your java keystore.
 
-  `java -jar signapk.jar testkey.x509.pem testkey.pk8 dist/Phonesky-14.6.56 dist/Phonesky-14.6.56-signed.apk`
+regular usage:
 
-## manually
+```
+./patch-playstore com.android.vending_37.9.18-21_0_PR_571399392-83791810.apk
+```
 
-For reference we assume you downloaded the Google Play apk for version 14.6.56 and named it Phonesky-14.6.56.apk, along the corresponding patch named Phonesky-14.6.56-microG.diff, commands provided are for unixoid operating systems, if you're using Windows or macOS you may need to adjust them.
+debugging output & options:
 
-* unpack the apk using apktool:
+```
+DEBUG=yes APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore com.android.vending_37.9.18-21_0_PR_571399392-83791810.apk
+```
 
-  `java -jar apktool.jar d Phonesky-14.6.56.apk`
+do nothing, just print the resulting apk filename, full playstore version and current flags:
+ 
+```
+./patch-playstore printapk com.android.vending_37.9.18-21_0_PR_571399392-83791810.apk
+```
 
-* go into the unpacked apk:
-
-  `cd Phonesky-14.6.56`
-
-* clean-up possibly left-over `APKTOOL_DUMMY` entries:
-
-  `find . -type f -name '*.xml' | xargs sed '/APKTOOL_DUMMY/d' -i`
-
-* apply the patch:
-
-  `patch -Np1 -i Phonesky-14.6.56-microG.diff`
-
-  if all patches applied successfully, continue with the next steps. If not, check if you've got the correct patch version, if so and it still fails post a bug report. Future versions of Google Play will eventually be supported, older version won't.
-
-* clean-up possibly left-over .rej or .orig files:
-
-  `find . -type f -name '*.orig' -o -name '*.rej' | xargs rm -f`
-
-* create the new, patched apk:
-
-  `java -jar apktool.jar b .`
-
-* sign the new apk using a test key:
-
-  `java -jar signapk.jar testkey.x509.pem testkey.pk8 dist/Phonesky-14.6.56 dist/Phonesky-14.6.56-signed.apk`
 
 # Installing patched Google Play
 
@@ -103,14 +99,8 @@ done
 
 done (finally), reboot into your ROM, grant signature spoofing permission to Google Play and reboot the ROM again. Setup your Google account and feel free to make purchases.
 
-# Patch compatibility
-
-Patches can be used on other Google Play versions if only the micro version changed, for example you can use the patch for version 14.4.20 on version 14.4.22 aswell, but you can't use the patch for version 14.4.20 for version 14.5.52.
-
 # Trouble Shooting
 
-* make sure you use Java/OpenJDK 8
 * some recent builds of Google Play need `--use-aapt2` flag to be passed to `apktool`
-  * when doing manually use: `apktool [bd] --use-aapt2 ...`
-  * when using `patch-playstore` script use: `APKTOOL_FLAGS=--use-aapt2 patch-playstore ...`
+  * when using `patch-playstore` script use: `DEBUG=yes APKTOOL_FLAGS=--use-aapt2 patch-playstore ...`
 * bootloop after installing patched Google Play: [see this post](https://gitlab.com/Nanolx/microg-phonesky-iap-support/issues/3#note_268785229)

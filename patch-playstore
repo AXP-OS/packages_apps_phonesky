@@ -38,7 +38,7 @@ setup () {
 
 	# prepare and use android framework to avoid issues with non-translatable resources
 	[ ! -d framework ] && mkdir framework
-	[ ! -f framework/1-${ANDROIDSDK}.apk ] && wget https://github.com/Sable/android-platforms/raw/master/android-${ANDROIDSDK}/android.jar -O framework/1-${ANDROIDSDK}.apk
+	[ ! -f framework/1-${ANDROIDSDK}.apk ] && wget -q "https://github.com/Sable/android-platforms/raw/master/android-${ANDROIDSDK}/android.jar" -O framework/1-${ANDROIDSDK}.apk
 
 	gplay_version=$(aapt dump badging "${gplay}" | gawk -F \' '/^package: name/{print $4}')
 	gplay_version_p=$(aapt dump badging "${gplay}" | gawk -F \' '/^package: name/{print $6}' | sed -e 's/\ .*//')
@@ -56,7 +56,7 @@ setup () {
 	echo "Detected Play Store:
 
 	APK:	$(basename "${gplay}")
-	VER:	${gplay_version} [${gplay_version_p}]
+	VER:	${gplay_version_p} [${gplay_version}]
         DEBUG:  $DEBUG
         SDK:    $ANDROIDSDK
 	"
@@ -146,12 +146,20 @@ patch_gplay () {
         done
 }
 
-for file in "${@}"; do
+if [ "$1" == "printapk" ];then
+    gplay="${2}"
+    setup
+    echo "file:$gplay_out"
+    echo "playversion:${gplay_version_p}:${gplay_version}"
+else
+    for file in "${@}"; do
 	gplay="${file}"
 	[ ! -f "${file}" ] && error "No Play Store apk given"
 
-	setup
-	unpack_gplay
-	patch_gplay || error "patching failed"
-	repack_gplay
-done
+        setup
+        unpack_gplay
+        patch_gplay || error "patching failed"
+        repack_gplay
+
+    done
+fi
