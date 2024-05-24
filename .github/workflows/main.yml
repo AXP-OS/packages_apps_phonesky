@@ -81,6 +81,12 @@ jobs:
         echo "apk_version_code=${apk_version/*:}" >> $GITHUB_OUTPUT
         echo "apk_version_full=${apk_version/:*} (${apk_version/*:})" >> $GITHUB_OUTPUT
 
+        echo "patched_apk=$patched_apk" >> $GITHUB_ENV
+        echo "apk_version_short=${apk_version/:*}" >> $GITHUB_ENV
+        echo "apk_version_uri=$(echo ${apk_version/-*:*} | tr '.' '-')" >> $GITHUB_ENV
+        echo "apk_version_code=${apk_version/*:}" >> $GITHUB_ENV
+        echo "apk_version_full=${apk_version/:*} (${apk_version/*:})" >> $GITHUB_ENV
+
         mkdir apks
         mv -v ${patched_apk}_zipaligned apks/Phonesky_AXP-OS.apk || mv -v ${patched_apk} apks/Phonesky_AXP-OS.apk
 
@@ -102,8 +108,8 @@ jobs:
       run: |
         cd apks
         rm Phonesky_AXP-OS-aligned.apk signingKey.jks *.idsig || true
-        echo "apk_sha_unsigned=$(sha256sum Phonesky_AXP-OS.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
-        echo "apk_sha_signed=$(sha256sum Phonesky_AXP-OS-signed.apk|cut -d ' ' -f1)" >> $GITHUB_ENV
+        echo "apk_sha_unsigned=$(sha256sum Phonesky_AXP-OS.apk|cut -d ' ' -f1)" >> $GITHUB_OUTPUT
+        echo "apk_sha_signed=$(sha256sum Phonesky_AXP-OS-signed.apk|cut -d ' ' -f1)" >> $GITHUB_OUTPUT
 
     - name: Upload as artifacts
       uses: actions/upload-artifact@v4
@@ -116,8 +122,8 @@ jobs:
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
         
-        git add Phonesky-${{ steps.build.outputs.apk_version_short }}.diff
-        git commit -m "add diff: ${{ steps.build.outputs.apk_version_full }}"
+        git add Phonesky-${{ env.apk_version_short }}.diff
+        git commit -m "add diff: ${{ env.apk_version_full }}"
         git status
       
     - name: Push diff
