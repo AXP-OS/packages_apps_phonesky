@@ -161,8 +161,6 @@ jobs:
           if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="${{ needs.build.outputs.apk_sha_signed }}";fi
           RES="$RES**$a**<br/>- sha256: $s<br/>- Virustotal [scan result](http${u})<br/><br/>"
         done
-        echo "${{ needs.build.outputs.apk_version_full }}, ${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
-        exit 4
         echo "vt_results=$RES" >> $GITHUB_ENV
 
     - name: Get artifacts from build
