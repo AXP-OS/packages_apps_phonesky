@@ -1,3 +1,6 @@
+# Github Action
+[![Build Phonesky](https://github.com/AXP-OS/packages_apps_phonesky/actions/workflows/main.yml/badge.svg)](https://github.com/AXP-OS/packages_apps_phonesky/actions/workflows/main.yml)
+
 # microG Phonesky (Google Play) patches
 
 While making (in-)app-purchases with microG works out-of-the-box with many Stock ROMs, on after-market ROMs like AOSP or LineageOS security restrictions prevent this (theese ROMs expect the signature of Google Play to be equal to the signature of the Play Services, but since microG has a different signature as Google Play they refuse to allow making purchases, more details at [microG #309](https://github.com/microg/android_packages_apps_GmsCore/issues/309)).
