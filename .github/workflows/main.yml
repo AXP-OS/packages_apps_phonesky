@@ -1,4 +1,4 @@
-name: Update Phonesky
+name: Build Phonesky
 
 on:
   push:
