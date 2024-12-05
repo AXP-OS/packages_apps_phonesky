@@ -65,7 +65,9 @@ jobs:
         echo Last build tool version is: $BUILD_TOOL_VERSION
 
         # mv prev diff to archive
-        git mv -v *.diff old-patches/ || true
+        mv -v *.diff old-patches/ || true
+        git add old-patches *.diff || true
+        git status
 
         # build
         export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
