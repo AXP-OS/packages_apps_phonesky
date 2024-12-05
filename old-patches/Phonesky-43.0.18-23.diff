@@ -1,6 +1,6 @@
 diff -Nupr play_43.0.18-23.orig/AndroidManifest.xml play_43.0.18-23/AndroidManifest.xml
---- play_43.0.18-23.orig/AndroidManifest.xml	2024-10-08 05:21:29.748150410 +0000
-+++ play_43.0.18-23/AndroidManifest.xml	2024-10-08 05:21:31.901159635 +0000
+--- play_43.0.18-23.orig/AndroidManifest.xml	2024-10-29 05:22:30.030943070 +0000
++++ play_43.0.18-23/AndroidManifest.xml	2024-10-29 05:22:32.550969511 +0000
 @@ -1,4 +1,5 @@
  <?xml version="1.0" encoding="utf-8" standalone="no"?><manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="35" android:compileSdkVersionCodename="VanillaIceCream" emergencyInstaller="com.google.android.gms" package="com.android.vending" platformBuildVersionCode="35" platformBuildVersionName="VanillaIceCream">
 +<uses-permission android:name="android.permission.FAKE_PACKAGE_SIGNATURE"/>
@@ -27,8 +27,8 @@ diff -Nupr play_43.0.18-23.orig/AndroidManifest.xml play_43.0.18-23/AndroidManif
          <receiver android:exported="false" android:name="com.google.android.finsky.rollbackmanager.RollbackReceiver"/>
          <service android:exported="true" android:name="com.google.android.finsky.services.LicensingService" android:permission="com.android.vending.CHECK_LICENSE">
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml	2024-10-08 05:21:29.606149802 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml	2024-10-08 05:21:37.714184420 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml	2024-10-29 05:22:29.850941182 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml	2024-10-29 05:22:41.771063113 +0000
 @@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.detailsmodules.features.modules.aboutauthorv2.view.AboutAuthorModuleV2View android:orientation="vertical" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0075" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -39,8 +39,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml play_
  </com.google.android.finsky.detailsmodules.features.modules.aboutauthorv2.view.AboutAuthorModuleV2View>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0089.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0089.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0089.xml	2024-10-08 05:21:29.600149776 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0089.xml	2024-10-08 05:21:37.644184193 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0089.xml	2024-10-29 05:22:29.842941098 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0089.xml	2024-10-29 05:22:42.183067261 +0000
 @@ -8,5 +8,5 @@
          </RelativeLayout>
          <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0186" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070580" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f07057f" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070227" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070226" android:layout_marginEnd="0.0dip" />
@@ -50,8 +50,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0089.xml play_
  </com.google.android.finsky.detailsmodules.features.modules.autoupdateonmetereddatacard.view.AutoUpdateOnMeteredDataCardModuleView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00ab.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00ab.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00ab.xml	2024-10-08 05:21:29.599149772 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00ab.xml	2024-10-08 05:21:37.466183481 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00ab.xml	2024-10-29 05:22:29.842941098 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00ab.xml	2024-10-29 05:22:41.823063636 +0000
 @@ -6,6 +6,6 @@
          <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0c36" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070e7a" android:adjustViewBounds="true" android:importantForAccessibility="no" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" />
          <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b020c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070904" android:textAlignment="textStart" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070902" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b020d" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b0c36" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" style="?APKTOOL_DUMMYVAL_0x7f0409a9" />
@@ -62,8 +62,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00ab.xml play_
  </com.google.android.finsky.detailsmodules.features.modules.crosssellbundles.view.BookSeriesBundleView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f0.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f0.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f0.xml	2024-10-08 05:21:29.573149685 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f0.xml	2024-10-08 05:21:37.601184054 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f0.xml	2024-10-29 05:22:29.810940762 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f0.xml	2024-10-29 05:22:41.951064925 +0000
 @@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <merge
@@ -75,8 +75,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f0.xml play_
  </merge>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml	2024-10-08 05:21:29.595149755 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml	2024-10-08 05:21:37.703184384 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml	2024-10-29 05:22:29.838941056 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml	2024-10-29 05:22:41.975065166 +0000
 @@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <merge
@@ -88,8 +88,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml play_
  </merge>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fa.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fa.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fa.xml	2024-10-08 05:21:29.604149793 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fa.xml	2024-10-08 05:21:37.439183365 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fa.xml	2024-10-29 05:22:29.846941140 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fa.xml	2024-10-29 05:22:41.915064562 +0000
 @@ -2,9 +2,9 @@
  <com.google.android.finsky.streammvc.features.controllers.playpasscontentlaunchercluster.view.ContentLauncherAppRowView android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/APKTOOL_DUMMYVAL_0x7f08025f" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/APKTOOL_DUMMYVAL_0x7f080562" android:paddingStart="@dimen/APKTOOL_DUMMYVAL_0x7f0701de" android:paddingEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0701de"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -104,8 +104,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fa.xml play_
  </com.google.android.finsky.streammvc.features.controllers.playpasscontentlaunchercluster.view.ContentLauncherAppRowView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0101.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0101.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0101.xml	2024-10-08 05:21:29.603149789 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0101.xml	2024-10-08 05:21:37.617184106 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0101.xml	2024-10-29 05:22:29.846941140 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0101.xml	2024-10-29 05:22:42.103066455 +0000
 @@ -7,7 +7,7 @@
              <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0375" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070904" android:textAlignment="textStart" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" style="?APKTOOL_DUMMYVAL_0x7f0409a9" />
              <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409ca" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0374" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070904" android:maxLines="1" android:textAlignment="textStart" android:layout_marginStart="0.0dip" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070902" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0375" style="?APKTOOL_DUMMYVAL_0x7f040974" />
@@ -116,8 +116,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0101.xml play_
          <android.support.v7.widget.RecyclerView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0379" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
      </LinearLayout>
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0151.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0151.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0151.xml	2024-10-08 05:21:29.576149693 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0151.xml	2024-10-08 05:21:37.506183652 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0151.xml	2024-10-29 05:22:29.814940804 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0151.xml	2024-10-29 05:22:42.075066173 +0000
 @@ -11,8 +11,8 @@
          <View android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0946" android:background="@color/APKTOOL_DUMMYVAL_0x7f0605f4" android:layout_width="fill_parent" android:layout_height="1.0dip" />
          <com.caverock.androidsvg.SVGImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0948" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070ac1" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070ac0" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0711a4" android:scaleType="center" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f04055f="@id/APKTOOL_DUMMYVAL_0x7f0b0947" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="@id/APKTOOL_DUMMYVAL_0x7f0b0946" app:APKTOOL_DUMMYVAL_0x7f04092a="@drawable/APKTOOL_DUMMYVAL_0x7f0803c1" />
@@ -130,8 +130,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0151.xml play_
      <View android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
      <LinearLayout android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0497" android:paddingBottom="8.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0167.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0167.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0167.xml	2024-10-08 05:21:29.603149789 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0167.xml	2024-10-08 05:21:37.424183301 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0167.xml	2024-10-29 05:22:29.846941140 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0167.xml	2024-10-29 05:22:41.959065005 +0000
 @@ -6,6 +6,6 @@
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409ca" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0332" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUMMYVAL_0x7f1404a1" android:textAlignment="viewStart" style="?APKTOOL_DUMMYVAL_0x7f0409a8" />
      </LinearLayout>
@@ -142,8 +142,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0167.xml play_
  </androidx.constraintlayout.widget.ConstraintLayout>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml	2024-10-08 05:21:29.599149772 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml	2024-10-08 05:21:37.745184520 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml	2024-10-29 05:22:29.842941098 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml	2024-10-29 05:22:42.251067945 +0000
 @@ -3,6 +3,6 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
      <android.support.v7.widget.AppCompatEditText android:theme="@style/APKTOOL_DUMMYVAL_0x7f1501fd" android:state_selected="false" android:gravity="start" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b032d" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUMMYVAL_0x7f0703d2" android:text="@string/APKTOOL_DUMMYVAL_0x7f1402dc" android:inputType="textEmailAddress" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/APKTOOL_DUMMYVAL_0x7f0802b9" android:textAlignment="viewStart" android:backgroundTint="?APKTOOL_DUMMYVAL_0x7f04007a" app:APKTOOL_DUMMYVAL_0x7f040565="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" style="?APKTOOL_DUMMYVAL_0x7f0409a6" />
@@ -155,8 +155,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml play_
  </android.support.constraint.ConstraintLayout>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0172.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0172.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0172.xml	2024-10-08 05:21:29.605149797 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0172.xml	2024-10-08 05:21:37.609184080 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0172.xml	2024-10-29 05:22:29.850941182 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0172.xml	2024-10-29 05:22:42.051065932 +0000
 @@ -6,6 +6,6 @@
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409ca" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b04ae" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0711a5" android:maxLines="2" app:APKTOOL_DUMMYVAL_0x7f040560="@id/APKTOOL_DUMMYVAL_0x7f0b04aa" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057e="0.0" app:APKTOOL_DUMMYVAL_0x7f04057f="APKTOOL_DUMMYVAL_0x7f0b095f" style="?APKTOOL_DUMMYVAL_0x7f040974" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b04aa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0711a5" android:maxLines="2" app:APKTOOL_DUMMYVAL_0x7f040560="@id/APKTOOL_DUMMYVAL_0x7f0b0739" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b04ae" style="?APKTOOL_DUMMYVAL_0x7f04096a" />
@@ -167,8 +167,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0172.xml play_
  </com.google.android.finsky.featureviews.liveops.EventView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0263.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0263.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0263.xml	2024-10-08 05:21:29.566149667 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0263.xml	2024-10-08 05:21:37.532183764 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0263.xml	2024-10-29 05:22:29.802940678 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0263.xml	2024-10-29 05:22:41.931064724 +0000
 @@ -2,10 +2,10 @@
  <com.google.android.finsky.toolbarframework.toolbars.itemtoolbarwithactionbutton.view.ItemToolbarWithActionButton android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="?APKTOOL_DUMMYVAL_0x7f040a08" finsky:APKTOOL_DUMMYVAL_0x7f04022e="0.0dip"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
@@ -184,8 +184,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0263.xml play_
  </com.google.android.finsky.toolbarframework.toolbars.itemtoolbarwithactionbutton.view.ItemToolbarWithActionButton>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0271.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0271.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0271.xml	2024-10-08 05:21:29.577149695 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0271.xml	2024-10-08 05:21:37.726184459 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0271.xml	2024-10-29 05:22:29.814940804 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0271.xml	2024-10-29 05:22:41.887064281 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.kidsflagitempage.view.KidsFlagItemTitleView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0dbf" android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -197,8 +197,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0271.xml play_
  </com.google.android.finsky.kidsflagitempage.view.KidsFlagItemTitleView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0277.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0277.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0277.xml	2024-10-08 05:21:29.587149720 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0277.xml	2024-10-08 05:21:37.493183597 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0277.xml	2024-10-29 05:22:29.826940930 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0277.xml	2024-10-29 05:22:42.175067180 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.detailsmodules.features.modules.kidsinlinedetailstitle.view.KidsInlineDetailsTitleModuleView android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -209,8 +209,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0277.xml play_
          <TextView android:textAppearance="@style/APKTOOL_DUMMYVAL_0x7f150285" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0053" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2" android:textAlignment="viewStart" />
          <TextView android:textAppearance="@style/APKTOOL_DUMMYVAL_0x7f150287" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b03e3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:textAlignment="viewStart" />
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0278.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0278.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0278.xml	2024-10-08 05:21:29.607149806 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0278.xml	2024-10-08 05:21:37.754184550 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0278.xml	2024-10-29 05:22:29.850941182 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0278.xml	2024-10-29 05:22:41.755062951 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.detailsmodules.features.modules.kidsinlinedetailstitle.view.KidsInlineDetailsTitleModuleView android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -221,8 +221,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0278.xml play_
      <TextView android:textAppearance="@style/APKTOOL_DUMMYVAL_0x7f150287" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b03e3" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f0708ca" android:layout_height="wrap_content" android:maxLines="1" android:textAlignment="viewStart" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0701de" finsky:APKTOOL_DUMMYVAL_0x7f040565="APKTOOL_DUMMYVAL_0x7f0b097d" finsky:APKTOOL_DUMMYVAL_0x7f040579="@id/APKTOOL_DUMMYVAL_0x7f0b0053" finsky:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0053" />
      <com.google.android.finsky.frameworkviews.ExtraLabelsSectionView android:orientation="horizontal" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0157" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:requiresFadingEdge="horizontal" finsky:APKTOOL_DUMMYVAL_0x7f040579="@id/APKTOOL_DUMMYVAL_0x7f0b03e3" finsky:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b03e3">
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0299.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0299.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0299.xml	2024-10-08 05:21:29.567149670 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0299.xml	2024-10-08 05:21:37.484183558 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0299.xml	2024-10-29 05:22:29.802940678 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0299.xml	2024-10-29 05:22:41.747062871 +0000
 @@ -15,7 +15,7 @@
                  </LinearLayout>
              </LinearLayout>
@@ -234,8 +234,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0299.xml play_
  </com.google.android.finsky.streammvc.features.controllers.liveops.view.LiveOpsSingleCardContentView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02e9.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e02e9.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02e9.xml	2024-10-08 05:21:29.581149706 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e02e9.xml	2024-10-08 05:21:37.688184336 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02e9.xml	2024-10-29 05:22:29.818940846 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e02e9.xml	2024-10-29 05:22:41.815063556 +0000
 @@ -1,8 +1,8 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.uicomponentsmvc.metadatabar.view.MetadataBarView android:orientation="horizontal" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -249,8 +249,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02e9.xml play_
  </com.google.android.finsky.uicomponentsmvc.metadatabar.view.MetadataBarView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0319.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0319.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0319.xml	2024-10-08 05:21:29.586149718 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0319.xml	2024-10-08 05:21:37.659184242 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0319.xml	2024-10-29 05:22:29.826940930 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0319.xml	2024-10-29 05:22:42.135066777 +0000
 @@ -2,12 +2,12 @@
  <com.google.android.finsky.myappsv3shared.applist.view.MyAppsV3AppRowView android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/APKTOOL_DUMMYVAL_0x7f0804a3" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/APKTOOL_DUMMYVAL_0x7f080562" style="@style/APKTOOL_DUMMYVAL_0x7f150372"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -267,8 +267,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0319.xml play_
          <ImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b027e" android:background="@drawable/APKTOOL_DUMMYVAL_0x7f080503" android:focusable="true" android:layout_width="24.0dip" android:layout_height="24.0dip" android:tint="?APKTOOL_DUMMYVAL_0x7f0403c4" android:contentDescription="@string/APKTOOL_DUMMYVAL_0x7f1408e1" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b02d1" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b0b3d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040856="@drawable/APKTOOL_DUMMYVAL_0x7f080549" />
          <CheckBox android:id="@id/APKTOOL_DUMMYVAL_0x7f0b02d1" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f0708cb" android:drawablePadding="0.0dip" android:layout_marginStart="0.0dip" android:layout_marginEnd="-4.0dip" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040565="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b027e" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" />
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0342.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0342.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0342.xml	2024-10-08 05:21:29.577149695 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0342.xml	2024-10-08 05:21:37.664184258 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0342.xml	2024-10-29 05:22:29.814940804 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0342.xml	2024-10-29 05:22:41.727062669 +0000
 @@ -4,7 +4,7 @@
      <com.caverock.androidsvg.SVGImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0948" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070ac1" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070ac0" android:scaleType="center" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f04055f="@id/APKTOOL_DUMMYVAL_0x7f0b0947" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04092a="@drawable/APKTOOL_DUMMYVAL_0x7f0803c1" />
      <TextView android:gravity="center" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0947" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUMMYVAL_0x7f140aea" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070621" android:layout_marginEnd="0.0dip" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b0948" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" style="?APKTOOL_DUMMYVAL_0x7f0409a6" />
@@ -281,8 +281,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0342.xml play_
  </androidx.constraintlayout.widget.ConstraintLayout>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0368.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0368.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0368.xml	2024-10-08 05:21:29.594149750 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0368.xml	2024-10-08 05:21:37.765184585 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0368.xml	2024-10-29 05:22:29.834941014 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0368.xml	2024-10-29 05:22:42.223067664 +0000
 @@ -3,5 +3,5 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
      <com.google.android.finsky.uicomponentsmvc.thumbnail.view.ThumbnailImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0da3" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070ab1" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070ab1" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" />
@@ -292,8 +292,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0368.xml play_
  </com.google.android.finsky.streammvc.features.controllers.orderhistory.view.OrderHistoryBundleItemRowViewV2>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0373.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0373.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0373.xml	2024-10-08 05:21:29.594149750 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0373.xml	2024-10-08 05:21:37.361183031 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0373.xml	2024-10-29 05:22:29.834941014 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0373.xml	2024-10-29 05:22:41.799063394 +0000
 @@ -4,6 +4,6 @@
      <include android:id="@id/APKTOOL_DUMMYVAL_0x7f0b05b0" android:layout_width="fill_parent" android:layout_height="1.0dip" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" layout="@layout/APKTOOL_DUMMYVAL_0x7f0e020f" />
      <com.caverock.androidsvg.SVGImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0639" android:focusable="true" android:clickable="true" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0711a4" android:scaleType="fitXY" android:contentDescription="" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070621" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b0dc7" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04092a="@raw/APKTOOL_DUMMYVAL_0x7f1300ca" app:APKTOOL_DUMMYVAL_0x7f04092b="?APKTOOL_DUMMYVAL_0x7f0403c4" />
@@ -305,8 +305,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0373.xml play_
  </com.google.android.finsky.p2pui.transfer.view.P2pAppUpdatesConsentView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e037a.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e037a.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e037a.xml	2024-10-08 05:21:29.603149789 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e037a.xml	2024-10-08 05:21:37.569183922 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e037a.xml	2024-10-29 05:22:29.846941140 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e037a.xml	2024-10-29 05:22:42.239067825 +0000
 @@ -6,6 +6,6 @@
          <com.caverock.androidsvg.SVGImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b02b9" android:layout_width="0.0dip" android:layout_height="0.0dip" app:APKTOOL_DUMMYVAL_0x7f040558="true" app:APKTOOL_DUMMYVAL_0x7f040559="true" app:APKTOOL_DUMMYVAL_0x7f040560="@id/APKTOOL_DUMMYVAL_0x7f0b066e" app:APKTOOL_DUMMYVAL_0x7f040564="1:1" app:APKTOOL_DUMMYVAL_0x7f040565="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04056c="@dimen/APKTOOL_DUMMYVAL_0x7f0706b2" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0cba" app:APKTOOL_DUMMYVAL_0x7f04057e="0.0" app:APKTOOL_DUMMYVAL_0x7f04057f="APKTOOL_DUMMYVAL_0x7f0b095f" app:APKTOOL_DUMMYVAL_0x7f040583="@dimen/APKTOOL_DUMMYVAL_0x7f0706b2" app:APKTOOL_DUMMYVAL_0x7f04092a="@drawable/APKTOOL_DUMMYVAL_0x7f080476" />
          <TextView android:gravity="center" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b066e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0711a4" android:text="@string/APKTOOL_DUMMYVAL_0x7f140796" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070621" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070621" app:APKTOOL_DUMMYVAL_0x7f040560="@id/APKTOOL_DUMMYVAL_0x7f0b066f" app:APKTOOL_DUMMYVAL_0x7f040565="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b02b9" style="?APKTOOL_DUMMYVAL_0x7f04098a" />
@@ -317,8 +317,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e037a.xml play_
  </com.google.android.finsky.p2pui.permission.view.P2pPermissionRequestView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e037e.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e037e.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e037e.xml	2024-10-08 05:21:29.573149685 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e037e.xml	2024-10-08 05:21:37.404183215 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e037e.xml	2024-10-29 05:22:29.810940762 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e037e.xml	2024-10-29 05:22:42.027065690 +0000
 @@ -11,6 +11,6 @@
      <TextView android:ellipsize="none" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0cf5" android:fadingEdge="horizontal" android:fadingEdgeLength="@dimen/APKTOOL_DUMMYVAL_0x7f070b4f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070e7c" android:singleLine="true" android:requiresFadingEdge="horizontal" android:layout_marginStart="0.0dip" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070b51" app:APKTOOL_DUMMYVAL_0x7f040559="true" app:APKTOOL_DUMMYVAL_0x7f04055f="@id/APKTOOL_DUMMYVAL_0x7f0b02ba" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b00c3" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b0ee0" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0dc7" style="?APKTOOL_DUMMYVAL_0x7f040974" />
      <TextView android:ellipsize="none" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b04ea" android:visibility="gone" android:fadingEdge="horizontal" android:fadingEdgeLength="@dimen/APKTOOL_DUMMYVAL_0x7f070b4f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070e7c" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070e7a" android:singleLine="true" android:requiresFadingEdge="horizontal" android:layout_marginStart="0.0dip" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070b51" app:APKTOOL_DUMMYVAL_0x7f040559="true" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b00c3" app:APKTOOL_DUMMYVAL_0x7f04056f="0.0" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b0dc4" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0cf5" style="?APKTOOL_DUMMYVAL_0x7f040974" />
@@ -329,8 +329,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e037e.xml play_
  </com.google.android.finsky.p2pui.transfer.view.P2pTransferView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0419.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0419.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0419.xml	2024-10-08 05:21:29.576149693 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0419.xml	2024-10-08 05:21:37.543183811 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0419.xml	2024-10-29 05:22:29.814940804 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0419.xml	2024-10-29 05:22:41.835063757 +0000
 @@ -7,7 +7,7 @@
          <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0dbc" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070fd5" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070fd5" android:scaleType="centerCrop" android:contentDescription="@null" finsky:APKTOOL_DUMMYVAL_0x7f040319="true" finsky:APKTOOL_DUMMYVAL_0x7f040565="APKTOOL_DUMMYVAL_0x7f0b097d" finsky:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" />
          <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0cf2" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070ede" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070ede" android:scaleType="centerCrop" android:contentDescription="@null" finsky:APKTOOL_DUMMYVAL_0x7f040319="true" finsky:APKTOOL_DUMMYVAL_0x7f04055f="@id/APKTOOL_DUMMYVAL_0x7f0b0cea" finsky:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" finsky:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0053" />
@@ -341,8 +341,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0419.xml play_
          <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409ca" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b8e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:layout_marginEnd="0.0dip" finsky:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" finsky:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b0b90" finsky:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b00c2" finsky:APKTOOL_DUMMYVAL_0x7f0405a9="0.0dip" style="?APKTOOL_DUMMYVAL_0x7f04096a" />
          <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409ca" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b03ac" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f0708cb" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070621" finsky:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" finsky:APKTOOL_DUMMYVAL_0x7f040565="APKTOOL_DUMMYVAL_0x7f0b097d" finsky:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" finsky:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b00c2" style="?APKTOOL_DUMMYVAL_0x7f04096a" />
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041a.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e041a.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041a.xml	2024-10-08 05:21:29.600149776 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e041a.xml	2024-10-08 05:21:37.377183100 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041a.xml	2024-10-29 05:22:29.842941098 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e041a.xml	2024-10-29 05:22:42.007065488 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.streammvc.features.controllers.pointspromotionitemlist.view.PointsPromotionItemListCardView android:paddingTop="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:paddingBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/APKTOOL_DUMMYVAL_0x7f0701de" android:paddingEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0701de"
@@ -356,8 +356,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041a.xml play_
  </com.google.android.finsky.streammvc.features.controllers.pointspromotionitemlist.view.PointsPromotionItemListCardView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml	2024-10-08 05:21:29.581149706 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml	2024-10-08 05:21:37.734184485 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml	2024-10-29 05:22:29.818940846 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml	2024-10-29 05:22:42.035065771 +0000
 @@ -5,5 +5,5 @@
      <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409ca" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0a9d" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070902" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b0a9c" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0a9e" style="?APKTOOL_DUMMYVAL_0x7f04096a" />
      <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0a9c" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070cc9" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070cc9" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f040565="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0a9e" />
@@ -367,8 +367,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml play_
  </com.google.android.finsky.detailsmodules.features.modules.protectbanner.view.ProtectBannerModuleView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml	2024-10-08 05:21:29.598149767 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml	2024-10-08 05:21:37.788184660 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml	2024-10-29 05:22:29.838941056 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml	2024-10-29 05:22:42.063066052 +0000
 @@ -2,5 +2,5 @@
  <com.google.android.finsky.protect.view.ProtectInfoCardView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0aad" android:layout_width="fill_parent" android:layout_height="wrap_content"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -378,8 +378,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml play_
  </com.google.android.finsky.protect.view.ProtectInfoCardView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-08 05:21:29.575149690 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-08 05:21:37.633184158 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-29 05:22:29.814940804 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-29 05:22:42.203067462 +0000
 @@ -5,7 +5,7 @@
          <include android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ab4" layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0451" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ccd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:textDirection="locale" app:APKTOOL_DUMMYVAL_0x7f040565="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0ab4" style="?APKTOOL_DUMMYVAL_0x7f040988" />
@@ -391,8 +391,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml play_
  </com.google.android.finsky.protect.view.StatusCardView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2024-10-08 05:21:29.570149678 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2024-10-08 05:21:37.679184307 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2024-10-29 05:22:29.806940721 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2024-10-29 05:22:41.875064160 +0000
 @@ -3,5 +3,5 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
      <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b91" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070ddc" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070ddc" android:baselineAlignBottom="true" android:layout_alignBaseline="@id/APKTOOL_DUMMYVAL_0x7f0b0b8f" android:layout_alignTop="@id/APKTOOL_DUMMYVAL_0x7f0b0b8f" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" />
@@ -402,8 +402,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml play_
  </com.google.android.finsky.uicomponentsmvc.ribbon.view.RibbonView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04df.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04df.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04df.xml	2024-10-08 05:21:29.599149772 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04df.xml	2024-10-08 05:21:37.554183858 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04df.xml	2024-10-29 05:22:29.842941098 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04df.xml	2024-10-29 05:22:41.991065328 +0000
 @@ -21,6 +21,6 @@
                  <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0c7e" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?APKTOOL_DUMMYVAL_0x7f040974" />
              </LinearLayout>
@@ -414,8 +414,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04df.xml play_
  </com.google.android.finsky.detailsmodules.features.modules.skupromotion.view.SkuPromotionView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml	2024-10-08 05:21:29.602149784 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml	2024-10-08 05:21:37.780184634 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml	2024-10-29 05:22:29.846941140 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml	2024-10-29 05:22:41.859063998 +0000
 @@ -9,6 +9,6 @@
              <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b02a0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070e78" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070291" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070291" style="?APKTOOL_DUMMYVAL_0x7f0409a5" />
              <TextView android:textColorLink="?APKTOOL_DUMMYVAL_0x7f0409c8" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b028d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070e78" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070291" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070291" style="?APKTOOL_DUMMYVAL_0x7f040974" />
@@ -426,8 +426,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml play_
  </com.google.android.finsky.detailsmodules.features.modules.skupromotion.view.SkuPromotionCardView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml	2024-10-08 05:21:29.597149763 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml	2024-10-08 05:21:37.800184698 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml	2024-10-29 05:22:29.838941056 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml	2024-10-29 05:22:42.187067301 +0000
 @@ -4,6 +4,6 @@
      <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0cd5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070e7c" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070e7c" finsky:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" style="?APKTOOL_DUMMYVAL_0x7f0409a4" />
      <ProgressBar android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0a80" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070e7a" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070e7a" android:max="100" android:progress="1" android:indeterminate="false" android:progressTint="?APKTOOL_DUMMYVAL_0x7f0409c8" android:progressBackgroundTint="?APKTOOL_DUMMYVAL_0x7f0409ca" finsky:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b0cd1" finsky:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" finsky:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0cd5" finsky:APKTOOL_DUMMYVAL_0x7f040582="APKTOOL_DUMMYVAL_0x7f0b0ca2" style="?android:progressBarStyleHorizontal" />
@@ -438,8 +438,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml play_
  </com.google.android.finsky.uninstallmanagerv4.view.StorageInfoSectionView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0597.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0597.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0597.xml	2024-10-08 05:21:29.607149806 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0597.xml	2024-10-08 05:21:37.511183674 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0597.xml	2024-10-29 05:22:29.850941182 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0597.xml	2024-10-29 05:22:42.207067503 +0000
 @@ -2,6 +2,6 @@
  <com.google.android.finsky.pageapi.hierarchy.toolbarandinstallbar.ToolbarAndInstallBarAppBarLayout android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0dd2" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:APKTOOL_DUMMYVAL_0x7f0402b7="0.0dip"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:finsky="http://schemas.android.com/apk/res-auto">
@@ -450,8 +450,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0597.xml play_
  </com.google.android.finsky.pageapi.hierarchy.toolbarandinstallbar.ToolbarAndInstallBarAppBarLayout>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e059a.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e059a.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e059a.xml	2024-10-08 05:21:29.574149688 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e059a.xml	2024-10-08 05:21:37.457183443 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e059a.xml	2024-10-29 05:22:29.810940762 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e059a.xml	2024-10-29 05:22:42.159067019 +0000
 @@ -5,6 +5,6 @@
          <ImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b004a" android:focusable="false" android:layout_width="wrap_content" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070fd7" android:scaleType="fitStart" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" />
          <com.google.android.play.layout.PlayTextView android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0053" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070902" app:APKTOOL_DUMMYVAL_0x7f040560="@id/APKTOOL_DUMMYVAL_0x7f0b0cea" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b037b" app:APKTOOL_DUMMYVAL_0x7f040570="APKTOOL_DUMMYVAL_0x7f0b0ca3" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b004a" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057f="APKTOOL_DUMMYVAL_0x7f0b095f" style="?APKTOOL_DUMMYVAL_0x7f04098a" />
@@ -462,8 +462,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e059a.xml play_
  </com.google.android.finsky.toolbarframework.toolbars.ctatoolbar.view.CtaToolbar>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05a9.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05a9.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05a9.xml	2024-10-08 05:21:29.573149685 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05a9.xml	2024-10-08 05:21:37.583183982 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05a9.xml	2024-10-29 05:22:29.810940762 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05a9.xml	2024-10-29 05:22:42.119066616 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.streammvc.features.controllers.topchartsv2.view.TopChartsV2CardView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0df9" android:paddingTop="@dimen/APKTOOL_DUMMYVAL_0x7f070e7a" android:paddingBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070e7a" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/APKTOOL_DUMMYVAL_0x7f080503" android:paddingStart="@dimen/APKTOOL_DUMMYVAL_0x7f0701de" android:paddingEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0701de"
@@ -475,8 +475,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05a9.xml play_
  </com.google.android.finsky.streammvc.features.controllers.topchartsv2.view.TopChartsV2CardView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b7.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b7.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b7.xml	2024-10-08 05:21:29.566149667 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b7.xml	2024-10-08 05:21:37.415183263 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b7.xml	2024-10-29 05:22:29.802940678 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b7.xml	2024-10-29 05:22:42.043065851 +0000
 @@ -7,7 +7,7 @@
      <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0e3f" android:layout_width="0.0dip" android:layout_height="wrap_content" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b0e39" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b0e40" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d">
          <include layout="@layout/APKTOOL_DUMMYVAL_0x7f0e05b6" />
@@ -488,8 +488,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b7.xml play_
  </android.support.constraint.ConstraintLayout>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b9.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b9.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b9.xml	2024-10-08 05:21:29.580149703 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b9.xml	2024-10-08 05:21:37.386183138 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b9.xml	2024-10-29 05:22:29.818940846 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b9.xml	2024-10-29 05:22:41.899064401 +0000
 @@ -8,6 +8,6 @@
          <ProgressBar android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0e37" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f071041" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f071040" android:indeterminateOnly="true" style="?android:progressBarStyleHorizontal" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:gravity="center" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0e38" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f071042" style="?APKTOOL_DUMMYVAL_0x7f040974" />
@@ -501,8 +501,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05b9.xml play_
  </android.support.constraint.ConstraintLayout>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0681.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0681.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0681.xml	2024-10-08 05:21:29.587149720 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0681.xml	2024-10-08 05:21:37.520183712 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0681.xml	2024-10-29 05:22:29.826940930 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0681.xml	2024-10-29 05:22:42.087066294 +0000
 @@ -14,6 +14,6 @@
              <TextView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0e81" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0711a5" style="?APKTOOL_DUMMYVAL_0x7f04096a" />
          </LinearLayout>
@@ -513,8 +513,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0681.xml play_
  </com.google.android.finsky.streammvc.features.controllers.walletwellbeing.view.WalletWellbeingClusterViewV2>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e068d.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e068d.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e068d.xml	2024-10-08 05:21:29.570149678 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e068d.xml	2024-10-08 05:21:37.622184122 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e068d.xml	2024-10-29 05:22:29.806940721 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e068d.xml	2024-10-29 05:22:41.803063435 +0000
 @@ -4,6 +4,6 @@
      <ViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0cd9" android:focusable="false" android:layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0174" android:inflatedId="@id/exoplayer_view" android:layout_width="fill_parent" android:layout_height="0.0dip" android:importantForAccessibility="no" finsky:APKTOOL_DUMMYVAL_0x7f040564="H,16:9" finsky:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" />
      <ViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0cda" android:focusable="false" android:layout="@layout/APKTOOL_DUMMYVAL_0x7f0e017c" android:inflatedId="@id/fallback_image" android:layout_width="fill_parent" android:layout_height="0.0dip" android:importantForAccessibility="no" finsky:APKTOOL_DUMMYVAL_0x7f040564="H,16:9" finsky:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" />
@@ -525,8 +525,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e068d.xml play_
  </com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewPreview>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e068f.xml play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e068f.xml
---- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e068f.xml	2024-10-08 05:21:29.583149711 +0000
-+++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e068f.xml	2024-10-08 05:21:37.638184174 +0000
+--- play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e068f.xml	2024-10-29 05:22:29.822940888 +0000
++++ play_43.0.18-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e068f.xml	2024-10-29 05:22:41.843063837 +0000
 @@ -4,5 +4,5 @@
      <com.google.android.finsky.frameworkviews.FadingEdgeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0bc5" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scaleType="centerCrop" finsky:APKTOOL_DUMMYVAL_0x7f040564="H,2:1" />
      <View android:id="@id/APKTOOL_DUMMYVAL_0x7f0b092f" android:layout_width="fill_parent" android:layout_height="0.0dip" finsky:APKTOOL_DUMMYVAL_0x7f040564="H,16:1" finsky:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0bc5" />
@@ -536,8 +536,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e068f.xml play_
  </com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewScreenshotEditorial>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/wide_media_card_screenshot.xml play_43.0.18-23/res/layout/wide_media_card_screenshot.xml
---- play_43.0.18-23.orig/res/layout/wide_media_card_screenshot.xml	2024-10-08 05:21:29.568149672 +0000
-+++ play_43.0.18-23/res/layout/wide_media_card_screenshot.xml	2024-10-08 05:21:37.410183241 +0000
+--- play_43.0.18-23.orig/res/layout/wide_media_card_screenshot.xml	2024-10-29 05:22:29.802940678 +0000
++++ play_43.0.18-23/res/layout/wide_media_card_screenshot.xml	2024-10-29 05:22:42.167067100 +0000
 @@ -3,5 +3,5 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
      <com.google.android.finsky.rotatingscreenshotsmvc.RotatingScreenshotsViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0bc4" android:layout_width="fill_parent" android:layout_height="0.0dip" finsky:APKTOOL_DUMMYVAL_0x7f04041c="@id/APKTOOL_DUMMYVAL_0x7f0b0bc3" finsky:APKTOOL_DUMMYVAL_0x7f040564="H,16:9" finsky:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" />
@@ -547,8 +547,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/wide_media_card_screenshot.xml play_4
  </com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewScreenshot>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout/wide_media_card_video.xml play_43.0.18-23/res/layout/wide_media_card_video.xml
---- play_43.0.18-23.orig/res/layout/wide_media_card_video.xml	2024-10-08 05:21:29.605149797 +0000
-+++ play_43.0.18-23/res/layout/wide_media_card_video.xml	2024-10-08 05:21:37.794184679 +0000
+--- play_43.0.18-23.orig/res/layout/wide_media_card_video.xml	2024-10-29 05:22:29.846941140 +0000
++++ play_43.0.18-23/res/layout/wide_media_card_video.xml	2024-10-29 05:22:42.091066335 +0000
 @@ -2,5 +2,5 @@
  <com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewVideo android:id="@id/play_card" style="@style/APKTOOL_DUMMYVAL_0x7f1509a9"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
@@ -558,8 +558,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout/wide_media_card_video.xml play_43.0.1
  </com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewVideo>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml play_43.0.18-23/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml
---- play_43.0.18-23.orig/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-08 05:21:29.677150106 +0000
-+++ play_43.0.18-23/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-08 05:21:37.811184734 +0000
+--- play_43.0.18-23.orig/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-29 05:22:29.934942063 +0000
++++ play_43.0.18-23/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-29 05:22:42.267068107 +0000
 @@ -5,7 +5,7 @@
          <include android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ab4" layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0451" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ccd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:textDirection="locale" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070621" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070902" app:APKTOOL_DUMMYVAL_0x7f040560="@id/APKTOOL_DUMMYVAL_0x7f0b0ccb" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b0cc7" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b0ab4" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057f="APKTOOL_DUMMYVAL_0x7f0b095f" app:APKTOOL_DUMMYVAL_0x7f0405a6="0.0dip" style="?APKTOOL_DUMMYVAL_0x7f040988" />
@@ -571,8 +571,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.x
  </com.google.android.finsky.protect.view.StatusCardView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml play_43.0.18-23/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml
---- play_43.0.18-23.orig/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-08 05:21:29.687150149 +0000
-+++ play_43.0.18-23/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-08 05:21:37.823184773 +0000
+--- play_43.0.18-23.orig/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-29 05:22:29.946942189 +0000
++++ play_43.0.18-23/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2024-10-29 05:22:41.719062589 +0000
 @@ -5,7 +5,7 @@
          <include android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ab4" layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0451" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f0409c8" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ccd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:textDirection="locale" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070621" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070902" app:APKTOOL_DUMMYVAL_0x7f040560="@id/APKTOOL_DUMMYVAL_0x7f0b0ccb" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b0cc7" app:APKTOOL_DUMMYVAL_0x7f040578="@id/APKTOOL_DUMMYVAL_0x7f0b0ab4" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057f="APKTOOL_DUMMYVAL_0x7f0b095f" app:APKTOOL_DUMMYVAL_0x7f0405a6="0.0dip" style="?APKTOOL_DUMMYVAL_0x7f040988" />
@@ -584,8 +584,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.x
  </com.google.android.finsky.protect.view.StatusCardView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0151.xml play_43.0.18-23/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0151.xml
---- play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0151.xml	2024-10-08 05:21:29.685150140 +0000
-+++ play_43.0.18-23/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0151.xml	2024-10-08 05:21:37.300182770 +0000
+--- play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0151.xml	2024-10-29 05:22:29.942942147 +0000
++++ play_43.0.18-23/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0151.xml	2024-10-29 05:22:41.691062307 +0000
 @@ -15,8 +15,8 @@
              <View android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0946" android:background="@color/APKTOOL_DUMMYVAL_0x7f0605f4" android:layout_width="fill_parent" android:layout_height="1.0dip" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" />
              <com.caverock.androidsvg.SVGImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0948" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070ac1" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070ac0" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0711a4" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070902" android:scaleType="center" android:contentDescription="@null" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f0711a4" android:layout_marginEnd="0.0dip" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057c="@id/APKTOOL_DUMMYVAL_0x7f0b0946" app:APKTOOL_DUMMYVAL_0x7f04092a="@drawable/APKTOOL_DUMMYVAL_0x7f0803c1" />
@@ -598,8 +598,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e01
          <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0497" android:paddingTop="@dimen/APKTOOL_DUMMYVAL_0x7f070d2a" android:paddingBottom="8.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content">
              <include layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0153" />
 diff -Nupr play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0342.xml play_43.0.18-23/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0342.xml
---- play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0342.xml	2024-10-08 05:21:29.685150140 +0000
-+++ play_43.0.18-23/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0342.xml	2024-10-08 05:21:37.337182928 +0000
+--- play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0342.xml	2024-10-29 05:22:29.942942147 +0000
++++ play_43.0.18-23/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e0342.xml	2024-10-29 05:22:41.675062146 +0000
 @@ -3,6 +3,6 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
      <com.caverock.androidsvg.SVGImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0948" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070ac1" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070ac0" android:scaleType="center" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04092a="@drawable/APKTOOL_DUMMYVAL_0x7f0803c1" />
@@ -611,8 +611,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e03
  </androidx.constraintlayout.widget.ConstraintLayout>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e037a.xml play_43.0.18-23/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e037a.xml
---- play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e037a.xml	2024-10-08 05:21:29.684150136 +0000
-+++ play_43.0.18-23/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e037a.xml	2024-10-08 05:21:37.315182834 +0000
+--- play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e037a.xml	2024-10-29 05:22:29.942942147 +0000
++++ play_43.0.18-23/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e037a.xml	2024-10-29 05:22:41.707062468 +0000
 @@ -5,6 +5,6 @@
          <com.caverock.androidsvg.SVGImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b02b9" android:layout_width="0.0dip" android:layout_height="0.0dip" app:APKTOOL_DUMMYVAL_0x7f040558="true" app:APKTOOL_DUMMYVAL_0x7f040559="true" app:APKTOOL_DUMMYVAL_0x7f04055f="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040564="1:1" app:APKTOOL_DUMMYVAL_0x7f040566="@id/APKTOOL_DUMMYVAL_0x7f0b066e" app:APKTOOL_DUMMYVAL_0x7f04056c="@dimen/APKTOOL_DUMMYVAL_0x7f0706b2" app:APKTOOL_DUMMYVAL_0x7f040570="APKTOOL_DUMMYVAL_0x7f0b095f" app:APKTOOL_DUMMYVAL_0x7f040579="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f040583="@dimen/APKTOOL_DUMMYVAL_0x7f0706b2" app:APKTOOL_DUMMYVAL_0x7f04092a="@drawable/APKTOOL_DUMMYVAL_0x7f080476" />
          <TextView android:gravity="center" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b066e" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUMMYVAL_0x7f140796" app:APKTOOL_DUMMYVAL_0x7f040559="true" app:APKTOOL_DUMMYVAL_0x7f040560="@id/APKTOOL_DUMMYVAL_0x7f0b066f" app:APKTOOL_DUMMYVAL_0x7f040565="@id/APKTOOL_DUMMYVAL_0x7f0b066f" app:APKTOOL_DUMMYVAL_0x7f040579="@id/APKTOOL_DUMMYVAL_0x7f0b066f" app:APKTOOL_DUMMYVAL_0x7f04057d="APKTOOL_DUMMYVAL_0x7f0b097d" app:APKTOOL_DUMMYVAL_0x7f04057f="APKTOOL_DUMMYVAL_0x7f0b095f" app:APKTOOL_DUMMYVAL_0x7f040583="@dimen/APKTOOL_DUMMYVAL_0x7f0706b3" style="?APKTOOL_DUMMYVAL_0x7f04098a" />
@@ -623,8 +623,8 @@ diff -Nupr play_43.0.18-23.orig/res/layout-w480dp-land/APKTOOL_DUMMYVAL_0x7f0e03
  </com.google.android.finsky.p2pui.permission.view.P2pPermissionRequestView>
 \ No newline at end of file
 diff -Nupr play_43.0.18-23.orig/res/values/public.xml play_43.0.18-23/res/values/public.xml
---- play_43.0.18-23.orig/res/values/public.xml	2024-10-08 05:21:29.702150213 +0000
-+++ play_43.0.18-23/res/values/public.xml	2024-10-08 05:21:31.920159717 +0000
+--- play_43.0.18-23.orig/res/values/public.xml	2024-10-29 05:22:29.966942399 +0000
++++ play_43.0.18-23/res/values/public.xml	2024-10-29 05:22:32.570969720 +0000
 @@ -18521,6 +18521,7 @@
      <public type="string" name="APKTOOL_DUMMYVAL_0x7f14126e" id="0x7f14126e" />
      <public type="string" name="APKTOOL_DUMMYVAL_0x7f140230" id="0x7f140230" />
@@ -634,8 +634,8 @@ diff -Nupr play_43.0.18-23.orig/res/values/public.xml play_43.0.18-23/res/values
      <public type="style" name="APKTOOL_DUMMYVAL_0x7f150001" id="0x7f150001" />
      <public type="style" name="APKTOOL_DUMMYVAL_0x7f150002" id="0x7f150002" />
 diff -Nupr play_43.0.18-23.orig/res/values/strings.xml play_43.0.18-23/res/values/strings.xml
---- play_43.0.18-23.orig/res/values/strings.xml	2024-10-08 05:21:29.700150204 +0000
-+++ play_43.0.18-23/res/values/strings.xml	2024-10-08 05:21:31.903159644 +0000
+--- play_43.0.18-23.orig/res/values/strings.xml	2024-10-29 05:22:29.966942399 +0000
++++ play_43.0.18-23/res/values/strings.xml	2024-10-29 05:22:32.550969511 +0000
 @@ -4041,4 +4041,5 @@ First turn on NFC in your settings, then
      <string name="APKTOOL_DUMMYVAL_0x7f14126c">Hi %1$s!</string>
      <string name="APKTOOL_DUMMYVAL_0x7f14126d">Your achievements</string>
@@ -643,8 +643,8 @@ diff -Nupr play_43.0.18-23.orig/res/values/strings.xml play_43.0.18-23/res/value
 +<string name="fake_signature">308204433082032ba003020102020900c2e08746644a308d300d06092a864886f70d01010405003074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f6964301e170d3038303832313233313333345a170d3336303130373233313333345a3074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f696430820120300d06092a864886f70d01010105000382010d00308201080282010100ab562e00d83ba208ae0a966f124e29da11f2ab56d08f58e2cca91303e9b754d372f640a71b1dcb130967624e4656a7776a92193db2e5bfb724a91e77188b0e6a47a43b33d9609b77183145ccdf7b2e586674c9e1565b1f4c6a5955bff251a63dabf9c55c27222252e875e4f8154a645f897168c0b1bfc612eabf785769bb34aa7984dc7e2ea2764cae8307d8c17154d7ee5f64a51a44a602c249054157dc02cd5f5c0e55fbef8519fbe327f0b1511692c5a06f19d18385f5c4dbc2d6b93f68cc2979c70e18ab93866b3bd5db8999552a0e3b4c99df58fb918bedc182ba35e003c1b4b10dd244a8ee24fffd333872ab5221985edab0fc0d0b145b6aa192858e79020103a381d93081d6301d0603551d0e04160414c77d8cc2211756259a7fd382df6be398e4d786a53081a60603551d2304819e30819b8014c77d8cc2211756259a7fd382df6be398e4d786a5a178a4763074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f6964820900c2e08746644a308d300c0603551d13040530030101ff300d06092a864886f70d010104050003820101006dd252ceef85302c360aaace939bcff2cca904bb5d7a1661f8ae46b2994204d0ff4a68c7ed1a531ec4595a623ce60763b167297a7ae35712c407f208f0cb109429124d7b106219c084ca3eb3f9ad5fb871ef92269a8be28bf16d44c8d9a08e6cb2f005bb3fe2cb96447e868e731076ad45b33f6009ea19c161e62641aa99271dfd5228c5c587875ddb7f452758d661f6cc0cccb7352e424cc4365c523532f7325137593c4ae341f4db41edda0d0b1071a7c440f0fe9ea01cb627ca674369d084bd2fd911ff06cdbf2cfa10dc0f893ae35762919048c7efc64c7144178342f70581c9de573af55b390dd7fdb9418631895d5f759f30112687ff621410c069308a</string>
  </resources>
 diff -Nupr play_43.0.18-23.orig/res/values/styles.xml play_43.0.18-23/res/values/styles.xml
---- play_43.0.18-23.orig/res/values/styles.xml	2024-10-08 05:21:29.701150209 +0000
-+++ play_43.0.18-23/res/values/styles.xml	2024-10-08 05:21:31.992160025 +0000
+--- play_43.0.18-23.orig/res/values/styles.xml	2024-10-29 05:22:29.966942399 +0000
++++ play_43.0.18-23/res/values/styles.xml	2024-10-29 05:22:32.698971064 +0000
 @@ -499,7 +499,7 @@
          <item name="android:windowAnimationStyle">@style/APKTOOL_DUMMYVAL_0x7f15003c</item>
          <item name="android:listDivider">?APKTOOL_DUMMYVAL_0x7f0401ab</item>
@@ -1275,8 +1275,8 @@ diff -Nupr play_43.0.18-23.orig/res/values/styles.xml play_43.0.18-23/res/values
          <item name="APKTOOL_DUMMYVAL_0x7f04052a">@color/APKTOOL_DUMMYVAL_0x7f0608fe</item>
          <item name="APKTOOL_DUMMYVAL_0x7f04052b">1.0dip</item>
 diff -Nupr play_43.0.18-23.orig/res/values-v31/colors.xml play_43.0.18-23/res/values-v31/colors.xml
---- play_43.0.18-23.orig/res/values-v31/colors.xml	2024-10-08 05:21:29.714150264 +0000
-+++ play_43.0.18-23/res/values-v31/colors.xml	2024-10-08 05:21:31.994160034 +0000
+--- play_43.0.18-23.orig/res/values-v31/colors.xml	2024-10-29 05:22:29.998942734 +0000
++++ play_43.0.18-23/res/values-v31/colors.xml	2024-10-29 05:22:32.698971064 +0000
 @@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <resources>
@@ -1510,8 +1510,8 @@ diff -Nupr play_43.0.18-23.orig/res/values-v31/colors.xml play_43.0.18-23/res/va
      <color name="APKTOOL_DUMMYVAL_0x7f060d42">@color/sud_system_neutral1_50</color>
      <color name="APKTOOL_DUMMYVAL_0x7f060d48">@color/sud_system_accent1_600</color>
 diff -Nupr play_43.0.18-23.orig/res/values-v33/colors.xml play_43.0.18-23/res/values-v33/colors.xml
---- play_43.0.18-23.orig/res/values-v33/colors.xml	2024-10-08 05:21:29.724150307 +0000
-+++ play_43.0.18-23/res/values-v33/colors.xml	2024-10-08 05:21:31.994160034 +0000
+--- play_43.0.18-23.orig/res/values-v33/colors.xml	2024-10-29 05:22:29.990942651 +0000
++++ play_43.0.18-23/res/values-v33/colors.xml	2024-10-29 05:22:32.698971064 +0000
 @@ -1,4 +1,4 @@
  <?xml version="1.0" encoding="utf-8"?>
  <resources>
@@ -1519,8 +1519,8 @@ diff -Nupr play_43.0.18-23.orig/res/values-v33/colors.xml play_43.0.18-23/res/va
 +    <color name="APKTOOL_DUMMYVAL_0x7f060d0b">@*android:color/transparent</color>
  </resources>
 diff -Nupr play_43.0.18-23.orig/res/values-v34/colors.xml play_43.0.18-23/res/values-v34/colors.xml
---- play_43.0.18-23.orig/res/values-v34/colors.xml	2024-10-08 05:21:29.707150234 +0000
-+++ play_43.0.18-23/res/values-v34/colors.xml	2024-10-08 05:21:31.994160034 +0000
+--- play_43.0.18-23.orig/res/values-v34/colors.xml	2024-10-29 05:22:29.958942315 +0000
++++ play_43.0.18-23/res/values-v34/colors.xml	2024-10-29 05:22:32.698971064 +0000
 @@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <resources>
