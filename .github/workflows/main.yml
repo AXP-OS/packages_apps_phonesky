@@ -38,7 +38,7 @@ jobs:
         chmod +x apkmd
         
         # download play store (latest! see -> apkmirror.json)
-        APK="downloads/gp.apk"
+        APK="gp.apk"
         RETRY=5
         while [ $RETRY -gt 0 ];do
           ./apkmd apkmirror.json
