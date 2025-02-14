@@ -34,7 +34,7 @@ jobs:
         
     - name: Download APK + tools
       run: |
-        wget -q -O apkmd "https://github.com/tanishqmanuja/apkmirror-downloader/releases/download/v1.0.6/apkmd"
+        wget -q -O apkmd "https://github.com/tanishqmanuja/apkmirror-downloader/releases/latest/download/apkmd"
         chmod +x apkmd
         
         # download play store (latest! see -> apkmirror.json)
@@ -50,7 +50,7 @@ jobs:
         # download & prepare apk tools
         mkdir -p ~/.local/bin
         wget -q -O ~/.local/bin/apktool "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
-        wget -q -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.9.3.jar"
+        wget -q -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.11.0.jar"
         chmod +x ~/.local/bin/*
         export PATH=$(pwd)/.local/bin:$PATH
         apktool --version
