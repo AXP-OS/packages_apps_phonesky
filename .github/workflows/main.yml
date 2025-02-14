@@ -72,7 +72,7 @@ jobs:
         # build
         export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
         #DEBUG=yes
-        APKTOOL_FLAGS=" --use-aapt2" ./patch-playstore ${{ env.local_apkname }}
+        APKTOOL_FLAGS=" --use-aapt2" ANDROIDSDK=35 ./patch-playstore ${{ env.local_apkname }}
 
         # set result vars
         patched_apk=$(./patch-playstore printapk ${{ env.local_apkname }} | grep file: | cut -d ':' -f2)
