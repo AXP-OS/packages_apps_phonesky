@@ -41,6 +41,8 @@ jobs:
         
     - name: Download APK + tools
       run: |
+        find ~/.android/sdk
+
         wget -q -O apkmd "https://github.com/tanishqmanuja/apkmirror-downloader/releases/latest/download/apkmd"
         chmod +x apkmd
         
