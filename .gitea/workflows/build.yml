@@ -56,10 +56,10 @@ jobs:
 
         # download & prepare apk tools
         mkdir -p ~/.local/bin
-        wget -O ~/.local/bin/apktool "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
-        wget -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.11.0.jar"
+        wget -q -O ~/.local/bin/apktool "https://raw.githubusercontent.com/iBotPeaches/Apktool/master/scripts/linux/apktool"
+        wget -q -O ~/.local/bin/apktool.jar "https://bitbucket.org/iBotPeaches/apktool/downloads/apktool_2.11.0.jar"
         chmod +x ~/.local/bin/*
-        export PATH=$(pwd)/.local/bin:$PATH
+        export PATH="~/.local/bin:$PATH"
         apktool --version
         echo "local_apkname=$APK" >> $GITHUB_ENV
 
