@@ -84,6 +84,7 @@ jobs:
         # build
         export PATH="~/.local/bin:~/.android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH"
         #DEBUG=yes
+        export JAVA_OPTS="-Xms6144m -Xmx6144m -XX:NewSize=256m -XX:MaxNewSize=356m -XX:PermSize=256m -XX:MaxPermSize=356m"
         APKTOOL_FLAGS=" --use-aapt2" ANDROIDSDK=35 ./patch-playstore ${{ env.local_apkname }}
 
         # set result vars
