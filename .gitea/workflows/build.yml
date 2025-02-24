@@ -65,19 +65,14 @@ jobs:
 
     - name: Patch APK
       id: ver
-      run: |
-        # https://github.com/r0adkll/sign-android-release/issues/84#issuecomment-1885690080
-        BUILD_TOOL_VERSION=$(ls /usr/local/lib/android/sdk/build-tools/ | tail -n 1)
-        echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
-        echo Last build tool version is: $BUILD_TOOL_VERSION
-
+      run: |        
         # mv prev diff to archive
         mv -v *.diff old-patches/ || true
         git add old-patches *.diff || true
         git status
 
         # build
-        export PATH=$(pwd)/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH
+        export PATH="~/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH"
         #DEBUG=yes
         APKTOOL_FLAGS=" --use-aapt2" ANDROIDSDK=35 ./patch-playstore ${{ env.local_apkname }}
 
