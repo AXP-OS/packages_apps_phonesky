@@ -41,7 +41,9 @@ jobs:
         
     - name: Download APK + tools
       run: |
-        find ~/.android/sdk
+        BUILD_TOOL_VERSION=$(ls ~/.android/sdk/build-tools | tail -n 1)
+        echo "BUILD_TOOL_VERSION=$BUILD_TOOL_VERSION" >> $GITHUB_ENV
+        echo Last build tool version is: $BUILD_TOOL_VERSION
 
         wget -q -O apkmd "https://github.com/tanishqmanuja/apkmirror-downloader/releases/latest/download/apkmd"
         chmod +x apkmd
@@ -74,7 +76,7 @@ jobs:
         git status
 
         # build
-        export PATH="~/.local/bin:/usr/local/lib/android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH"
+        export PATH="~/.local/bin:~/.android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH"
         #DEBUG=yes
         APKTOOL_FLAGS=" --use-aapt2" ANDROIDSDK=35 ./patch-playstore ${{ env.local_apkname }}
 
@@ -95,6 +97,8 @@ jobs:
 
         mkdir apks
         mv -v ${patched_apk}_zipaligned apks/Phonesky_AXP-OS.apk || mv -v ${patched_apk} apks/Phonesky_AXP-OS.apk
+      env:
+        BUILD_TOOLS_VERSION: ${{ env.BUILD_TOOL_VERSION }}
 
     # https://github.com/r0adkll/sign-android-release
     - name: Sign apks
