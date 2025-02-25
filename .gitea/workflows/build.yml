@@ -189,19 +189,6 @@ jobs:
     - name: Generate pre-release on SECOND MIRROR
       run: |
           apt-get update; apt-get install -y jq curl
-          cat > eb <<_EOF
-          ## Phonesky
-          ${{ env.vt_results }}
-          
-          ## Origin source
-          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)
-
-          ## Diff (unpacked APK vs Release)
-          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
-          
-          ## Mirror
-          This release is mirrored on: [${{ vars.MIRROR_ORG_DOMAIN }}](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }})
-          _EOF
 
           RESP=$(curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases" \
             -H 'Content-Type: application/vnd.github+json' \
@@ -217,7 +204,8 @@ jobs:
               "generate_release_notes":false
               "body": "## Phonesky\n  ${{ env.vt_results }}\n\n  ## Origin source\n  - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)\n\n  ## Diff (unpacked APK vs Release)\n  - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)\n\n  ## Mirror\n  This release is mirrored on: [${{ vars.MIRROR_ORG_DOMAIN }}](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }})"
           }
-          EOF)
+          EOF
+          )
           
           relid=$(echo \'$RESP\' | jq .id)
 
