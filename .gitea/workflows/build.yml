@@ -47,32 +47,39 @@ jobs:
             -H 'Content-Type: application/vnd.github+json' \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
-            -d "$json_payload"\
-            -w "%{http_code}")
+            -w "%{http_code}" \
+            -d "$json_payload")
 
-          echo -e "\n$RESP\n\n"
-
+          #echo -e "\n$RESP\n\n"
           relid=$(echo "$RESP" | sed '$d' | jq .id || true)
           status_code=$(echo "$RESP" | tail -n1 )
 
           if [ -z "$status_code" ]||[ "$status_code" != "201" ];then
             echo "status_code ERROR $status_code"
             exit 2
+          else
+            echo "Created release successfully!"
           fi
 
           if [ -z "$relid" ];then
-            echo -e "ERROR, CANNOT GET RELEASE ID\n$RESP"
+            echo -e "ERROR, CANNOT GET RELEASE ID\n\n$RESP"
             exit 3
           else
             for file in Phonesky_AXP-OS.apk Phonesky_AXP-OS-signed.apk;do
-              curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${relid}/assets" \
+              URES=$(curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${relid}/assets" \
                 -H 'Content-Type: application/vnd.github+json' \
                 -H "X-GitHub-Api-Version: 2022-11-28" \
                 -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
-                --data-binary "${{ github.WORKSPACE }}/apks/$file" || break
+                -w "%{http_code}" \
+                --data-binary "${{ github.WORKSPACE }}/apks/$file")
+              sc_up=$(echo "$URES" | tail -n1)
+              if [ "$sc_up" == "201" ];then
+                echo "uploaded $file successfully!"
+              else
+                echo -e "ERROR: uploading $file!\n\n$URES"
+                exit 5
             done
           fi
-
 
     - name: set up JDK
       uses: actions/setup-java@v3
