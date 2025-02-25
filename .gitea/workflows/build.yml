@@ -133,7 +133,9 @@ jobs:
         name: vt-artifacts
         path: apks/*.apk
 
-    - name: Commit diff
+    - name: Commit & push diff
+      env:
+        GITHUB_TOKEN: ${{ secrets.LOCAL_TOKEN_PUSH }}
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
@@ -141,15 +143,7 @@ jobs:
         git add Phonesky-${{ env.apk_version_short }}.diff
         git commit -m "add diff: ${{ env.apk_version_full }}"
         git status
-      
-    - name: Push diff
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.LOCAL_TOKEN_PUSH }}
-        branch: axp
-        # Directory to change to before pushing.
-        #directory: 
-        force: true
+        git push
 
   scan:
     needs: build
