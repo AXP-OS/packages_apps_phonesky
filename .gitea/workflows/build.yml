@@ -52,7 +52,7 @@ jobs:
 
           echo -e "\n$RESP\n\n"
           relid=$(echo "$RESP" | sed '$d' | jq .id || true)
-          status_code=$(echo "$RESP" | tail -n1 )
+          status_code=$(echo "$RESP" | tail -n1)
 
           if [ -z "$status_code" ]||[ "$status_code" != "201" ];then
             echo "☠️ status_code ERROR $status_code"
@@ -80,11 +80,11 @@ jobs:
                 -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
                 -w "%{http_code}" \
                 --data-binary "${{ github.WORKSPACE }}/apks/$file")
-              sc_up=$(echo "$URES" | tail -n1)
+              sc_up=$(echo -e "$URES" | tail -n1)
               if [ "$sc_up" == "201" ];then
                 echo "🎉 uploaded $file successfully!"
               else
-                echo -e "☠️ ERROR: uploading $file!\n\n$URES"
+                echo -e "☠️ ERROR ($sc_up): uploading $file!\n\n$URES"
                 exit 5
               fi
             done
