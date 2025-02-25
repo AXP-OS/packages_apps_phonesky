@@ -149,6 +149,7 @@ jobs:
     needs: build
     name: "Trigger VT scan"
     uses: https://codeberg.org/AXP-OS/actions/.gitea/workflows/scan.yml@main
+    runs-on: docker-node-latest
     secrets: inherit
     with:
       wfid: ${{ github.run_id }}
@@ -217,7 +218,7 @@ jobs:
         tag_name: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
         target_commitish: axp
         prerelease: true
-        repository: ${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}
+        repository: https://github.com/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}
         name: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
         body: |
           ## Phonesky
