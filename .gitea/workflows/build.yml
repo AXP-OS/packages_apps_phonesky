@@ -66,6 +66,10 @@ jobs:
             exit 3
           else
             echo "using release id: $relid"
+            
+            mkdir -p ${{ github.WORKSPACE }}/apks
+
+
             for file in Phonesky_AXP-OS.apk Phonesky_AXP-OS-signed.apk;do
 
               touch ${{ github.WORKSPACE }}/apks/$file
