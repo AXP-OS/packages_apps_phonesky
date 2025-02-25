@@ -27,6 +27,43 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Generate pre-release on SECOND MIRROR
+      run: |
+          apt-get update; apt-get install -y jq curl
+
+          RESP=$(curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases" \
+            -H 'Content-Type: application/vnd.github+json' \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
+            -d @- <<EOF
+          {
+              "tag_name": "$ {{ needs.build.outputs.apk_version_short }}_$ {{ needs.build.outputs.apk_version_code }}",
+              "target_commitish": "axp",
+              "name": "UNTESTED: $ {{ needs.build.outputs.apk_version_full }}",
+              "draft":false,
+              "prerelease":true,
+              "generate_release_notes":false
+              "body": "##test"
+          }
+          EOF
+          )
+          echo -e \'$RESP\n\n\'
+
+          relid=$(echo \'$RESP\' | jq .id || true)
+
+          if [ -z "$relid" ];then
+            echo -e "ERROR, CANNOT GET RELEASE ID\n$RESP"
+          else
+            for file in Phonesky_AXP-OS.apk Phonesky_AXP-OS-signed.apk;do
+              curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${relid}/assets" \
+                -H 'Content-Type: application/vnd.github+json' \
+                -H "X-GitHub-Api-Version: 2022-11-28" \
+                -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
+                --data-binary "${{ github.WORKSPACE }}/apks/$file" || break
+            done
+          fi
+
+
     - name: set up JDK
       uses: actions/setup-java@v3
       with:
@@ -185,41 +222,6 @@ jobs:
         #github-token: ${{ secrets.GH_PAT }} # token with actions:read permissions on target repo
         #repository:  ${{ inputs.repo }}
         #run-id: ${{ inputs.wfid }}
-
-    - name: Generate pre-release on SECOND MIRROR
-      run: |
-          apt-get update; apt-get install -y jq curl
-
-          RESP=$(curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases" \
-            -H 'Content-Type: application/vnd.github+json' \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
-            -d @- <<EOF
-          {
-              "tag_name": "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}",
-              "target_commitish": "axp",
-              "name": "UNTESTED: ${{ needs.build.outputs.apk_version_full }}",
-              "draft":false,
-              "prerelease":true,
-              "generate_release_notes":false
-              "body": "## Phonesky\n  ${{ env.vt_results }}\n\n  ## Origin source\n  - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)\n\n  ## Diff (unpacked APK vs Release)\n  - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)\n\n  ## Mirror\n  This release is mirrored on: [${{ vars.MIRROR_ORG_DOMAIN }}](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }})"
-          }
-          EOF
-          )
-          
-          relid=$(echo \'$RESP\' | jq .id)
-
-          if [ -z "$relid" ];then
-            echo -e "ERROR, CANNOT GET RELEASE ID\n$RESP"
-          else
-            for file in Phonesky_AXP-OS.apk Phonesky_AXP-OS-signed.apk;do
-              curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${relid}/assets" \
-                -H 'Content-Type: application/vnd.github+json' \
-                -H "X-GitHub-Api-Version: 2022-11-28" \
-                -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
-                --data-binary "${{ github.WORKSPACE }}/apks/$file" || break
-            done
-          fi
 
     - name: Generate pre-release on MIRROR
       uses: https://gitea.com/actions/gitea-release-action@v1
