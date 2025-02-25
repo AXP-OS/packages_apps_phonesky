@@ -201,9 +201,38 @@ jobs:
           - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)
 
           ## Diff (unpacked APK vs Release)
-          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://github.com/AXP-OS/packages_apps_phonesky/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
+          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/src/branch/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
+
+          ## Mirror
+          This release is mirrored on: [${{ vars.SCND_MIRROR_ORG_DOMAIN }}](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }})
           
-        #append_body: true  # appends to an existing release entry
+        files: |
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
+          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
+
+    - name: Generate pre-release on SECOND MIRROR
+      uses: https://gitea.com/actions/gitea-release-action@v1
+      with:
+        token: "${{ secrets.SCND_MIRROR_TOKEN_RW }}"
+        tag_name: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
+        target_commitish: axp
+        prerelease: true
+        server_url: https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}
+        repository: ${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}
+        name: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
+        body: |
+          ## Phonesky
+          ${{ env.vt_results }}
+          
+          ## Origin source
+          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)
+
+          ## Diff (unpacked APK vs Release)
+          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
+          
+          ## Mirror
+          This release is mirrored on: [${{ vars.MIRROR_ORG_DOMAIN }}](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }})
+
         files: |
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
