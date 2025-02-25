@@ -211,13 +211,12 @@ jobs:
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
 
     - name: Generate pre-release on SECOND MIRROR
-      uses: https://gitea.com/actions/gitea-release-action@v1
+      uses: "softprops/action-gh-release@v2"
       with:
         token: "${{ secrets.SCND_MIRROR_TOKEN_RW }}"
         tag_name: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
         target_commitish: axp
         prerelease: true
-        server_url: https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}
         repository: ${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}
         name: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
         body: |
