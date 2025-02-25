@@ -10,8 +10,8 @@ on:
   workflow_dispatch:  # button shown only when in default branch
 
 # Sets permissions of the GITHUB_TOKEN to allow pushing via github token
-permissions:
-  contents: write # allow git push
+#permissions:
+#  contents: write # allow git push
 
 jobs:
   build:
@@ -148,7 +148,7 @@ jobs:
   scan:
     needs: build
     name: "Trigger VT scan"
-    uses: AXP.OS/actions/.gitea/workflows/scan.yml@main
+    uses: https://codeberg.org/AXP-OS/actions/src/branch/main/.gitea/workflows/scan.yml@main
     secrets: inherit
     with:
       wfid: ${{ github.run_id }}
