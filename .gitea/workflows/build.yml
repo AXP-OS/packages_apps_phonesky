@@ -241,7 +241,7 @@ jobs:
           status_code=$(echo "$RESP" | jq | tail -n1)
 
           if [ -z "$status_code" ]||[ "$status_code" != "201" ];then
-            echo "☠️ status_code ERROR $status_code"
+            echo "☠️ status_code ERROR $status_code\n\n$RESP"
             exit 2
           else
             echo "🎉 Release created successfully!"
