@@ -52,6 +52,12 @@ jobs:
           echo -e "\n$RESP\n\n"
 
           relid=$(echo "$RESP" | jq .id || true)
+          status_code=$(echo "$RESP" | jq .status)
+
+          if [ -z "$status_code" ]||[ "$status_code" != "201" ];then
+            echo "status_code ERROR $status_code"
+            exit 2
+          fi
 
           if [ -z "$relid" ];then
             echo -e "ERROR, CANNOT GET RELEASE ID\n$RESP"
