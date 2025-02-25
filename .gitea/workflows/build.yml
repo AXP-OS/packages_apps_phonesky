@@ -84,8 +84,7 @@ jobs:
         # build
         export PATH="~/.local/bin:~/.android/sdk/build-tools/$BUILD_TOOL_VERSION:$PATH"
         #DEBUG=yes
-        export JAVA_OPTS="-Xms6144m -Xmx6144m -XX:NewSize=256m -XX:MaxNewSize=356m -XX:PermSize=256m -XX:MaxPermSize=356m"
-        APKTOOL_FLAGS=" --use-aapt2" ANDROIDSDK=35 ./patch-playstore ${{ env.local_apkname }}
+        APKTOOL_FLAGS=" --use-aapt2 -Xmx6g" ANDROIDSDK=35 ./patch-playstore ${{ env.local_apkname }}
 
         # set result vars
         patched_apk=$(./patch-playstore printapk ${{ env.local_apkname }} | grep file: | cut -d ':' -f2)
@@ -155,7 +154,7 @@ jobs:
   scan:
     needs: build
     name: "Trigger VT scan"
-    uses: AXP-OS/.github/.github/workflows/scan.yml@main
+    uses: AXP-OS/actions/.gitea/workflows/scan.yml@main
     secrets: inherit
     with:
       wfid: ${{ github.run_id }}
@@ -164,7 +163,7 @@ jobs:
 
   release:
     needs: [ build, scan ]
-    runs-on: ubuntu-latest
+    runs-on: docker-node-latest
     steps:
 
     - name: Prep release body
@@ -190,14 +189,16 @@ jobs:
         #repository:  ${{ inputs.repo }}
         #run-id: ${{ inputs.wfid }}
 
-    - name: Create Release
-      uses: "softprops/action-gh-release@v2"
+    - name: Generate pre-release on MIRROR
+      uses: https://gitea.com/actions/gitea-release-action@v1
       with:
-        token: "${{ secrets.AXP_GITHUB_TOKEN }}"
-        name: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
+        token: "${{ secrets.MIRROR_TOKEN_RW }}"
         tag_name: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
-        prerelease: true  # ci/cd should always marked as pre-release
         target_commitish: axp
+        prerelease: true
+        server_url: https://${{ vars.MIRROR_ORG_DOMAIN }}
+        repository: ${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}
+        name: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
         body: |
           ## Phonesky
           ${{ env.vt_results }}
