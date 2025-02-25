@@ -128,7 +128,7 @@ jobs:
         echo "apk_sha_signed=$(sha256sum Phonesky_AXP-OS-signed.apk|cut -d ' ' -f1)" >> $GITHUB_OUTPUT
 
     - name: Upload as artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: vt-artifacts
         path: apks/*.apk
@@ -180,7 +180,7 @@ jobs:
         echo "vt_results=$RES" >> $GITHUB_ENV
 
     - name: Get artifacts from build
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v3
       with:
         name: vt-artifacts
         merge-multiple: true
