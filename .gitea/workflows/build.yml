@@ -145,7 +145,7 @@ jobs:
     - name: Push diff
       uses: ad-m/github-push-action@v0.6.0
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.LOCAL_TOKEN_PUSH }}
         branch: axp
         # Directory to change to before pushing.
         #directory: 
