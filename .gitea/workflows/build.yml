@@ -27,69 +27,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Generate pre-release on SECOND MIRROR
-      run: |
-          apt-get update; apt-get install -y jq curl
-          json_payload=$(cat <<EOF
-          {
-              "tag_name": "foo",
-              "target_commitish": "axp",
-              "name": "UNTESTED: $ {{ needs.build.outputs.apk_version_full }}",
-              "draft": false,
-              "prerelease": true,
-              "generate_release_notes": false,
-              "body": "## Phonesky\n  ${{ env.vt_results }}\n\n  ## Origin source\n  - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)\n\n  ## Diff (unpacked APK vs Release)\n  - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)\n\n  ## Mirror\n  This release is mirrored on: [${{ vars.MIRROR_ORG_DOMAIN }}](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
-          }
-          EOF
-          )
-
-          RESP=$(curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases" \
-            -H 'Content-Type: application/vnd.github+json' \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
-            -w "%{http_code}" \
-            -d "$json_payload")
-
-          #echo -e "\n$RESP\n\n"
-          relid=$(echo "$RESP" | sed '$d' | jq .id || true)
-          status_code=$(echo "$RESP" | jq | tail -n1)
-
-          if [ -z "$status_code" ]||[ "$status_code" != "201" ];then
-            echo "☠️ status_code ERROR $status_code"
-            exit 2
-          else
-            echo "🎉 Release created successfully!"
-          fi
-
-          if [ -z "$relid" ];then
-            echo -e "☠️ ERROR, CANNOT GET RELEASE ID\n\n$RESP"
-            exit 3
-          else
-            echo "using release id: $relid"
-            
-            mkdir -p ${{ github.WORKSPACE }}/apks
-
-
-            for file in Phonesky_AXP-OS.apk Phonesky_AXP-OS-signed.apk;do
-
-              touch ${{ github.WORKSPACE }}/apks/$file
-
-              URES=$(curl -X POST "https://uploads.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${relid}/assets?name=$file" \
-                -H 'Content-Type: application/vnd.github+json' \
-                -H "X-GitHub-Api-Version: 2022-11-28" \
-                -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
-                -w "%{http_code}" \
-                --data-binary "${{ github.WORKSPACE }}/apks/$file")
-              sc_up=$(echo -e "$URES" | jq | tail -n1)
-              if [ "$sc_up" == "201" ];then
-                echo "🎉 uploaded $file successfully!"
-              else
-                echo -e "☠️ ERROR ($sc_up): uploading $file!\n\n$URES"
-                exit 5
-              fi
-            done
-          fi
-
     - name: set up JDK
       uses: actions/setup-java@v3
       with:
@@ -276,3 +213,59 @@ jobs:
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
 
+    - name: Generate pre-release on SECOND MIRROR
+      run: |
+          apt-get update >> /dev/null; apt-get install -y jq curl >> /dev/null
+          json_payload=$(cat <<EOF
+          {
+              "tag_name": "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}",
+              "target_commitish": "axp",
+              "name": "UNTESTED: ${{ needs.build.outputs.apk_version_full }}",
+              "draft": false,
+              "prerelease": true,
+              "generate_release_notes": false,
+              "body": "## Phonesky\n  ${{ env.vt_results }}\n\n  ## Origin source\n  - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)\n\n  ## Diff (unpacked APK vs Release)\n  - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)\n\n  ## Mirror\n  This release is mirrored on: [${{ vars.MIRROR_ORG_DOMAIN }}](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
+          }
+          EOF
+          )
+
+          RESP=$(curl -sX POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases" \
+            -H 'Content-Type: application/vnd.github+json' \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
+            -w "%{http_code}" \
+            -d "$json_payload")
+
+          #echo -e "\n$RESP\n\n"
+          relid=$(echo "$RESP" | sed '$d' | jq .id || true)
+          status_code=$(echo "$RESP" | jq | tail -n1)
+
+          if [ -z "$status_code" ]||[ "$status_code" != "201" ];then
+            echo "☠️ status_code ERROR $status_code"
+            exit 2
+          else
+            echo "🎉 Release created successfully!"
+          fi
+
+          if [ -z "$relid" ];then
+            echo -e "☠️ ERROR, CANNOT GET RELEASE ID\n\n$RESP"
+            exit 3
+          else
+            echo "using release id: $relid"
+            for file in Phonesky_AXP-OS.apk Phonesky_AXP-OS-signed.apk;do
+              URES=$(curl -sX POST "https://uploads.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${relid}/assets?name=$file" \
+                -H 'Content-Type: application/vnd.github+json' \
+                -H "X-GitHub-Api-Version: 2022-11-28" \
+                -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
+                -w "%{http_code}" \
+                --data-binary "${{ github.WORKSPACE }}/apks/$file")
+              sc_up=$(echo -e "$URES" | jq | tail -n1)
+              if [ "$sc_up" == "201" ];then
+                echo "🎉 uploaded $file successfully!"
+              else
+                echo -e "☠️ ERROR ($sc_up): uploading $file!\n\n$URES"
+                exit 5
+              fi
+            done
+          fi
+          echo "🎉 Release finished successfully!"
