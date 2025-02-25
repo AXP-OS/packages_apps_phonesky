@@ -55,14 +55,14 @@ jobs:
           status_code=$(echo "$RESP" | tail -n1 )
 
           if [ -z "$status_code" ]||[ "$status_code" != "201" ];then
-            echo "status_code ERROR $status_code"
+            echo "☠️ status_code ERROR $status_code"
             exit 2
           else
-            echo "Created release successfully!"
+            echo "🎉 Release created successfully!"
           fi
 
           if [ -z "$relid" ];then
-            echo -e "ERROR, CANNOT GET RELEASE ID\n\n$RESP"
+            echo -e "☠️ ERROR, CANNOT GET RELEASE ID\n\n$RESP"
             exit 3
           else
             for file in Phonesky_AXP-OS.apk Phonesky_AXP-OS-signed.apk;do
@@ -74,10 +74,11 @@ jobs:
                 --data-binary "${{ github.WORKSPACE }}/apks/$file")
               sc_up=$(echo "$URES" | tail -n1)
               if [ "$sc_up" == "201" ];then
-                echo "uploaded $file successfully!"
+                echo "🎉 uploaded $file successfully!"
               else
-                echo -e "ERROR: uploading $file!\n\n$URES"
+                echo -e "☠️ ERROR: uploading $file!\n\n$URES"
                 exit 5
+              fi
             done
           fi
 
