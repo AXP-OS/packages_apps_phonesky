@@ -23,6 +23,7 @@ jobs:
       apk_version_full:  ${{ steps.ver.outputs.apk_version_full }}
       apk_sha_unsigned: ${{ steps.sha.outputs.apk_sha_unsigned }}
       apk_sha_signed:  ${{ steps.sha.outputs.apk_sha_signed }}
+      upload_art_id: ${{ steps.upla.outputs.artifact-id }}
     steps:
     - uses: actions/checkout@v4
 
@@ -129,6 +130,7 @@ jobs:
 
     - name: Upload as artifacts
       uses: actions/upload-artifact@v3
+      id: upla
       with:
         name: vt-artifacts
         path: apks/*.apk
@@ -184,6 +186,53 @@ jobs:
         #repository:  ${{ inputs.repo }}
         #run-id: ${{ inputs.wfid }}
 
+    - name: Generate pre-release on SECOND MIRROR
+      run: |
+          apt-get update; apt-get install -y jq curl
+          cat > eb <<_EOF
+          ## Phonesky
+          ${{ env.vt_results }}
+          
+          ## Origin source
+          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)
+
+          ## Diff (unpacked APK vs Release)
+          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
+          
+          ## Mirror
+          This release is mirrored on: [${{ vars.MIRROR_ORG_DOMAIN }}](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }})
+          _EOF
+
+          RESP=$(curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases" \
+            -H 'Content-Type: application/vnd.github+json' \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
+            -d @- <<EOF
+          {
+              "tag_name": "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}",
+              "target_commitish": "axp",
+              "name": "UNTESTED: ${{ needs.build.outputs.apk_version_full }}",
+              "draft":false,
+              "prerelease":true,
+              "generate_release_notes":false
+              "body": "## Phonesky\n  ${{ env.vt_results }}\n\n  ## Origin source\n  - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)\n\n  ## Diff (unpacked APK vs Release)\n  - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)\n\n  ## Mirror\n  This release is mirrored on: [${{ vars.MIRROR_ORG_DOMAIN }}](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }})"
+          }
+          EOF)
+          
+          relid=$(echo \'$RESP\' | jq .id)
+
+          if [ -z "$relid" ];then
+            echo -e "ERROR, CANNOT GET RELEASE ID\n$RESP"
+          else
+            for file in Phonesky_AXP-OS.apk Phonesky_AXP-OS-signed.apk;do
+              curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${relid}/assets" \
+                -H 'Content-Type: application/vnd.github+json' \
+                -H "X-GitHub-Api-Version: 2022-11-28" \
+                -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
+                --data-binary "${{ github.WORKSPACE }}/apks/$file" || break
+            done
+          fi
+
     - name: Generate pre-release on MIRROR
       uses: https://gitea.com/actions/gitea-release-action@v1
       with:
@@ -211,28 +260,3 @@ jobs:
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
           ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
 
-    - name: Generate pre-release on SECOND MIRROR
-      uses: "softprops/action-gh-release@v2"
-      with:
-        token: "${{ secrets.SCND_MIRROR_TOKEN_RW }}"
-        tag_name: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
-        target_commitish: axp
-        prerelease: true
-        repository: https://github.com/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}
-        name: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
-        body: |
-          ## Phonesky
-          ${{ env.vt_results }}
-          
-          ## Origin source
-          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)
-
-          ## Diff (unpacked APK vs Release)
-          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)
-          
-          ## Mirror
-          This release is mirrored on: [${{ vars.MIRROR_ORG_DOMAIN }}](https://${{ vars.MIRROR_ORG_DOMAIN }}/${{ vars.MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }})
-
-        files: |
-          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS.apk
-          ${{ github.WORKSPACE }}/apks/Phonesky_AXP-OS-signed.apk
