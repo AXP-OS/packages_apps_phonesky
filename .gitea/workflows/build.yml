@@ -74,7 +74,7 @@ jobs:
 
               touch ${{ github.WORKSPACE }}/apks/$file
 
-              URES=$(curl -X POST "https://api.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${relid}/assets?name=$file" \
+              URES=$(curl -X POST "https://uploads.${{ vars.SCND_MIRROR_ORG_DOMAIN }}/repos/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/releases/${relid}/assets?name=$file" \
                 -H 'Content-Type: application/vnd.github+json' \
                 -H "X-GitHub-Api-Version: 2022-11-28" \
                 -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
