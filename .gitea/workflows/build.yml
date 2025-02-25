@@ -49,9 +49,9 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.SCND_MIRROR_TOKEN_RW }}" \
             -d "$json_payload")
 
-          echo -e "\'$RESP\'\n\n"
+          echo -e "\n$RESP\n\n"
 
-          relid=$(echo \'$RESP\' | jq .id || true)
+          relid=$(echo "$RESP" | jq .id || true)
 
           if [ -z "$relid" ];then
             echo -e "ERROR, CANNOT GET RELEASE ID\n$RESP"
