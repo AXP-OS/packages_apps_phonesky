@@ -148,7 +148,7 @@ jobs:
   scan:
     needs: build
     name: "Trigger VT scan"
-    uses: AXP-OS/actions/.gitea/workflows/scan.yml@main
+    uses: AXP.OS/actions/.gitea/workflows/scan.yml@main
     secrets: inherit
     with:
       wfid: ${{ github.run_id }}
