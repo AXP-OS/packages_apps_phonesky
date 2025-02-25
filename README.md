@@ -1,5 +1,7 @@
-# Github Action
-[![Build Phonesky](https://github.com/AXP-OS/packages_apps_phonesky/actions/workflows/main.yml/badge.svg)](https://github.com/AXP-OS/packages_apps_phonesky/actions/workflows/main.yml)
+# CI/CD
+
+![Gitea build](https://code.binbash.rocks/AXP.OS/packages_apps_phonesky/actions/workflows/build.yml/badge.svg)
+![Codeberg mirror](https://code.binbash.rocks/AXP.OS/packages_apps_phonesky/actions/workflows/mirror.yaml/badge.svg)
 
 # microG Phonesky (Google Play) patches
 
@@ -13,8 +15,9 @@ The patcher itself has been heavily re-worked by steadfasterX to fix several FC'
 
 # Releases
 
-The CI/CD automation process creates [releases](https://github.com/AXP-OS/packages_apps_phonesky/releases) which (when automated) are flagged as "pre-release".
-These builds are **untested!**
+The CI/CD automation process creates [releases](https://code.binbash.rocks/AXP.OS/packages_apps_phonesky/releases) which (when automated) are flagged as "pre-release".
+
+Those builds are set to **pre-release/untested!** by default.
 
 After a manual test process pre-releases may become productive and so the pre-release flag will be removed then.
 
