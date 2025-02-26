@@ -175,7 +175,7 @@ jobs:
             u="${v/*=http}"
             if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="${{ needs.build.outputs.apk_sha_unsigned }}";fi
             if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="${{ needs.build.outputs.apk_sha_signed }}";fi
-            RES="$RES**$a**<br/>- sha256: $s<br/>- Virustotal [scan result](http${u})<br/><br/>"
+            RES="$RES**$a**\n- sha256: $s\n- Virustotal [scan result](http${u})\n\n"
           done
           echo "vt_results=$RES" >> $GITHUB_OUTPUT
 
@@ -183,7 +183,7 @@ jobs:
     name: "Release @Codeberg"
     uses: https://codeberg.org/AXP-OS/actions/.gitea/workflows/release_mirror_main.yaml@main
     runs-on: docker-node-latest
-    needs: preprelease
+    needs: [ build, scan, preprelease ]
     secrets: inherit
     with:
       workflow_id: ${{ github.run_id }}
@@ -207,7 +207,7 @@ jobs:
     name: "Release @Github"
     uses: https://codeberg.org/AXP-OS/actions/.gitea/workflows/release_mirror_second.yaml@main
     runs-on: docker-node-latest
-    needs: preprelease
+    needs: [ build, scan, preprelease ]
     secrets: inherit
     with:
       workflow_id: ${{ github.run_id }}
