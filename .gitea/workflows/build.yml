@@ -159,6 +159,7 @@ jobs:
       filepattern: '*.apk'
 
   preprelease:
+    name: "Prepare releases"
     needs: [ build, scan ]
     runs-on: docker-node-latest
     outputs:
