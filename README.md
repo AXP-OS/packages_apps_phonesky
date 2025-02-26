@@ -1,7 +1,10 @@
 # CI/CD
 
+(requires login at https://code.binbash.rocks to see states)
+
 ![Gitea build](https://code.binbash.rocks/AXP.OS/packages_apps_phonesky/actions/workflows/build.yml/badge.svg)
-![Codeberg mirror](https://code.binbash.rocks/AXP.OS/packages_apps_phonesky/actions/workflows/mirror.yaml/badge.svg)
+![Codeberg sync](https://code.binbash.rocks/AXP.OS/packages_apps_phonesky/actions/workflows/mirror.yaml/badge.svg)
+![Github sync](https://code.binbash.rocks/AXP.OS/packages_apps_phonesky/actions/workflows/mirror-github.yaml/badge.svg)
 
 # microG Phonesky (Google Play) patches
 
