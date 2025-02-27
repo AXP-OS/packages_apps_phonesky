@@ -217,7 +217,16 @@ jobs:
       targetc: axp
       pre: true
       #filepattern: '*.apk'
+      body: |
+          ## Phonesky
+          ${{ needs.preprelease.outputs.vtres }}
+
+          ## Origin source
+          - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)
+
+          ## Diff (unpacked APK vs Release)
+          - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)"
       #body: "## Phonesky\n  ${{ needs.preprelease.outputs.vtres }}\n\n  ## Origin source\n  - APKMirror [link](https://www.apkmirror.com/apk/google-inc/google-play-store/google-play-store-${{ needs.build.outputs.apk_version_uri }}-release/)\n\n  ## Diff (unpacked APK vs Release)\n  - [Phonesky-${{ needs.build.outputs.apk_version_short }}.diff](https://${{ vars.SCND_MIRROR_ORG_DOMAIN }}/${{ vars.SCND_MIRROR_ORG_NAME }}/${{ github.event.repository.name }}/blob/axp/Phonesky-${{ needs.build.outputs.apk_version_short }}.diff)"
-      filelist: >
+      filelist: >-
         Phonesky_AXP-OS.apk
         Phonesky_AXP-OS-signed.apk
