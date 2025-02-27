@@ -176,7 +176,7 @@ jobs:
             u="${v/*=http}"
             if [ "$a" == "Phonesky_AXP-OS.apk" ];then s="${{ needs.build.outputs.apk_sha_unsigned }}";fi
             if [ "$a" == "Phonesky_AXP-OS-signed.apk" ];then s="${{ needs.build.outputs.apk_sha_signed }}";fi
-            RES="$RES**$a**<br/>- sha256: $s<br/>- Virustotal [scan result](http${u})<br/><br/>"
+            RES="$RES**$a**<br/>- sha256: $s<br/>- Virustotal [scan result](http${u})"
           done
           echo "vt_results=$RES" >> $GITHUB_OUTPUT
 
