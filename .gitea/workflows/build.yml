@@ -146,6 +146,7 @@ jobs:
         git commit -m "add diff: ${{ env.apk_version_full }}"
         git status
         git push
+        echo $?
 
   scan:
     needs: build
