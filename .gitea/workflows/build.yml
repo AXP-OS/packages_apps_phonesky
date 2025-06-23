@@ -232,3 +232,14 @@ jobs:
       filelist: >-
         Phonesky_AXP-OS.apk
         Phonesky_AXP-OS-signed.apk
+
+  release-fdroid-cutting:
+    name: "Release @F-Droid Cutting"
+    uses: https://codeberg.org/AXP-OS/actions/.gitea/workflows/release_fdroid-cutting.yaml@main
+    runs-on: fdroid-cutting
+    needs: build
+    secrets: inherit
+    with:
+      workflow_id: ${{ github.run_id }}
+      repo: ${{ github.event.repository.name }} # without org!
+      artifactname: "release-artifact"
