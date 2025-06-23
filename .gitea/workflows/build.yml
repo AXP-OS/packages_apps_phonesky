@@ -135,6 +135,15 @@ jobs:
         name: release-artifact
         path: apks/*.apk
 
+    - name: Upload F-Droid apks as artifact
+      uses: actions/upload-artifact@v3
+      id: upload
+      with:
+        name: release-fdroid
+        retention-days: 1
+        if-no-files-found: error
+        path: apks/Phonesky_AXP-OS-signed.apk
+
     - name: Commit & push diff
       env:
         GITHUB_TOKEN: ${{ secrets.LOCAL_TOKEN_PUSH }}
@@ -242,4 +251,4 @@ jobs:
     with:
       workflow_id: ${{ github.run_id }}
       repo: ${{ github.event.repository.name }} # without org!
-      artifactname: "release-artifact"
+
