@@ -1,4 +1,4 @@
-![IMAGE](PhoneSky.jpeg)
+![IMAGE](PhoneSky_111x128.jpeg)
 
 # CI/CD
 
