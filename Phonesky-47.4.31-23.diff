@@ -1,5 +1,5 @@
 diff -Nupr play_47.4.31-23.orig/AndroidManifest.xml play_47.4.31-23/AndroidManifest.xml
---- play_47.4.31-23.orig/AndroidManifest.xml	2025-08-12 05:07:28.750782337 +0000
+--- play_47.4.31-23.orig/AndroidManifest.xml	2025-08-12 05:07:28.750782330 +0000
 +++ play_47.4.31-23/AndroidManifest.xml	2025-08-12 05:07:30.756774012 +0000
 @@ -1,5 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
