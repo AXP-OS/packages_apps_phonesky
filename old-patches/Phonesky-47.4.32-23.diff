@@ -1,6 +1,6 @@
 diff -Nupr play_47.4.32-23.orig/AndroidManifest.xml play_47.4.32-23/AndroidManifest.xml
---- play_47.4.32-23.orig/AndroidManifest.xml	2025-08-16 14:04:37.777952493 +0000
-+++ play_47.4.32-23/AndroidManifest.xml	2025-08-16 14:04:39.320946555 +0000
+--- play_47.4.32-23.orig/AndroidManifest.xml	2025-08-19 05:08:30.102436106 +0000
++++ play_47.4.32-23/AndroidManifest.xml	2025-08-19 05:08:31.243432185 +0000
 @@ -1,5 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="36" android:compileSdkVersionCodename="Baklava" emergencyInstaller="com.google.android.gms" package="com.android.vending" platformBuildVersionCode="36" platformBuildVersionName="Baklava">
@@ -28,8 +28,8 @@ diff -Nupr play_47.4.32-23.orig/AndroidManifest.xml play_47.4.32-23/AndroidManif
          <receiver android:exported="false" android:name="com.google.android.finsky.rollbackmanager.RollbackReceiver"/>
          <service android:exported="true" android:name="com.google.android.finsky.services.LicensingService" android:permission="com.android.vending.CHECK_LICENSE">
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml	2025-08-16 14:04:39.206946994 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml	2025-08-16 14:04:43.846929138 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml	2025-08-19 05:08:31.119432611 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml	2025-08-19 05:08:42.839392340 +0000
 @@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.detailsmodules.features.modules.aboutauthorv2.view.AboutAuthorModuleV2View android:orientation="vertical" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0075" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -39,8 +39,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0051.xml play_
      <com.google.android.finsky.frameworkviews.SpannableEllipsizeTextView android:ellipsize="end" android:gravity="start" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0000" android:saveEnabled="false" android:layout_width="0.0dip" android:layout_height="wrap_content" android:textAlignment="viewStart" finsky:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0310" style="?APKTOOL_DUMMYVAL_0x7f040a2d" />
  </com.google.android.finsky.detailsmodules.features.modules.aboutauthorv2.view.AboutAuthorModuleV2View>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0086.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0086.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0086.xml	2025-08-16 14:04:39.206946994 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0086.xml	2025-08-16 14:04:44.040928391 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0086.xml	2025-08-19 05:08:31.119432611 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0086.xml	2025-08-19 05:08:43.132391333 +0000
 @@ -8,5 +8,5 @@
          </RelativeLayout>
          <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0193" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070579" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070578" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f07022b" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f07022a" android:layout_marginEnd="0.0dip" />
@@ -49,8 +49,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0086.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.buttongroup.view.StandardButtonGroupViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b018e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" />
  </com.google.android.finsky.detailsmodules.features.modules.autoupdateonmetereddatacard.view.AutoUpdateOnMeteredDataCardModuleView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00a9.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00a9.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00a9.xml	2025-08-16 14:04:39.220946940 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00a9.xml	2025-08-16 14:04:43.813929265 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00a9.xml	2025-08-19 05:08:31.135432557 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00a9.xml	2025-08-19 05:08:42.794392494 +0000
 @@ -6,6 +6,6 @@
          <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ca1" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" android:adjustViewBounds="true" android:importantForAccessibility="no" app:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" />
          <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b021c" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0709cd" android:textAlignment="textStart" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" app:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b021d" app:APKTOOL_DUMMYVAL_0x7f0405b5="@id/APKTOOL_DUMMYVAL_0x7f0b0ca1" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" style="?APKTOOL_DUMMYVAL_0x7f040a6c" />
@@ -60,8 +60,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00a9.xml play_
      </android.support.constraint.ConstraintLayout>
  </com.google.android.finsky.detailsmodules.features.modules.crosssellbundles.view.BookSeriesBundleView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml	2025-08-16 14:04:39.219946944 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml	2025-08-16 14:04:43.984928607 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml	2025-08-19 05:08:31.134432560 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml	2025-08-19 05:08:43.047391625 +0000
 @@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <merge
@@ -72,8 +72,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f1.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.actionbuttons.view.StandardActionButtonGroupViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ad9" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070994" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f07061a" />
  </merge>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f2.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f2.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f2.xml	2025-08-16 14:04:39.219946944 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f2.xml	2025-08-16 14:04:44.035928411 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f2.xml	2025-08-19 05:08:31.133432564 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f2.xml	2025-08-19 05:08:43.127391350 +0000
 @@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <merge
@@ -84,8 +84,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00f2.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.button.view.StandardButtonViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0c7c" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070994" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" />
  </merge>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fb.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fb.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fb.xml	2025-08-16 14:04:39.222946932 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fb.xml	2025-08-16 14:04:43.929928819 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fb.xml	2025-08-19 05:08:31.138432546 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fb.xml	2025-08-19 05:08:42.944391979 +0000
 @@ -2,9 +2,9 @@
  <com.google.android.finsky.streammvc.features.controllers.playpasscontentlaunchercluster.view.ContentLauncherAppRowView android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/APKTOOL_DUMMYVAL_0x7f080239" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/APKTOOL_DUMMYVAL_0x7f0805c5" android:paddingStart="@dimen/APKTOOL_DUMMYVAL_0x7f0701df" android:paddingEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0701df"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -99,8 +99,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e00fb.xml play_
      </androidx.constraintlayout.widget.ConstraintLayout>
  </com.google.android.finsky.streammvc.features.controllers.playpasscontentlaunchercluster.view.ContentLauncherAppRowView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0102.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0102.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0102.xml	2025-08-16 14:04:39.225946921 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0102.xml	2025-08-16 14:04:43.945928757 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0102.xml	2025-08-19 05:08:31.142432533 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0102.xml	2025-08-19 05:08:42.962391917 +0000
 @@ -7,7 +7,7 @@
              <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b038f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0709cd" android:textAlignment="textStart" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" style="?APKTOOL_DUMMYVAL_0x7f040a6c" />
              <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8e" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b038e" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0709cd" android:maxLines="1" android:textAlignment="textStart" android:layout_marginStart="0.0dip" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b038f" style="?APKTOOL_DUMMYVAL_0x7f040a37" />
@@ -111,8 +111,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0102.xml play_
          <android.support.v7.widget.RecyclerView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0393" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
      </LinearLayout>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml	2025-08-16 14:04:39.226946917 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml	2025-08-16 14:04:43.833929188 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml	2025-08-19 05:08:31.142432533 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml	2025-08-19 05:08:42.823392395 +0000
 @@ -6,6 +6,6 @@
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8e" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0342" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUMMYVAL_0x7f140575" android:textAlignment="viewStart" style="?APKTOOL_DUMMYVAL_0x7f040a6b" />
      </LinearLayout>
@@ -122,8 +122,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0168.xml play_
      <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8e" android:textColorLink="?APKTOOL_DUMMYVAL_0x7f04007e" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b033b" android:paddingBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0703af" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0701cf" android:text="@string/APKTOOL_DUMMYVAL_0x7f14034d" app:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b033e" style="?APKTOOL_DUMMYVAL_0x7f040a6b" />
  </androidx.constraintlayout.widget.ConstraintLayout>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0169.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0169.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0169.xml	2025-08-16 14:04:39.216946955 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0169.xml	2025-08-16 14:04:43.917928865 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0169.xml	2025-08-19 05:08:31.130432574 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0169.xml	2025-08-19 05:08:42.930392027 +0000
 @@ -3,6 +3,6 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
      <android.support.v7.widget.AppCompatEditText android:theme="@style/APKTOOL_DUMMYVAL_0x7f150215" android:state_selected="false" android:gravity="start" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b033d" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUMMYVAL_0x7f07040e" android:text="@string/APKTOOL_DUMMYVAL_0x7f14034e" android:inputType="textEmailAddress" android:imeOptions="actionDone" android:textCursorDrawable="@drawable/APKTOOL_DUMMYVAL_0x7f0802e8" android:textAlignment="viewStart" android:backgroundTint="?APKTOOL_DUMMYVAL_0x7f04007e" app:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" style="?APKTOOL_DUMMYVAL_0x7f040a69" />
@@ -134,8 +134,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0169.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.button.view.LinkButtonViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0339" android:layout_width="wrap_content" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f0701ce" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070d88" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070d88" />
  </android.support.constraint.ConstraintLayout>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0173.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0173.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0173.xml	2025-08-16 14:04:39.230946901 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0173.xml	2025-08-16 14:04:43.907928903 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0173.xml	2025-08-19 05:08:31.146432519 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0173.xml	2025-08-19 05:08:42.920392061 +0000
 @@ -6,6 +6,6 @@
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8e" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b04ce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0712d0" android:maxLines="2" app:APKTOOL_DUMMYVAL_0x7f04059d="@id/APKTOOL_DUMMYVAL_0x7f0b04cb" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405bb="0.0" app:APKTOOL_DUMMYVAL_0x7f0405bc="APKTOOL_DUMMYVAL_0x7f0b09c9" style="?APKTOOL_DUMMYVAL_0x7f040a37" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b04cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0712d0" android:maxLines="2" app:APKTOOL_DUMMYVAL_0x7f04059d="@id/APKTOOL_DUMMYVAL_0x7f0b079e" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b04ce" style="?APKTOOL_DUMMYVAL_0x7f040a2d" />
@@ -145,8 +145,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0173.xml play_
      </androidx.constraintlayout.widget.ConstraintLayout>
  </com.google.android.finsky.featureviews.liveops.EventView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e026c.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e026c.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e026c.xml	2025-08-16 14:04:39.211946975 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e026c.xml	2025-08-16 14:04:44.050928353 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e026c.xml	2025-08-19 05:08:31.124432594 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e026c.xml	2025-08-19 05:08:43.143391295 +0000
 @@ -2,10 +2,10 @@
  <com.google.android.finsky.toolbarframework.toolbars.itemtoolbarwithactionbutton.view.ItemToolbarWithActionButton android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="?APKTOOL_DUMMYVAL_0x7f040ad0" finsky:APKTOOL_DUMMYVAL_0x7f04024a="0.0dip"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
@@ -161,8 +161,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e026c.xml play_
      </androidx.constraintlayout.widget.ConstraintLayout>
  </com.google.android.finsky.toolbarframework.toolbars.itemtoolbarwithactionbutton.view.ItemToolbarWithActionButton>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e027a.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e027a.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e027a.xml	2025-08-16 14:04:39.214946963 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e027a.xml	2025-08-16 14:04:43.938928784 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e027a.xml	2025-08-19 05:08:31.127432584 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e027a.xml	2025-08-19 05:08:42.955391941 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.kidsflagitempage.view.KidsFlagItemTitleView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0e55" android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -173,8 +173,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e027a.xml play_
      <TextView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b015d" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070993" android:layout_height="wrap_content" android:maxLines="2" android:textAlignment="viewStart" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0703a7" finsky:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="@id/APKTOOL_DUMMYVAL_0x7f0b0053" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0053" />
  </com.google.android.finsky.kidsflagitempage.view.KidsFlagItemTitleView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0280.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0280.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0280.xml	2025-08-16 14:04:39.223946928 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0280.xml	2025-08-16 14:04:43.852929115 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0280.xml	2025-08-19 05:08:31.139432543 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0280.xml	2025-08-19 05:08:42.846392316 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.detailsmodules.features.modules.kidsinlinedetailstitle.view.KidsInlineDetailsTitleModuleView android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -185,8 +185,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0280.xml play_
      <TextView android:textAppearance="@style/APKTOOL_DUMMYVAL_0x7f1502be" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b03fc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:maxLines="1" android:textAlignment="viewStart" finsky:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b0c77" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="@id/APKTOOL_DUMMYVAL_0x7f0b0053" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0053" />
      <com.google.android.finsky.frameworkviews.ExtraLabelsSectionView android:orientation="horizontal" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b015b" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:requiresFadingEdge="horizontal" finsky:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b0c77" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="@id/APKTOOL_DUMMYVAL_0x7f0b0053" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b03fc">
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0281.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0281.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0281.xml	2025-08-16 14:04:39.206946994 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0281.xml	2025-08-16 14:04:43.859929088 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0281.xml	2025-08-19 05:08:31.119432611 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0281.xml	2025-08-19 05:08:42.858392274 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.detailsmodules.features.modules.kidsinlinedetailstitle.view.KidsInlineDetailsTitleModuleView android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -197,8 +197,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0281.xml play_
      <TextView android:textAppearance="@style/APKTOOL_DUMMYVAL_0x7f1502be" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b03fc" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070993" android:layout_height="wrap_content" android:maxLines="1" android:textAlignment="viewStart" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0701df" finsky:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="@id/APKTOOL_DUMMYVAL_0x7f0b0053" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0053" />
      <com.google.android.finsky.frameworkviews.ExtraLabelsSectionView android:orientation="horizontal" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b015b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:requiresFadingEdge="horizontal" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="@id/APKTOOL_DUMMYVAL_0x7f0b03fc" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b03fc">
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02a2.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e02a2.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02a2.xml	2025-08-16 14:04:39.226946917 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e02a2.xml	2025-08-16 14:04:44.023928457 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02a2.xml	2025-08-19 05:08:31.142432533 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e02a2.xml	2025-08-19 05:08:43.112391402 +0000
 @@ -15,7 +15,7 @@
                  </LinearLayout>
              </LinearLayout>
@@ -209,8 +209,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02a2.xml play_
      </LinearLayout>
  </com.google.android.finsky.streammvc.features.controllers.liveops.view.LiveOpsSingleCardContentView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02f5.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e02f5.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02f5.xml	2025-08-16 14:04:39.222946932 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e02f5.xml	2025-08-16 14:04:43.734929569 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02f5.xml	2025-08-19 05:08:31.138432546 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e02f5.xml	2025-08-19 05:08:42.675392903 +0000
 @@ -1,8 +1,8 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.uicomponentsmvc.metadatabar.view.MetadataBarView android:orientation="horizontal" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
@@ -223,8 +223,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e02f5.xml play_
      <ViewStub android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b026e" android:visibility="gone" android:layout="@layout/APKTOOL_DUMMYVAL_0x7f0e04e3" android:inflatedId="@id/button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" />
  </com.google.android.finsky.uicomponentsmvc.metadatabar.view.MetadataBarView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0322.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0322.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0322.xml	2025-08-16 14:04:39.220946940 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0322.xml	2025-08-16 14:04:43.775929411 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0322.xml	2025-08-19 05:08:31.135432557 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0322.xml	2025-08-19 05:08:42.738392687 +0000
 @@ -2,12 +2,12 @@
  <com.google.android.finsky.myappsv3shared.applist.view.MyAppsV3AppRowView android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/APKTOOL_DUMMYVAL_0x7f08050f" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/APKTOOL_DUMMYVAL_0x7f0805c5" style="@style/APKTOOL_DUMMYVAL_0x7f1503da"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -241,8 +241,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0322.xml play_
          <ImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b028e" android:background="@drawable/APKTOOL_DUMMYVAL_0x7f080566" android:focusable="true" android:layout_width="24.0dip" android:layout_height="24.0dip" android:tint="?APKTOOL_DUMMYVAL_0x7f0403f9" android:contentDescription="@string/APKTOOL_DUMMYVAL_0x7f140a7f" app:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b02de" app:APKTOOL_DUMMYVAL_0x7f0405b5="@id/APKTOOL_DUMMYVAL_0x7f0b0bad" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0408d5="@drawable/APKTOOL_DUMMYVAL_0x7f0805ac" />
          <CheckBox android:id="@id/APKTOOL_DUMMYVAL_0x7f0b02de" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070994" android:drawablePadding="0.0dip" android:layout_marginStart="0.0dip" android:layout_marginEnd="-4.0dip" app:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b5="@id/APKTOOL_DUMMYVAL_0x7f0b028e" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" />
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0377.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0377.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0377.xml	2025-08-16 14:04:39.227946913 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0377.xml	2025-08-16 14:04:43.826929215 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0377.xml	2025-08-19 05:08:31.143432529 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0377.xml	2025-08-19 05:08:42.816392419 +0000
 @@ -3,5 +3,5 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
      <com.google.android.finsky.uicomponentsmvc.thumbnail.view.ThumbnailImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0e3b" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070b9d" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070b9d" app:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" />
@@ -251,8 +251,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0377.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.button.view.StandardButtonViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ad9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
  </com.google.android.finsky.streammvc.features.controllers.orderhistory.view.OrderHistoryBundleItemRowViewV2>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041d.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e041d.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041d.xml	2025-08-16 14:04:39.210946978 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e041d.xml	2025-08-16 14:04:44.003928534 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041d.xml	2025-08-19 05:08:31.123432598 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e041d.xml	2025-08-19 05:08:43.088391484 +0000
 @@ -7,7 +7,7 @@
          <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0e53" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f071119" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f071119" android:scaleType="centerCrop" android:contentDescription="@null" finsky:APKTOOL_DUMMYVAL_0x7f040347="true" finsky:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" />
          <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d66" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070fcb" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070fcb" android:scaleType="centerCrop" android:contentDescription="@null" finsky:APKTOOL_DUMMYVAL_0x7f040347="true" finsky:APKTOOL_DUMMYVAL_0x7f04059c="@id/APKTOOL_DUMMYVAL_0x7f0b0d5d" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0053" />
@@ -263,8 +263,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041d.xml play_
          <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8e" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0bfd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:layout_marginEnd="0.0dip" finsky:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b5="@id/APKTOOL_DUMMYVAL_0x7f0b0bff" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b00c3" finsky:APKTOOL_DUMMYVAL_0x7f0405e6="0.0dip" style="?APKTOOL_DUMMYVAL_0x7f040a2d" />
          <com.google.android.play.layout.PlayTextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8e" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b03c5" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070994" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f07061a" finsky:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b00c3" style="?APKTOOL_DUMMYVAL_0x7f040a2d" />
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041e.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e041e.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041e.xml	2025-08-16 14:04:39.217946951 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e041e.xml	2025-08-16 14:04:43.727929596 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041e.xml	2025-08-19 05:08:31.131432570 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e041e.xml	2025-08-19 05:08:42.655392972 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.streammvc.features.controllers.pointspromotionitemlist.view.PointsPromotionItemListCardView android:paddingTop="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:paddingBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/APKTOOL_DUMMYVAL_0x7f0701df" android:paddingEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0701df"
@@ -277,8 +277,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e041e.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.actionbuttons.view.SmallActionButtonGroupViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b00c4" android:layout_width="wrap_content" android:layout_height="wrap_content" />
  </com.google.android.finsky.streammvc.features.controllers.pointspromotionitemlist.view.PointsPromotionItemListCardView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml	2025-08-16 14:04:39.210946978 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml	2025-08-16 14:04:43.992928576 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml	2025-08-19 05:08:31.123432598 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml	2025-08-19 05:08:43.075391529 +0000
 @@ -5,5 +5,5 @@
      <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8e" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b09" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" app:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b0b08" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0b0a" style="?APKTOOL_DUMMYVAL_0x7f040a2d" />
      <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b08" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070dbb" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070dbb" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0b0a" />
@@ -287,8 +287,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0449.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.buttongroup.view.StandardButtonGroupViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" />
  </com.google.android.finsky.detailsmodules.features.modules.protectbanner.view.ProtectBannerModuleView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml	2025-08-16 14:04:39.217946951 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml	2025-08-16 14:04:43.900928930 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml	2025-08-19 05:08:31.131432570 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml	2025-08-19 05:08:42.912392089 +0000
 @@ -2,5 +2,5 @@
  <com.google.android.finsky.protect.view.ProtectInfoCardView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b19" android:layout_width="fill_parent" android:layout_height="wrap_content"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -297,8 +297,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e044c.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.button.view.StandardButtonViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b1a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0712cf" />
  </com.google.android.finsky.protect.view.ProtectInfoCardView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-16 14:04:39.215946959 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-16 14:04:43.889928973 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-19 05:08:31.128432581 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-19 05:08:42.898392137 +0000
 @@ -5,7 +5,7 @@
          <include android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b20" layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0451" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d3f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:textDirection="locale" app:APKTOOL_DUMMYVAL_0x7f0405a2="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0b20" style="?APKTOOL_DUMMYVAL_0x7f040a4b" />
@@ -309,8 +309,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e0450.xml play_
      <View android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d3b" android:background="?APKTOOL_DUMMYVAL_0x7f0403b5" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070cc8" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f91" />
  </com.google.android.finsky.protect.view.StatusCardView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2025-08-16 14:04:39.224946924 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2025-08-16 14:04:43.807929288 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2025-08-19 05:08:31.140432539 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2025-08-19 05:08:42.787392518 +0000
 @@ -3,5 +3,5 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
      <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0c00" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070ecc" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070ecc" android:baselineAlignBottom="true" android:layout_alignBaseline="@id/APKTOOL_DUMMYVAL_0x7f0b0bfe" android:layout_alignTop="@id/APKTOOL_DUMMYVAL_0x7f0b0bfe" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" />
@@ -319,8 +319,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e049c.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.button.view.LinkButtonViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" />
  </com.google.android.finsky.uicomponentsmvc.ribbon.view.RibbonView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml	2025-08-16 14:04:39.218946948 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml	2025-08-16 14:04:43.955928719 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml	2025-08-19 05:08:31.133432564 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml	2025-08-19 05:08:42.978391862 +0000
 @@ -21,6 +21,6 @@
                  <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ceb" android:layout_width="wrap_content" android:layout_height="wrap_content" style="?APKTOOL_DUMMYVAL_0x7f040a37" />
              </LinearLayout>
@@ -330,8 +330,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e0.xml play_
      </androidx.constraintlayout.widget.ConstraintLayout>
  </com.google.android.finsky.detailsmodules.features.modules.skupromotion.view.SkuPromotionView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e1.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e1.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e1.xml	2025-08-16 14:04:39.217946951 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e1.xml	2025-08-16 14:04:43.795929334 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e1.xml	2025-08-19 05:08:31.131432570 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e1.xml	2025-08-19 05:08:42.763392601 +0000
 @@ -9,6 +9,6 @@
              <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b02b0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f68" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070298" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070298" style="?APKTOOL_DUMMYVAL_0x7f040a68" />
              <TextView android:textColorLink="?APKTOOL_DUMMYVAL_0x7f040a8c" android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b029d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f68" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f070298" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f070298" style="?APKTOOL_DUMMYVAL_0x7f040a37" />
@@ -341,8 +341,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e1.xml play_
      </androidx.constraintlayout.widget.ConstraintLayout>
  </com.google.android.finsky.detailsmodules.features.modules.skupromotion.view.SkuPromotionCardView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml	2025-08-16 14:04:39.210946978 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml	2025-08-16 14:04:43.755929488 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml	2025-08-19 05:08:31.123432598 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml	2025-08-19 05:08:42.714392769 +0000
 @@ -4,6 +4,6 @@
      <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d47" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f6c" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070f6c" finsky:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" style="?APKTOOL_DUMMYVAL_0x7f040a67" />
      <ProgressBar android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0aec" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" android:max="100" android:progress="1" android:indeterminate="false" android:progressTint="?APKTOOL_DUMMYVAL_0x7f040a8c" android:progressBackgroundTint="?APKTOOL_DUMMYVAL_0x7f040a8e" finsky:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b0d43" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0d47" finsky:APKTOOL_DUMMYVAL_0x7f0405bf="APKTOOL_DUMMYVAL_0x7f0b0d12" style="?android:progressBarStyleHorizontal" />
@@ -352,8 +352,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e04e9.xml play_
      <View android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f07061a" finsky:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0d44" style="@style/APKTOOL_DUMMYVAL_0x7f15022e" />
  </com.google.android.finsky.uninstallmanagerv4.view.StorageInfoSectionView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05cb.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05cb.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05cb.xml	2025-08-16 14:04:39.209946982 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05cb.xml	2025-08-16 14:04:43.893928957 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05cb.xml	2025-08-19 05:08:31.122432601 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05cb.xml	2025-08-19 05:08:42.905392113 +0000
 @@ -2,6 +2,6 @@
  <com.google.android.finsky.pageapi.hierarchy.toolbarandinstallbar.ToolbarAndInstallBarAppBarLayout android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0e67" android:layout_width="fill_parent" android:layout_height="wrap_content" finsky:APKTOOL_DUMMYVAL_0x7f0402d7="0.0dip"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:finsky="http://schemas.android.com/apk/res-auto">
@@ -363,8 +363,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05cb.xml play_
      <include layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0213" />
  </com.google.android.finsky.pageapi.hierarchy.toolbarandinstallbar.ToolbarAndInstallBarAppBarLayout>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05ce.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05ce.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05ce.xml	2025-08-16 14:04:39.220946940 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05ce.xml	2025-08-16 14:04:43.880929007 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05ce.xml	2025-08-19 05:08:31.136432553 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05ce.xml	2025-08-19 05:08:42.879392202 +0000
 @@ -5,6 +5,6 @@
          <ImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b004a" android:focusable="false" android:layout_width="wrap_content" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f07111b" android:scaleType="fitStart" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" />
          <com.google.android.play.layout.PlayTextView android:ellipsize="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0053" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" app:APKTOOL_DUMMYVAL_0x7f04059d="@id/APKTOOL_DUMMYVAL_0x7f0b0d5d" app:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b0395" app:APKTOOL_DUMMYVAL_0x7f0405ad="APKTOOL_DUMMYVAL_0x7f0b0d13" app:APKTOOL_DUMMYVAL_0x7f0405b5="@id/APKTOOL_DUMMYVAL_0x7f0b004a" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405bc="APKTOOL_DUMMYVAL_0x7f0b09c9" style="?APKTOOL_DUMMYVAL_0x7f040a4d" />
@@ -374,8 +374,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05ce.xml play_
      </androidx.constraintlayout.widget.ConstraintLayout>
  </com.google.android.finsky.toolbarframework.toolbars.ctatoolbar.view.CtaToolbar>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05d2.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05d2.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05d2.xml	2025-08-16 14:04:39.225946921 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05d2.xml	2025-08-16 14:04:43.751929504 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05d2.xml	2025-08-19 05:08:31.142432533 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05d2.xml	2025-08-19 05:08:42.705392800 +0000
 @@ -1,7 +1,7 @@
  <?xml version="1.0" encoding="utf-8"?>
  <com.google.android.finsky.streammvc.features.controllers.topchartsv2.view.TopChartsV2CardView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0e8c" android:paddingTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" android:paddingBottom="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:foreground="@drawable/APKTOOL_DUMMYVAL_0x7f080566" android:paddingStart="@dimen/APKTOOL_DUMMYVAL_0x7f0701df" android:paddingEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0701df"
@@ -386,8 +386,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05d2.xml play_
      <ImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0eb5" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f071141" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f071141" finsky:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b0811" finsky:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0b5b" />
  </com.google.android.finsky.streammvc.features.controllers.topchartsv2.view.TopChartsV2CardView>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e0.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e0.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e0.xml	2025-08-16 14:04:39.227946913 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e0.xml	2025-08-16 14:04:43.739929550 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e0.xml	2025-08-19 05:08:31.144432526 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e0.xml	2025-08-19 05:08:42.684392872 +0000
 @@ -7,7 +7,7 @@
      <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ed2" android:layout_width="0.0dip" android:layout_height="wrap_content" app:APKTOOL_DUMMYVAL_0x7f04059c="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b0ecc" app:APKTOOL_DUMMYVAL_0x7f0405b5="@id/APKTOOL_DUMMYVAL_0x7f0b0ed3" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5">
          <include layout="@layout/APKTOOL_DUMMYVAL_0x7f0e05df" />
@@ -398,8 +398,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e0.xml play_
      <ImageView android:gravity="end|center|top" android:layout_gravity="end|center|top" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ece" android:tint="?APKTOOL_DUMMYVAL_0x7f0403f9" android:contentDescription="@string/APKTOOL_DUMMYVAL_0x7f140389" app:APKTOOL_DUMMYVAL_0x7f0405b6="@id/APKTOOL_DUMMYVAL_0x7f0b0ecc" app:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0ecf" style="@style/APKTOOL_DUMMYVAL_0x7f1503e2" />
  </android.support.constraint.ConstraintLayout>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e2.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e2.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e2.xml	2025-08-16 14:04:39.204947002 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e2.xml	2025-08-16 14:04:43.783929380 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e2.xml	2025-08-19 05:08:31.117432618 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e2.xml	2025-08-19 05:08:42.746392659 +0000
 @@ -8,6 +8,6 @@
          <ProgressBar android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0eca" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f07116c" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f07116b" android:indeterminateOnly="true" style="?android:progressBarStyleHorizontal" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:gravity="center" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ecb" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f07116d" style="?APKTOOL_DUMMYVAL_0x7f040a37" />
@@ -410,8 +410,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e05e2.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.button.view.StandardButtonViewStub android:layout_gravity="end" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0ab0" android:layout_width="wrap_content" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f071169" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f07116a" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f07116a" />
  </android.support.constraint.ConstraintLayout>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06af.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e06af.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06af.xml	2025-08-16 14:04:39.224946924 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e06af.xml	2025-08-16 14:04:43.963928688 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06af.xml	2025-08-19 05:08:31.140432539 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e06af.xml	2025-08-19 05:08:42.986391834 +0000
 @@ -14,6 +14,6 @@
              <TextView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0f13" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f0712d0" style="?APKTOOL_DUMMYVAL_0x7f040a2d" />
          </LinearLayout>
@@ -421,8 +421,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06af.xml play_
      <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8e" android:textColorLink="?APKTOOL_DUMMYVAL_0x7f040a8e" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0f15" android:paddingBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405b9="@id/button_group" style="?APKTOOL_DUMMYVAL_0x7f040a6b" />
  </com.google.android.finsky.streammvc.features.controllers.walletwellbeing.view.WalletWellbeingClusterViewV2>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bb.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bb.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bb.xml	2025-08-16 14:04:39.206946994 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bb.xml	2025-08-16 14:04:43.759929473 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bb.xml	2025-08-19 05:08:31.120432608 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bb.xml	2025-08-19 05:08:42.721392745 +0000
 @@ -4,6 +4,6 @@
      <ViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d4b" android:focusable="false" android:layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0180" android:inflatedId="@id/exoplayer_view" android:layout_width="fill_parent" android:layout_height="0.0dip" android:importantForAccessibility="no" finsky:APKTOOL_DUMMYVAL_0x7f0405a1="H,16:9" finsky:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" />
      <ViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d4c" android:focusable="false" android:layout="@layout/APKTOOL_DUMMYVAL_0x7f0e018b" android:inflatedId="@id/fallback_image" android:layout_width="fill_parent" android:layout_height="0.0dip" android:importantForAccessibility="no" finsky:APKTOOL_DUMMYVAL_0x7f0405a1="H,16:9" finsky:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" />
@@ -432,8 +432,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bb.xml play_
      <androidx.constraintlayout.widget.Barrier android:id="@id/APKTOOL_DUMMYVAL_0x7f0b01ef" android:layout_width="wrap_content" android:layout_height="wrap_content" finsky:APKTOOL_DUMMYVAL_0x7f0400c2="APKTOOL_DUMMYVAL_0x7f0b0223" finsky:APKTOOL_DUMMYVAL_0x7f040220="exoplayer_view,fallback_image" />
  </com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewPreview>
 diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bd.xml play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bd.xml
---- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bd.xml	2025-08-16 14:04:39.223946928 +0000
-+++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bd.xml	2025-08-16 14:04:43.837929173 +0000
+--- play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bd.xml	2025-08-19 05:08:31.139432543 +0000
++++ play_47.4.32-23/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bd.xml	2025-08-19 05:08:42.827392381 +0000
 @@ -4,5 +4,5 @@
      <com.google.android.finsky.frameworkviews.FadingEdgeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0c34" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scaleType="centerCrop" finsky:APKTOOL_DUMMYVAL_0x7f0405a1="H,2:1" />
      <View android:id="@id/APKTOOL_DUMMYVAL_0x7f0b09b3" android:layout_width="fill_parent" android:layout_height="0.0dip" finsky:APKTOOL_DUMMYVAL_0x7f0405a1="H,16:1" finsky:APKTOOL_DUMMYVAL_0x7f0405b9="@id/APKTOOL_DUMMYVAL_0x7f0b0c34" />
@@ -442,8 +442,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/APKTOOL_DUMMYVAL_0x7f0e06bd.xml play_
 +    <com.google.android.finsky.uicomponentsmvc.metadatabar.view.MetadataBarViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0811" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0703c2" />
  </com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewScreenshotEditorial>
 diff -Nupr play_47.4.32-23.orig/res/layout/wide_media_card_screenshot.xml play_47.4.32-23/res/layout/wide_media_card_screenshot.xml
---- play_47.4.32-23.orig/res/layout/wide_media_card_screenshot.xml	2025-08-16 14:04:39.209946982 +0000
-+++ play_47.4.32-23/res/layout/wide_media_card_screenshot.xml	2025-08-16 14:04:43.817929250 +0000
+--- play_47.4.32-23.orig/res/layout/wide_media_card_screenshot.xml	2025-08-19 05:08:31.122432601 +0000
++++ play_47.4.32-23/res/layout/wide_media_card_screenshot.xml	2025-08-19 05:08:42.799392477 +0000
 @@ -3,5 +3,5 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
      <com.google.android.finsky.rotatingscreenshotsmvc.RotatingScreenshotsViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0c33" android:layout_width="fill_parent" android:layout_height="0.0dip" finsky:APKTOOL_DUMMYVAL_0x7f040454="@id/APKTOOL_DUMMYVAL_0x7f0b0c32" finsky:APKTOOL_DUMMYVAL_0x7f0405a1="H,16:9" finsky:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" />
@@ -452,8 +452,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/wide_media_card_screenshot.xml play_4
 +    <com.google.android.finsky.uicomponentsmvc.metadatabar.view.MetadataBarViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0811" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0703c2" />
  </com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewScreenshot>
 diff -Nupr play_47.4.32-23.orig/res/layout/wide_media_card_video.xml play_47.4.32-23/res/layout/wide_media_card_video.xml
---- play_47.4.32-23.orig/res/layout/wide_media_card_video.xml	2025-08-16 14:04:39.227946913 +0000
-+++ play_47.4.32-23/res/layout/wide_media_card_video.xml	2025-08-16 14:04:44.008928515 +0000
+--- play_47.4.32-23.orig/res/layout/wide_media_card_video.xml	2025-08-19 05:08:31.143432529 +0000
++++ play_47.4.32-23/res/layout/wide_media_card_video.xml	2025-08-19 05:08:43.096391457 +0000
 @@ -2,5 +2,5 @@
  <com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewVideo android:id="@id/play_card" style="@style/APKTOOL_DUMMYVAL_0x7f150b22"
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:finsky="http://schemas.android.com/apk/res-auto">
@@ -462,8 +462,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout/wide_media_card_video.xml play_47.4.3
 +    <com.google.android.finsky.uicomponentsmvc.metadatabar.view.MetadataBarViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0811" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUMMYVAL_0x7f070f6a" android:layout_marginBottom="@dimen/APKTOOL_DUMMYVAL_0x7f0703c2" />
  </com.google.android.finsky.streammvc.features.controllers.widemedia.view.WideMediaCardViewVideo>
 diff -Nupr play_47.4.32-23.orig/res/layout-car/APKTOOL_DUMMYVAL_0x7f0e049c.xml play_47.4.32-23/res/layout-car/APKTOOL_DUMMYVAL_0x7f0e049c.xml
---- play_47.4.32-23.orig/res/layout-car/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2025-08-16 14:04:39.252946817 +0000
-+++ play_47.4.32-23/res/layout-car/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2025-08-16 14:04:43.714929646 +0000
+--- play_47.4.32-23.orig/res/layout-car/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2025-08-19 05:08:31.171432433 +0000
++++ play_47.4.32-23/res/layout-car/APKTOOL_DUMMYVAL_0x7f0e049c.xml	2025-08-19 05:08:42.639393027 +0000
 @@ -3,5 +3,5 @@
    xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
      <com.google.android.finsky.frameworkviews.PhoneskyFifeImageView android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0c00" android:layout_width="@dimen/APKTOOL_DUMMYVAL_0x7f070ecc" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070ecc" android:baselineAlignBottom="true" android:layout_alignBaseline="@id/APKTOOL_DUMMYVAL_0x7f0b0bfe" android:layout_alignTop="@id/APKTOOL_DUMMYVAL_0x7f0b0bfe" android:contentDescription="@null" app:APKTOOL_DUMMYVAL_0x7f0405b6="APKTOOL_DUMMYVAL_0x7f0b09e5" />
@@ -472,8 +472,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout-car/APKTOOL_DUMMYVAL_0x7f0e049c.xml p
 +    <com.google.android.finsky.uicomponentsmvc.button.view.LinkButtonViewStub android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" />
  </com.google.android.finsky.uicomponentsmvc.ribbon.view.RibbonView>
 diff -Nupr play_47.4.32-23.orig/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml play_47.4.32-23/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml
---- play_47.4.32-23.orig/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-16 14:04:39.244946848 +0000
-+++ play_47.4.32-23/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-16 14:04:43.702929692 +0000
+--- play_47.4.32-23.orig/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-19 05:08:31.163432460 +0000
++++ play_47.4.32-23/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-19 05:08:42.626393071 +0000
 @@ -5,7 +5,7 @@
          <include android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b20" layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0451" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d3f" android:layout_width="0.0dip" android:layout_height="wrap_content" android:textDirection="locale" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f07061a" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" app:APKTOOL_DUMMYVAL_0x7f04059d="@id/APKTOOL_DUMMYVAL_0x7f0b0d3d" app:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b0d39" app:APKTOOL_DUMMYVAL_0x7f0405b5="@id/APKTOOL_DUMMYVAL_0x7f0b0b20" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405bc="APKTOOL_DUMMYVAL_0x7f0b09c9" app:APKTOOL_DUMMYVAL_0x7f0405e3="0.0dip" style="?APKTOOL_DUMMYVAL_0x7f040a4b" />
@@ -484,8 +484,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout-sw600dp/APKTOOL_DUMMYVAL_0x7f0e0450.x
      <View android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d3b" android:background="?APKTOOL_DUMMYVAL_0x7f0403b5" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070cc8" />
  </com.google.android.finsky.protect.view.StatusCardView>
 diff -Nupr play_47.4.32-23.orig/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml play_47.4.32-23/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml
---- play_47.4.32-23.orig/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-16 14:04:39.248946832 +0000
-+++ play_47.4.32-23/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-16 14:04:43.694929723 +0000
+--- play_47.4.32-23.orig/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-19 05:08:31.166432450 +0000
++++ play_47.4.32-23/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.xml	2025-08-19 05:08:42.275394278 +0000
 @@ -5,7 +5,7 @@
          <include android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0b20" layout="@layout/APKTOOL_DUMMYVAL_0x7f0e0451" />
          <TextView android:textColor="?APKTOOL_DUMMYVAL_0x7f040a8c" android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d3f" android:layout_width="0.0dip" android:layout_height="wrap_content" android:textDirection="locale" android:layout_marginStart="@dimen/APKTOOL_DUMMYVAL_0x7f07061a" android:layout_marginEnd="@dimen/APKTOOL_DUMMYVAL_0x7f0709cb" app:APKTOOL_DUMMYVAL_0x7f04059d="@id/APKTOOL_DUMMYVAL_0x7f0b0d3d" app:APKTOOL_DUMMYVAL_0x7f0405a3="@id/APKTOOL_DUMMYVAL_0x7f0b0d39" app:APKTOOL_DUMMYVAL_0x7f0405b5="@id/APKTOOL_DUMMYVAL_0x7f0b0b20" app:APKTOOL_DUMMYVAL_0x7f0405ba="APKTOOL_DUMMYVAL_0x7f0b09e5" app:APKTOOL_DUMMYVAL_0x7f0405bc="APKTOOL_DUMMYVAL_0x7f0b09c9" app:APKTOOL_DUMMYVAL_0x7f0405e3="0.0dip" style="?APKTOOL_DUMMYVAL_0x7f040a4b" />
@@ -496,8 +496,8 @@ diff -Nupr play_47.4.32-23.orig/res/layout-w1024dp/APKTOOL_DUMMYVAL_0x7f0e0450.x
      <View android:id="@id/APKTOOL_DUMMYVAL_0x7f0b0d3b" android:background="?APKTOOL_DUMMYVAL_0x7f0403b5" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUMMYVAL_0x7f070cc8" />
  </com.google.android.finsky.protect.view.StatusCardView>
 diff -Nupr play_47.4.32-23.orig/res/values/public.xml play_47.4.32-23/res/values/public.xml
---- play_47.4.32-23.orig/res/values/public.xml	2025-08-16 14:04:39.256946801 +0000
-+++ play_47.4.32-23/res/values/public.xml	2025-08-16 14:04:39.336946493 +0000
+--- play_47.4.32-23.orig/res/values/public.xml	2025-08-19 05:08:31.177432412 +0000
++++ play_47.4.32-23/res/values/public.xml	2025-08-19 05:08:31.262432120 +0000
 @@ -19871,6 +19871,7 @@
      <public type="string" name="APKTOOL_DUMMYVAL_0x7f141579" id="0x7f141579" />
      <public type="string" name="APKTOOL_DUMMYVAL_0x7f14157a" id="0x7f14157a" />
@@ -507,8 +507,8 @@ diff -Nupr play_47.4.32-23.orig/res/values/public.xml play_47.4.32-23/res/values
      <public type="style" name="APKTOOL_DUMMYVAL_0x7f150001" id="0x7f150001" />
      <public type="style" name="APKTOOL_DUMMYVAL_0x7f150002" id="0x7f150002" />
 diff -Nupr play_47.4.32-23.orig/res/values/strings.xml play_47.4.32-23/res/values/strings.xml
---- play_47.4.32-23.orig/res/values/strings.xml	2025-08-16 14:04:39.254946809 +0000
-+++ play_47.4.32-23/res/values/strings.xml	2025-08-16 14:04:39.322946547 +0000
+--- play_47.4.32-23.orig/res/values/strings.xml	2025-08-19 05:08:31.174432423 +0000
++++ play_47.4.32-23/res/values/strings.xml	2025-08-19 05:08:31.246432175 +0000
 @@ -4703,4 +4703,5 @@ First turn on NFC in your settings, then
      <string name="APKTOOL_DUMMYVAL_0x7f141579">Play</string>
      <string name="APKTOOL_DUMMYVAL_0x7f14157a">Upcoming travel plans and events</string>
@@ -516,8 +516,8 @@ diff -Nupr play_47.4.32-23.orig/res/values/strings.xml play_47.4.32-23/res/value
 +<string name="fake_signature">308204433082032ba003020102020900c2e08746644a308d300d06092a864886f70d01010405003074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f6964301e170d3038303832313233313333345a170d3336303130373233313333345a3074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f696430820120300d06092a864886f70d01010105000382010d00308201080282010100ab562e00d83ba208ae0a966f124e29da11f2ab56d08f58e2cca91303e9b754d372f640a71b1dcb130967624e4656a7776a92193db2e5bfb724a91e77188b0e6a47a43b33d9609b77183145ccdf7b2e586674c9e1565b1f4c6a5955bff251a63dabf9c55c27222252e875e4f8154a645f897168c0b1bfc612eabf785769bb34aa7984dc7e2ea2764cae8307d8c17154d7ee5f64a51a44a602c249054157dc02cd5f5c0e55fbef8519fbe327f0b1511692c5a06f19d18385f5c4dbc2d6b93f68cc2979c70e18ab93866b3bd5db8999552a0e3b4c99df58fb918bedc182ba35e003c1b4b10dd244a8ee24fffd333872ab5221985edab0fc0d0b145b6aa192858e79020103a381d93081d6301d0603551d0e04160414c77d8cc2211756259a7fd382df6be398e4d786a53081a60603551d2304819e30819b8014c77d8cc2211756259a7fd382df6be398e4d786a5a178a4763074310b3009060355040613025553311330110603550408130a43616c69666f726e6961311630140603550407130d4d6f756e7461696e205669657731143012060355040a130b476f6f676c6520496e632e3110300e060355040b1307416e64726f69643110300e06035504031307416e64726f6964820900c2e08746644a308d300c0603551d13040530030101ff300d06092a864886f70d010104050003820101006dd252ceef85302c360aaace939bcff2cca904bb5d7a1661f8ae46b2994204d0ff4a68c7ed1a531ec4595a623ce60763b167297a7ae35712c407f208f0cb109429124d7b106219c084ca3eb3f9ad5fb871ef92269a8be28bf16d44c8d9a08e6cb2f005bb3fe2cb96447e868e731076ad45b33f6009ea19c161e62641aa99271dfd5228c5c587875ddb7f452758d661f6cc0cccb7352e424cc4365c523532f7325137593c4ae341f4db41edda0d0b1071a7c440f0fe9ea01cb627ca674369d084bd2fd911ff06cdbf2cfa10dc0f893ae35762919048c7efc64c7144178342f70581c9de573af55b390dd7fdb9418631895d5f759f30112687ff621410c069308a</string>
  </resources>
 diff -Nupr play_47.4.32-23.orig/res/values/styles.xml play_47.4.32-23/res/values/styles.xml
---- play_47.4.32-23.orig/res/values/styles.xml	2025-08-16 14:04:39.255946805 +0000
-+++ play_47.4.32-23/res/values/styles.xml	2025-08-16 14:04:39.380946324 +0000
+--- play_47.4.32-23.orig/res/values/styles.xml	2025-08-19 05:08:31.175432419 +0000
++++ play_47.4.32-23/res/values/styles.xml	2025-08-19 05:08:31.310431955 +0000
 @@ -617,7 +617,7 @@
          <item name="android:windowAnimationStyle">@style/APKTOOL_DUMMYVAL_0x7f150040</item>
          <item name="android:listDivider">?APKTOOL_DUMMYVAL_0x7f0401b9</item>
@@ -1274,8 +1274,8 @@ diff -Nupr play_47.4.32-23.orig/res/values/styles.xml play_47.4.32-23/res/values
          <item name="APKTOOL_DUMMYVAL_0x7f040563">@color/APKTOOL_DUMMYVAL_0x7f060914</item>
          <item name="APKTOOL_DUMMYVAL_0x7f040564">1.0dip</item>
 diff -Nupr play_47.4.32-23.orig/res/values-v31/colors.xml play_47.4.32-23/res/values-v31/colors.xml
---- play_47.4.32-23.orig/res/values-v31/colors.xml	2025-08-16 14:04:39.268946755 +0000
-+++ play_47.4.32-23/res/values-v31/colors.xml	2025-08-16 14:04:39.382946317 +0000
+--- play_47.4.32-23.orig/res/values-v31/colors.xml	2025-08-19 05:08:31.189432371 +0000
++++ play_47.4.32-23/res/values-v31/colors.xml	2025-08-19 05:08:31.312431948 +0000
 @@ -1,22 +1,22 @@
  <?xml version="1.0" encoding="utf-8"?>
  <resources>
@@ -1673,8 +1673,8 @@ diff -Nupr play_47.4.32-23.orig/res/values-v31/colors.xml play_47.4.32-23/res/va
      <color name="sud_system_background_surface">@color/sud_system_neutral1_50</color>
      <color name="sud_system_button_surface">@color/sud_system_accent1_100</color>
 diff -Nupr play_47.4.32-23.orig/res/values-v33/colors.xml play_47.4.32-23/res/values-v33/colors.xml
---- play_47.4.32-23.orig/res/values-v33/colors.xml	2025-08-16 14:04:39.253946813 +0000
-+++ play_47.4.32-23/res/values-v33/colors.xml	2025-08-16 14:04:39.382946317 +0000
+--- play_47.4.32-23.orig/res/values-v33/colors.xml	2025-08-19 05:08:31.172432430 +0000
++++ play_47.4.32-23/res/values-v33/colors.xml	2025-08-19 05:08:31.312431948 +0000
 @@ -1,6 +1,6 @@
  <?xml version="1.0" encoding="utf-8"?>
  <resources>
@@ -1684,8 +1684,8 @@ diff -Nupr play_47.4.32-23.orig/res/values-v33/colors.xml play_47.4.32-23/res/va
      <color name="sud_system_button_text">@color/sud_system_neutral1_50</color>
      <color name="sud_system_dividing_line">@color/sud_system_neutral2_200</color>
 diff -Nupr play_47.4.32-23.orig/res/values-v34/colors.xml play_47.4.32-23/res/values-v34/colors.xml
---- play_47.4.32-23.orig/res/values-v34/colors.xml	2025-08-16 14:04:39.261946782 +0000
-+++ play_47.4.32-23/res/values-v34/colors.xml	2025-08-16 14:04:39.382946317 +0000
+--- play_47.4.32-23.orig/res/values-v34/colors.xml	2025-08-19 05:08:31.182432395 +0000
++++ play_47.4.32-23/res/values-v34/colors.xml	2025-08-19 05:08:31.313431945 +0000
 @@ -1,99 +1,99 @@
  <?xml version="1.0" encoding="utf-8"?>
  <resources>
