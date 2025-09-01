@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - Phonesky-*.diff
+      - trigger-build.txt
     #branches:
     #  - testci
     #  #- main
