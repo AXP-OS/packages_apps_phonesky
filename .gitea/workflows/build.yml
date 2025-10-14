@@ -3,8 +3,8 @@ name: Build Phonesky
 on:
   push:
     paths:
-      - Phonesky-*.diff
       - trigger-build.txt
+      #- Phonesky-*.diff
     #branches:
     #  - testci
     #  #- main
