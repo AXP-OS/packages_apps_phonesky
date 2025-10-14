@@ -9,7 +9,7 @@ on:
     #  - testci
     #  #- main
   schedule:
-    - cron:  '43 8 * * 2'  # run once per week
+    - cron:  '43 8 * * 3'  # run once per week
   workflow_dispatch:  # button shown only when in default branch
 
 # Sets permissions of the GITHUB_TOKEN to allow pushing via github token
