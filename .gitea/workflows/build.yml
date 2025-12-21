@@ -205,7 +205,7 @@ jobs:
       title: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
       tag: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
       targetc: axp
-      pre: true
+      pre: false
       #filepattern: '*.apk'
       body: |
           ## Phonesky
@@ -229,7 +229,7 @@ jobs:
       title: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
       tag: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
       targetc: axp
-      pre: true
+      pre: false
       #filepattern: '*.apk'
       body: >-
           ## Phonesky\n
