@@ -201,7 +201,7 @@ jobs:
     secrets: inherit
     with:
       workflow_id: ${{ github.run_id }}
-      repo: ${{ gitea.event.repository.name }} # without org!
+      repo: ${{ github.event.repository.name }} # without org!
       title: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
       tag: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
       targetc: axp
@@ -225,7 +225,7 @@ jobs:
     secrets: inherit
     with:
       workflow_id: ${{ github.run_id }}
-      repo: ${{ gitea.event.repository.name }} # without org!
+      repo: ${{ github.event.repository.name }} # without org!
       title: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
       tag: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
       targetc: axp
