@@ -249,7 +249,7 @@ jobs:
     name: "Release @F-Droid Cutting"
     uses: https://codeberg.org/AXP-OS/actions/.gitea/workflows/release_fdroid-cutting.yaml@main
     runs-on: fdroid-cutting
-    needs: build
+    needs: [ build, scan ]
     secrets: inherit
     with:
       workflow_id: ${{ github.run_id }}
