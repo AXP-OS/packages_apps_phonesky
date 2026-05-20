@@ -204,7 +204,7 @@ jobs:
       repo: ${{ github.event.repository.name }} # without org!
       title: "UNTESTED: ${{ needs.build.outputs.apk_version_full }}"
       tag: "${{ needs.build.outputs.apk_version_short }}_${{ needs.build.outputs.apk_version_code }}"
-      targetc: ${{ needs.build.outputs.apk_version_code }}
+      targetc: axp
       pre: false
       #filepattern: '*.apk'
       body: |
